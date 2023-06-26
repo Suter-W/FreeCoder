@@ -1,6 +1,7 @@
 package com.example;
 
-import com.example.pojo.table;
+import com.example.pojo.Table;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,7 +14,7 @@ class FreeCoderApplicationTests {
 
     @Test
     void testAddTable(){
-        table table = new table();
+        Table table = new Table();
         table.setRestID("0000008");
         table.setTableID("10");
         table.setTableLimit(8);
