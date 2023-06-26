@@ -15,4 +15,5 @@ public class Table {
     private Integer tableUse;
     private String tableType;
     private String tableStatus;
+    private Integer ID;
 }

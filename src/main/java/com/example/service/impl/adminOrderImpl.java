@@ -19,4 +19,8 @@ public class adminOrderImpl implements adminOrderService {
     }
 
     public void addTable(Table table) {adminOrderMapper.addTable(table);}
+
+    public void editTable(String tableID,String tableType,Integer tableLimit,Integer id){adminOrderMapper.editTable(tableID,tableType,tableLimit,id);}
+
+    public Table getTableInfo(String restID,String tableID,String tableType){return adminOrderMapper.getTableInfo(restID,tableID,tableType);}
 }

@@ -7,4 +7,8 @@
         insert into tableInfo (restID,tableID,tableLimit,tableUse,tableType,tableStatus) values (#{restID},#{tableID},
         #{tableLimit},'0',#{tableType},'0')
     </insert>
+
+    <update id="editTable">
+        update tableInfo set tableID = #{tableID},tableLimit = #{tableLimit},tableType = #{tableType} where ID = #{id}
+    </update>
 </mapper>

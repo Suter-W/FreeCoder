@@ -8,4 +8,8 @@ public interface adminOrderService {
     List<Table> tableList(String restID);
 
     void addTable(Table table);
+
+    void editTable(String tableID,String tableType,Integer tableLimit,Integer id);
+
+    Table getTableInfo(String restID,String tableID,String tableType);
 }

@@ -14,4 +14,9 @@ public interface adminOrderMapper {
     List<Table> tableList(String restID);
 
     void addTable(Table table);
+
+    void editTable(String tableID,String tableType,Integer tableLimit,Integer id);
+
+    @Select("select * from tableinfo where restID = #{restID} and tableID = #{tableID} and tableType = #{tableType}")
+    Table getTableInfo(String restID,String tableID,String tableType);
 }

@@ -27,4 +27,18 @@ public class adminOrder {
         adminOrderService.addTable(table);
         return(Result.success()) ;
     }
+    @PostMapping("/editTable")
+    public Result editTable(@RequestBody Table table,@RequestParam Integer id){
+        String tableID = table.getTableID();
+        Integer tableLimit = table.getTableLimit();
+        String tableType = table.getTableType();
+        adminOrderService.editTable(tableID,tableType,tableLimit,id);
+        return(Result.success());
+    }
+
+    @GetMapping("/getTableInfo")
+    public Result getTableInfo(@RequestParam String restID,@RequestParam String tableID,@RequestParam String tableType){
+        Table table = adminOrderService.getTableInfo(restID,tableID,tableType);
+        return(Result.success(table));
+    }
 }
