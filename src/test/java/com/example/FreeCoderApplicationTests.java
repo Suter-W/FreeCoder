@@ -22,6 +22,7 @@ class FreeCoderApplicationTests {
         table.setTableUse(3);
         table.setTableType("包房");
         table.setTableStatus("0");
+        System.out.println(table);
     }
 
 }
