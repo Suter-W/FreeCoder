@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class table {
+public class Table {
     private String restID;
     private String tableID;
     private Integer tableLimit;

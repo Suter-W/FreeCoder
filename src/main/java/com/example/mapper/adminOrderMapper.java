@@ -1,6 +1,6 @@
 package com.example.mapper;
 
-import com.example.pojo.table;
+import com.example.pojo.Table;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -11,9 +11,7 @@ import java.util.List;
 public interface adminOrderMapper {
 
     @Select("select * from tableInfo where restID = #{restID}")
-    List<table> tableList(String restID);
+    List<Table> tableList(String restID);
 
-    @Insert("insert into tableInfo (restID, tableID, tableLimit, tableUse, tableType, tableStatus) " +
-            "values (#{restID},#{tableID},#{tableLimit},#{tableUse},#{tableType},#{tableStatus})")
-    void addTable(table table);
+    void addTable(Table table);
 }
