@@ -47,4 +47,6 @@ public class adminOrder {
         adminOrderService.deleteTable(ID);
         return Result.success();
     }
+
+    
 }
