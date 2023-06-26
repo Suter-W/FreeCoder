@@ -5,10 +5,7 @@ import com.example.pojo.Result;
 import com.example.pojo.table;
 import com.example.service.adminOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,13 @@ public class adminOrder {
         List<table> tableList = adminOrderService.tableList(restID);
         System.out.println(tableList);
         return Result.success(tableList);
+    }
+
+    @PostMapping("/addTable")
+    public Result AddTable(@RequestBody table table){
+        adminOrderService.addTable(table);
+        System.out.println(table);
+        return Result.success();
+
     }
 }
