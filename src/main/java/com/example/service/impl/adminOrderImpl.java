@@ -1,7 +1,7 @@
 package com.example.service.impl;
 
 import com.example.mapper.adminOrderMapper;
-import com.example.pojo.table;
+import com.example.pojo.Table;
 import com.example.service.adminOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,9 @@ public class adminOrderImpl implements adminOrderService {
     private adminOrderMapper adminOrderMapper;
 
     @Override
-    public List<table> tableList(String restID){
+    public List<Table> tableList(String restID){
         return adminOrderMapper.tableList(restID);
     }
+
+    public void addTable(Table table) {adminOrderMapper.addTable(table);}
 }
