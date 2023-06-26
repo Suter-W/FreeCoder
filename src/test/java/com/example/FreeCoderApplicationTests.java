@@ -10,6 +10,7 @@ class FreeCoderApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println();
     }
 
     @Test
