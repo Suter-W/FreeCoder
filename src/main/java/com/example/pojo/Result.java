@@ -1,5 +1,10 @@
 package com.example.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  * 统一响应结果封装类
  */
