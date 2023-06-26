@@ -8,6 +8,6 @@
         #{tableLimit},'0',#{tableType},'0')
     </insert>
     <delete id="deleteTable">
-        delete from tableInfo where restID = #{restID}
+        delete from tableInfo where ID = #{ID}
     </delete>
 </mapper>

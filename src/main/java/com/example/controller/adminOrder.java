@@ -29,8 +29,8 @@ public class adminOrder {
     }
 
     @DeleteMapping("/deleteTable")
-    public Result deleteTable(@RequestParam String restID){
-        adminOrderService.deleteTable(restID);
+    public Result deleteTable(@RequestParam Integer ID){
+        adminOrderService.deleteTable(ID);
         return Result.success();
     }
 }

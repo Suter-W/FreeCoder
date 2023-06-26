@@ -20,7 +20,7 @@ public class adminOrderImpl implements adminOrderService {
 
     public void addTable(Table table) {adminOrderMapper.addTable(table);}
 
-    public void deleteTable(String restID){
-        adminOrderMapper.deleteTable(restID);
+    public void deleteTable(Integer ID){
+        adminOrderMapper.deleteTable(ID);
     }
 }

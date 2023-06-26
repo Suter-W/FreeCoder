@@ -9,5 +9,5 @@ public interface adminOrderService {
 
     void addTable(Table table);
 
-    void deleteTable(String restID);
+    void deleteTable(Integer ID);
 }

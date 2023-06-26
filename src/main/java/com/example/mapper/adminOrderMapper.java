@@ -15,5 +15,5 @@ public interface adminOrderMapper {
 
     void addTable(Table table);
 
-    void deleteTable(String restID);
+    void deleteTable(Integer ID);
 }
