@@ -22,7 +22,7 @@ public class adminOrder {
 
         List<table> tableList = adminOrderService.tableList(restID);
         System.out.println(tableList);
-        return Result.success();
+        return Result.success(tableList);
 
     }
 }
