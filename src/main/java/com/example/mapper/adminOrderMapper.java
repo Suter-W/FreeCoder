@@ -14,4 +14,6 @@ public interface adminOrderMapper {
     List<Table> tableList(String restID);
 
     void addTable(Table table);
+
+    void deleteTable(String restID);
 }

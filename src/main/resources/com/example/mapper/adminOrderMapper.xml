@@ -7,4 +7,7 @@
         insert into tableInfo (restID,tableID,tableLimit,tableUse,tableType,tableStatus) values (#{restID},#{tableID},
         #{tableLimit},'0',#{tableType},'0')
     </insert>
+    <delete id="deleteTable">
+        delete from tableInfo where restID = #{restID}
+    </delete>
 </mapper>

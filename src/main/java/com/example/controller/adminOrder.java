@@ -27,4 +27,10 @@ public class adminOrder {
         adminOrderService.addTable(table);
         return(Result.success()) ;
     }
+
+    @DeleteMapping("/deleteTable")
+    public Result deleteTable(@RequestParam String restID){
+        adminOrderService.deleteTable(restID);
+        return Result.success();
+    }
 }
