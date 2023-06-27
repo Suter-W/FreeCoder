@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.pojo.Order;
+import com.example.pojo.OrderItem;
 import com.example.pojo.Table;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -29,4 +30,7 @@ public interface adminOrderMapper {
     Integer getOrderingID(Integer tableID);
     @Select("select * from order_info where orderID = #{orderID}")
     Order getOrderInfo(Integer orderID);
+
+    @Select("select * from order_item where orderID = #{orderID}")
+    List<OrderItem> getOrderItem(Integer orderID);
 }
