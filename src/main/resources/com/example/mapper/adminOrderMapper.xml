@@ -4,15 +4,15 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.adminOrderMapper">
     <insert id="addTable">
-        insert into tableInfo (restID,tableID,tableLimit,tableUse,tableType,tableStatus) values (#{restID},#{tableID},
+        insert into table_info (restID,tableName,tableLimit,tableUse,tableType,tableStatus) values (#{restID},#{tableName},
         #{tableLimit},'0',#{tableType},'0')
     </insert>
 
     <update id="editTable">
-        update tableInfo set tableID = #{tableID},tableLimit = #{tableLimit},tableType = #{tableType} where ID = #{id}
+        update table_Info set tableName = #{tableName},tableLimit = #{tableLimit},tableType = #{tableType} where tableID = #{tableID}
     </update>
 
     <delete id="deleteTable">
-        delete from tableInfo where ID = #{ID}
+        delete from table_Info where tableID = #{tableID}
     </delete>
 </mapper>

@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Table {
     private String restID;
-    private String tableID;
+    private String tableName;
     private Integer tableLimit;
     private Integer tableUse;
     private String tableType;
     private String tableStatus;
-    private Integer ID;
+    private Integer tableID;
 }

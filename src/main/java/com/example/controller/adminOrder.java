@@ -1,6 +1,7 @@
 package com.example.controller;
 
 
+import com.example.pojo.Order;
 import com.example.pojo.Result;
 import com.example.pojo.Table;
 import com.example.service.adminOrderService;
@@ -28,23 +29,41 @@ public class adminOrder {
         return(Result.success()) ;
     }
     @PostMapping("/editTable")
-    public Result editTable(@RequestBody Table table,@RequestParam Integer id){
-        String tableID = table.getTableID();
+    public Result editTable(@RequestBody Table table,@RequestParam Integer tableID){
+        String tableName = table.getTableName();
         Integer tableLimit = table.getTableLimit();
         String tableType = table.getTableType();
-        adminOrderService.editTable(tableID,tableType,tableLimit,id);
+        adminOrderService.editTable(tableName,tableType,tableLimit,tableID);
         return(Result.success());
     }
 
     @GetMapping("/getTableInfo")
-    public Result getTableInfo(@RequestParam String restID,@RequestParam String tableID,@RequestParam String tableType){
-        Table table = adminOrderService.getTableInfo(restID,tableID,tableType);
+    public Result getTableInfo(@RequestParam String restID,@RequestParam String tableName,@RequestParam String tableType){
+        Table table = adminOrderService.getTableInfo(restID,tableName,tableType);
         return(Result.success(table));
     }
 
     @DeleteMapping("/deleteTable")
-    public Result deleteTable(@RequestParam Integer ID){
-        adminOrderService.deleteTable(ID);
+    public Result deleteTable(@RequestParam Integer tableID){
+        adminOrderService.deleteTable(tableID);
         return Result.success();
+    }
+
+    public Integer gettableID(String restID,String tableName,String tableType){
+        Integer tableID = adminOrderService.getTableID(restID,tableName,tableType);
+        return (tableID);
+    }
+
+    public Integer getOrderingID(Integer tableID){
+        Integer orderID = adminOrderService.getOrderingID(tableID);
+        return orderID;
+    }
+
+    @PostMapping("/getOrderInfo")
+    public Result getOrderInfo(@RequestParam String restID,@RequestParam String tableName,@RequestParam String tableType){
+        Integer tableID = gettableID(restID,tableName,tableType);
+        Integer orderID = getOrderingID(tableID);
+        Order orderInfo = adminOrderService.getOrderInfo(orderID);
+        return Result.success(orderInfo);
     }
 }

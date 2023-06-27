@@ -1,12 +1,12 @@
 package com.example.service.impl;
 
 import com.example.mapper.adminOrderMapper;
+import com.example.pojo.Order;
 import com.example.pojo.Table;
 import com.example.service.adminOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.PublicKey;
 import java.util.List;
 
 @Service
@@ -21,9 +21,15 @@ public class adminOrderImpl implements adminOrderService {
 
     public void addTable(Table table) {adminOrderMapper.addTable(table);}
 
-    public void editTable(String tableID,String tableType,Integer tableLimit,Integer id){adminOrderMapper.editTable(tableID,tableType,tableLimit,id);}
+    public void editTable(String tableName,String tableType,Integer tableLimit,Integer tableID){adminOrderMapper.editTable(tableName,tableType,tableLimit,tableID);}
 
-    public Table getTableInfo(String restID,String tableID,String tableType){return adminOrderMapper.getTableInfo(restID,tableID,tableType);}
+    public Table getTableInfo(String restID,String tableName,String tableType){return adminOrderMapper.getTableInfo(restID,tableName,tableType);}
 
-    public void deleteTable(Integer ID){adminOrderMapper.deleteTable(ID);}
+    public void deleteTable(Integer tableID){adminOrderMapper.deleteTable(tableID);}
+
+    public Integer getTableID(String restID,String tableName,String tableType){return adminOrderMapper.getTableID(restID,tableName,tableType);}
+
+    public Integer getOrderingID(Integer tableID){return adminOrderMapper.getOrderingID(tableID);}
+
+    public Order getOrderInfo(Integer orderID){return adminOrderMapper.getOrderInfo(orderID);}
 }
