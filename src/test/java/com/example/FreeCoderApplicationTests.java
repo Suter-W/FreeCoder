@@ -16,12 +16,13 @@ class FreeCoderApplicationTests {
     @Test
     void testAddTable(){
         Table table = new Table();
-        table.setRestID("0008");
+        table.setRestID("0000008");
         table.setTableID("10");
         table.setTableLimit(8);
         table.setTableUse(3);
         table.setTableType("包房");
         table.setTableStatus("0");
+        System.out.println(table);
     }
 
 }
