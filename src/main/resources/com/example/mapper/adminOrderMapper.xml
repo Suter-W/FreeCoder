@@ -9,7 +9,13 @@
     </insert>
 
     <update id="editTable">
-        update table_Info set tableName = #{tableName},tableLimit = #{tableLimit},tableType = #{tableType} where tableID = #{tableID}
+        update table_Info
+        <set>
+            <if test="tableName != null">tableName=#{tableName},</if>
+            <if test="tableType != null">tableType=#{tableType},</if>
+            <if test="tableLimit != null">tableLimit=#{tableLimit},</if>
+        </set>
+        where tableID=#{tableID}
     </update>
 
     <delete id="deleteTable">
