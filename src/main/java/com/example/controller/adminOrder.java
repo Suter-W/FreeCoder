@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/adminOrder")
 public class adminOrder {
-
+//
     @Autowired
     private adminOrderService adminOrderService;
 
@@ -50,14 +50,18 @@ public class adminOrder {
         adminOrderService.editTable(table);
         return(Result.success());
     }
-    //getTableInfo为展示当前桌信息
+
+    //通过餐厅ID、桌子ID和桌子的类型对应点单页面的每一个桌子，用于获取tableInfo表的全部内容并进行展示
+
     @GetMapping("/getTableInfo")
     public Result getTableInfo(@RequestParam Integer tableID){
         Table table = adminOrderService.getTableInfo(tableID);
         return(Result.success(table));
     }
 
-    //删除桌
+
+    //对创建的桌子进行删除操作
+
     @DeleteMapping("/deleteTable")
     public Result deleteTable(@RequestParam Integer tableID){
         adminOrderService.deleteTable(tableID);
