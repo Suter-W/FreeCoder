@@ -22,9 +22,9 @@ public class adminOrderImpl implements adminOrderService {
 
     public void addTable(Table table) {adminOrderMapper.addTable(table);}
 
-    public void editTable(String tableName,String tableType,Integer tableLimit,Integer tableID){adminOrderMapper.editTable(tableName,tableType,tableLimit,tableID);}
+    public void editTable(Table table){adminOrderMapper.editTable(table);}
 
-    public Table getTableInfo(String restID,String tableName,String tableType){return adminOrderMapper.getTableInfo(restID,tableName,tableType);}
+    public Table getTableInfo(Integer tableID){return adminOrderMapper.getTableInfo(tableID);}
 
     public void deleteTable(Integer tableID){adminOrderMapper.deleteTable(tableID);}
 
