@@ -2,6 +2,7 @@ package com.example.controller;
 
 
 import com.example.pojo.Order;
+import com.example.pojo.OrderItem;
 import com.example.pojo.Result;
 import com.example.pojo.Table;
 import com.example.service.adminOrderService;
@@ -65,5 +66,13 @@ public class adminOrder {
         Integer orderID = getOrderingID(tableID);
         Order orderInfo = adminOrderService.getOrderInfo(orderID);
         return Result.success(orderInfo);
+    }
+
+    @PostMapping("/getOrderItem")
+    public Result getOrderItem(@RequestParam String restID,@RequestParam String tableName,@RequestParam String tableType){
+        Integer tableID = gettableID(restID,tableName,tableType);
+        Integer orderID = getOrderingID(tableID);
+        List<OrderItem> orderItem = adminOrderService.getOrderItem(orderID);
+        return Result.success(orderItem);
     }
 }

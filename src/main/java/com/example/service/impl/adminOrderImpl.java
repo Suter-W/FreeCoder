@@ -2,6 +2,7 @@ package com.example.service.impl;
 
 import com.example.mapper.adminOrderMapper;
 import com.example.pojo.Order;
+import com.example.pojo.OrderItem;
 import com.example.pojo.Table;
 import com.example.service.adminOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,6 @@ public class adminOrderImpl implements adminOrderService {
     public Integer getOrderingID(Integer tableID){return adminOrderMapper.getOrderingID(tableID);}
 
     public Order getOrderInfo(Integer orderID){return adminOrderMapper.getOrderInfo(orderID);}
+
+    public List<OrderItem> getOrderItem(Integer orderID){return adminOrderMapper.getOrderItem(orderID);}
 }

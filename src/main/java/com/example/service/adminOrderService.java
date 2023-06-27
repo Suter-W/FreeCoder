@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.pojo.Order;
+import com.example.pojo.OrderItem;
 import com.example.pojo.Table;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface adminOrderService {
     Integer getOrderingID(Integer orderID);
 
     Order getOrderInfo(Integer orderID);
+
+    List<OrderItem> getOrderItem(Integer orderID);
 }
