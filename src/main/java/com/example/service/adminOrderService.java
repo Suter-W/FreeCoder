@@ -11,9 +11,9 @@ public interface adminOrderService {
 
     void addTable(Table table);
 
-    void editTable(String tableName,String tableType,Integer tableLimit,Integer tableID);
+    void editTable(Table table);
 
-    Table getTableInfo(String restID,String tableName,String tableType);
+    Table getTableInfo(Integer tableID);
 
     void deleteTable(Integer tableID);
 

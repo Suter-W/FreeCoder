@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/adminOrder")
 public class adminOrder {
 
     @Autowired
@@ -45,25 +46,20 @@ public class adminOrder {
 
     //editTable为编辑桌
     @PostMapping("/editTable")
-    public Result editTable(@RequestBody Table table,@RequestParam String restID0,@RequestParam String tableName0,@RequestParam String tableType0){
-        Integer tableID = gettableID(restID0,tableName0,tableType0);
-        String tableName = table.getTableName();
-        Integer tableLimit = table.getTableLimit();
-        String tableType = table.getTableType();
-        adminOrderService.editTable(tableName,tableType,tableLimit,tableID);
+    public Result editTable(@RequestBody Table table){
+        adminOrderService.editTable(table);
         return(Result.success());
     }
     //getTableInfo为展示当前桌信息
     @GetMapping("/getTableInfo")
-    public Result getTableInfo(@RequestParam String restID,@RequestParam String tableName,@RequestParam String tableType){
-        Table table = adminOrderService.getTableInfo(restID,tableName,tableType);
+    public Result getTableInfo(@RequestParam Integer tableID){
+        Table table = adminOrderService.getTableInfo(tableID);
         return(Result.success(table));
     }
 
     //删除桌
     @DeleteMapping("/deleteTable")
-    public Result deleteTable(@RequestParam String restID,@RequestParam String tableName,@RequestParam String tableType){
-        Integer tableID = gettableID(restID,tableName,tableType);
+    public Result deleteTable(@RequestParam Integer tableID){
         adminOrderService.deleteTable(tableID);
         return Result.success();
     }
@@ -71,16 +67,14 @@ public class adminOrder {
 
     //取出订单信息
     @PostMapping("/getOrderInfo")
-    public Result getOrderInfo(@RequestParam String restID,@RequestParam String tableName,@RequestParam String tableType){
-        Integer tableID = gettableID(restID,tableName,tableType);
+    public Result getOrderInfo(@RequestParam Integer tableID){
         Integer orderID = getOrderingID(tableID);
         Order orderInfo = adminOrderService.getOrderInfo(orderID);
         return Result.success(orderInfo);
     }
     //取出订单具体项
     @PostMapping("/getOrderItem")
-    public Result getOrderItem(@RequestParam String restID,@RequestParam String tableName,@RequestParam String tableType){
-        Integer tableID = gettableID(restID,tableName,tableType);
+    public Result getOrderItem(@RequestParam Integer tableID){
         Integer orderID = getOrderingID(tableID);
         List<OrderItem> orderItem = adminOrderService.getOrderItem(orderID);
         return Result.success(orderItem);
