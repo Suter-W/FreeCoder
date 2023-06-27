@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.adminDishMapper">
+    <insert id="addDishInfo">
+        insert into dish_info (restID,dishImage,dishName,dishDescription,dishPrice,dishCategory) values (#{restID},
+        #{dishImage},#{dishName},#{dishDescription},#{dishPrice},#{dishCategory})
+    </insert>
+    <update id="updateDishInfo">
+        update dish_info
+        <set>
+            <if test="restID != null">restID = #{restID},</if>
+            <if test="dishImage != null">dishImage = #{dishImage},</if>
+            <if test="dishName != null">dishName = #{dishName},</if>
+            <if test="dishDescription != null">dishDescription = #{dishDescription},</if>
+            <if test="dishPrice != null">dishPrice = #{dishPrice},</if>
+            <if test="dishCategory != null">dishCategory = #{dishCategory},</if>
+            <if test="VipPrice != null">VipPrice = #{VipPrice}</if>
+        </set>
+        where dishID = #{dishID}
+    </update>
+
+</mapper>
