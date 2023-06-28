@@ -4,8 +4,8 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.adminDishMapper">
     <insert id="addDishInfo">
-        insert into dish_info (restID,dishImage,dishName,dishDescription,dishPrice,dishCategory) values (#{restID},
-        #{dishImage},#{dishName},#{dishDescription},#{dishPrice},#{dishCategory})
+        insert into dish_info (restID,dishImage,dishName,dishDescription,dishPrice,dishCategory,VipPrice) values (#{restID},
+        #{dishImage},#{dishName},#{dishDescription},#{dishPrice},#{dishCategory},#{VipPrice})
     </insert>
     <update id="updateDishInfo">
         update dish_info

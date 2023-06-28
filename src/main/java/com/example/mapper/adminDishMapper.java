@@ -1,6 +1,7 @@
 package com.example.mapper;
 
 import com.example.pojo.Dish;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -15,4 +16,8 @@ public interface adminDishMapper {
     void addDishInfo(Dish dish);
 
     void updateDishInfo(Dish dish);
+
+    @Delete("delete from dish_info where dishID = #{dishID}")
+    void deleteDishInfo(Integer dishID);
+
 }
