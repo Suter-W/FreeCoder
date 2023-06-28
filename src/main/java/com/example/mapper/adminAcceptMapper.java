@@ -20,6 +20,7 @@ public interface adminAcceptMapper {
 
     @Select("select * from order_info where restID = #{restID} and orderStatus = 3")
     List<Order> getPendingList(String restID);
+
     @Select("select * from order_info where orderID=#{orderID}")
     Order getPendingOrder(Integer orderID);
 
