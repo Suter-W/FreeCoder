@@ -27,4 +27,8 @@ public class adminDishImpl implements adminDishService {
         adminDishMapper.updateDishInfo(dish);
     }
 
+    public void deleteDishInfo(Integer dishID){
+        adminDishMapper.deleteDishInfo(dishID);
+    }
+
 }

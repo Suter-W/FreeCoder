@@ -11,4 +11,6 @@ public interface adminDishService {
     void addDishInfo(Dish dish);
 
     void updateDishInfo(Dish dish);
+
+    void deleteDishInfo(Integer dishID);
 }
