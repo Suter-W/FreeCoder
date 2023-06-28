@@ -10,8 +10,7 @@ import java.util.List;
 @Mapper
 public interface adminDishMapper {
 
-    @Select("select * from dish_info where restID = #{restID}")
-    List<Dish> getDishInfo(String restID);
+    List<Dish> getDishInfo(String restID,String dishCategory,String dishName);
 
     void addDishInfo(Dish dish);
 

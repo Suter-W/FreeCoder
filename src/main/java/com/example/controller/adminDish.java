@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.pojo.Dish;
+import com.example.pojo.PageBean;
 import com.example.pojo.Result;
 import com.example.service.adminDishService;
 import org.apache.ibatis.annotations.Delete;
@@ -25,10 +26,12 @@ public class adminDish {
      * @return Result
      *
      */
-    @GetMapping("/getDishInfo")
-    public Result getDishInfo(@RequestParam String restID) {
-        List<Dish> dish = adminDishService.getDishInfo(restID);
-        return Result.success(dish);
+    @PostMapping("/getDishInfo")
+    public Result getDishInfo(@RequestParam String restID,
+                              @RequestParam(defaultValue = "1") Integer page,
+                              String dishCategory, String dishName) {
+        PageBean pageBean = adminDishService.getDishInfo(restID,page,dishCategory,dishName);
+        return Result.success(pageBean);
     }
 
     /**

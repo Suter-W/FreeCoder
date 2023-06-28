@@ -24,7 +24,7 @@ public class adminAccept {
 
     /**
      * 内部用法获取订单编号
-     * @param tableID
+     * @param tableID 桌编号
      * @return Integer
      */
     public Integer getOrderingID(Integer tableID){
@@ -34,7 +34,7 @@ public class adminAccept {
 
     /**
      * 获取某餐厅全部未处理订单信息
-     * @param restID
+     * @param restID 餐厅编号
      * @return Result
      */
     @GetMapping("/getPendingList")
@@ -45,7 +45,7 @@ public class adminAccept {
 
     /**
      * 查看某个未接单订单时获取该订单信息
-     * @param orderID
+     * @param orderID 订单编号
      * @return Result
      */
     @GetMapping("/getPendingOrder")
@@ -56,7 +56,7 @@ public class adminAccept {
 
     /**
      * 查看某个未接单订单时获取该订单的所有订单项
-     * @param orderID
+     * @param orderID 订单编号
      * @return Result
      */
     @GetMapping("/getPendingItem")
@@ -67,7 +67,7 @@ public class adminAccept {
 
     /**
      * 管理员接单
-     * @param orderID
+     * @param orderID 订单编号
      * @return Result
      */
     @PostMapping("/acceptOrder")
