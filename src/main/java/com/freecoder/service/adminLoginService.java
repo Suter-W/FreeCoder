@@ -11,6 +11,8 @@ public interface adminLoginService {
      * @param user  餐厅实体类
      * @return User
      */
-
+    
     User login(User user);
+
+    void insert(User user);
 }

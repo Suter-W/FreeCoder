@@ -34,7 +34,9 @@ public class LoginCheckFilter implements Filter {
         }
 
         //3.获取请求头中的令牌（token）
-        String jwt = req.getHeader("token");
+        String jwt = req.getHeader("Authorization");
+        System.out.println(jwt);
+        jwt = jwt.substring(7);
 
         //4.判断令牌是否存在，如果不存在，返回错误结果（未登录）
         if(!StringUtils.hasLength(jwt)){

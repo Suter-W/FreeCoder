@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/adminAccept")
-public class adminAccept {
+public class AdminAccept {
 
     @Autowired
     private adminAcceptService adminAcceptService;
