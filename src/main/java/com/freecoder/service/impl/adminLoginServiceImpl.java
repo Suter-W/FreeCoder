@@ -15,4 +15,8 @@ public class adminLoginServiceImpl implements adminLoginService {
     public User login(User user){
         return adminLoginMapper.getByRestIDAndPassword(user);
     }
+
+    public void insert(User user){
+        adminLoginMapper.insertUser(user);
+    }
 }

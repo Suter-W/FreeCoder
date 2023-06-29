@@ -1,6 +1,7 @@
 package com.freecoder.mapper;
 
 import com.freecoder.pojo.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -15,4 +16,6 @@ public interface adminLoginMapper {
     @Select("select * from restaurants where restID = #{restID} and password = #{password};")
     User getByRestIDAndPassword(User user);
 
+    @Insert("insert into restaurants (restID, password, RestName, RestAddr, RestPhoneNum) values (#{restID},#{password},#{RestName},#{RestAddr},#{RestPhoneNum})")
+    void insertUser(User user);
 }
