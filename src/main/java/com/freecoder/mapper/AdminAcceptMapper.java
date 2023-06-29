@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 @Mapper
-public interface adminAcceptMapper {
+public interface AdminAcceptMapper {
 
     @Select("select tableID from table_info where restID = #{restID} and tableName = #{tableName} and tableType = #{tableType}")
     Integer getTableID(String restID,String tableName,String tableType);

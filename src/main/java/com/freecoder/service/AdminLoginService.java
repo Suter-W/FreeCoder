@@ -4,7 +4,7 @@ import com.freecoder.pojo.User;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface adminLoginService {
+public interface AdminLoginService {
 
     /**
      * 餐厅管理员登录

@@ -5,7 +5,7 @@ import com.freecoder.pojo.PageBean;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface adminDishService {
+public interface AdminDishService {
 
     PageBean getDishInfo(String restID, Integer page, String dishCategory, String dishName);
 

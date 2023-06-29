@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public interface adminLoginMapper {
+public interface AdminLoginMapper {
 
     /**
      * 根据餐厅ID和密码登录

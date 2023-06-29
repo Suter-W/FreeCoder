@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 @Mapper
-public interface adminDishMapper {
+public interface AdminDishMapper {
 
     List<Dish> getDishInfo(String restID,String dishCategory,String dishName);
 

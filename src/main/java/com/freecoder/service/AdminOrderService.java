@@ -6,7 +6,7 @@ import com.freecoder.pojo.Table;
 
 import java.util.List;
 
-public interface adminOrderService {
+public interface AdminOrderService {
     List<Table> tableList(String restID);
 
     void addTable(Table table);

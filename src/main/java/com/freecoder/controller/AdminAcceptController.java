@@ -4,7 +4,7 @@ package com.freecoder.controller;
 import com.freecoder.pojo.Order;
 import com.freecoder.pojo.OrderItem;
 import com.freecoder.pojo.Result;
-import com.freecoder.service.adminAcceptService;
+import com.freecoder.service.AdminAcceptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/adminAccept")
-public class AdminAccept {
+public class AdminAcceptController {
 
     @Autowired
-    private adminAcceptService adminAcceptService;
+    private AdminAcceptService adminAcceptService;
 
     public Integer gettableID(String restID,String tableName,String tableType){
         Integer tableID = adminAcceptService.getTableID(restID,tableName,tableType);

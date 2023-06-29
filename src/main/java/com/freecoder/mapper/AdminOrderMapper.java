@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 @Mapper
-public interface adminOrderMapper {
+public interface AdminOrderMapper {
 
     @Select("select * from table_info where restID = #{restID}")
     List<Table> tableList(String restID);

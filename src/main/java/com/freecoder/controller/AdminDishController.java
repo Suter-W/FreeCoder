@@ -3,7 +3,7 @@ package com.freecoder.controller;
 import com.freecoder.pojo.Dish;
 import com.freecoder.pojo.PageBean;
 import com.freecoder.pojo.Result;
-import com.freecoder.service.adminDishService;
+import com.freecoder.service.AdminDishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,9 +13,9 @@ import javax.annotation.security.PermitAll;
 @RequestMapping("adminDish")
 @PermitAll
 @CrossOrigin
-public class adminDish {
+public class AdminDishController {
     @Autowired
-    private adminDishService adminDishService;
+    private AdminDishService adminDishService;
 
     /**
      * 获取菜品信息页面的全部数据
