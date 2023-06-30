@@ -1,19 +1,19 @@
 package com.freecoder.service.impl;
 
-import com.freecoder.mapper.adminOrderMapper;
+import com.freecoder.mapper.AdminOrderMapper;
 import com.freecoder.pojo.Order;
 import com.freecoder.pojo.OrderItem;
 import com.freecoder.pojo.Table;
-import com.freecoder.service.adminOrderService;
+import com.freecoder.service.AdminOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class adminOrderImpl implements adminOrderService {
+public class AdminOrderServiceImpl implements AdminOrderService {
     @Autowired
-    private adminOrderMapper adminOrderMapper;
+    private AdminOrderMapper adminOrderMapper;
 
     @Override
     public List<Table> tableList(String restID){

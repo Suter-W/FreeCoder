@@ -5,7 +5,7 @@ import com.freecoder.pojo.Order;
 import com.freecoder.pojo.OrderItem;
 import com.freecoder.pojo.Result;
 import com.freecoder.pojo.Table;
-import com.freecoder.service.adminOrderService;
+import com.freecoder.service.AdminOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/adminOrder")
-public class adminOrder {
+public class AdminOrderController {
 //
     @Autowired
-    private adminOrderService adminOrderService;
+    private AdminOrderService adminOrderService;
 
     //下面两个gettableID与getOrderingID方法用于内部，作用为提取对应的tableID和正在进行的订单ID
     public Integer gettableID(String restID,String tableName,String tableType){

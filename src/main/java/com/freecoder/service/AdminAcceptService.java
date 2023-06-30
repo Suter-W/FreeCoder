@@ -5,7 +5,7 @@ import com.freecoder.pojo.OrderItem;
 
 import java.util.List;
 
-public interface adminAcceptService {
+public interface AdminAcceptService {
     Integer getTableID(String restID,String tableName,String tableType);
 
     Integer getOrderingID(Integer orderID);

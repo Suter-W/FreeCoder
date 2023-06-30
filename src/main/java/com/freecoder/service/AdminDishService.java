@@ -2,8 +2,10 @@ package com.freecoder.service;
 
 import com.freecoder.pojo.Dish;
 import com.freecoder.pojo.PageBean;
+import org.springframework.stereotype.Service;
 
-public interface adminDishService {
+@Service
+public interface AdminDishService {
 
     PageBean getDishInfo(String restID, Integer page, String dishCategory, String dishName);
 

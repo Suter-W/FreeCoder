@@ -1,9 +1,9 @@
 package com.freecoder.service.impl;
 
+import com.freecoder.mapper.AdminDishMapper;
 import com.freecoder.pojo.Dish;
-import com.freecoder.mapper.adminDishMapper;
 import com.freecoder.pojo.PageBean;
-import com.freecoder.service.adminDishService;
+import com.freecoder.service.AdminDishService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class adminDishImpl implements adminDishService {
+public class AdminDishServiceImpl implements AdminDishService {
 
     @Autowired
-    private adminDishMapper adminDishMapper;
+    private AdminDishMapper adminDishMapper;
 
     @Override
     public PageBean getDishInfo(String restID, Integer page, String dishCategory, String dishName){
