@@ -4,10 +4,10 @@ import com.freecoder.pojo.Dish;
 import com.freecoder.pojo.PageBean;
 import com.freecoder.pojo.Result;
 import com.freecoder.service.AdminDishService;
+import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.PermitAll;
 
 @RestController
 @RequestMapping("adminDish")
