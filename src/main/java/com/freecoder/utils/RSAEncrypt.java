@@ -1,20 +1,12 @@
 package com.freecoder.utils;
 
-import ch.qos.logback.classic.turbo.TurboFilter;
 import org.apache.commons.codec.binary.Base64;
-import org.springframework.lang.Nullable;
 
 import javax.crypto.Cipher;
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;

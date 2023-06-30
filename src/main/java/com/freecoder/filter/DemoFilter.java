@@ -1,7 +1,8 @@
 package com.freecoder.filter;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
+
+import jakarta.servlet.*;
+
 import java.io.IOException;
 
 //@WebFilter("/*")
