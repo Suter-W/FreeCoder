@@ -34,6 +34,8 @@ public class LoginCheckFilter implements Filter {
         }
 
         //3.获取请求头中的令牌（token）
+//        String jwt = req.getHeader("token");
+//        System.out.println(jwt);
         String jwt = req.getHeader("Authorization");
         System.out.println(jwt);
         jwt = jwt.substring(7);

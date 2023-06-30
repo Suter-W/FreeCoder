@@ -8,10 +8,8 @@ import java.util.Map;
 
 public class JwtUtils {
 
-    static final int DAYS_IN_A_WEEK = 7;
-
     private static String signKey = "suixincoder";  //签名密钥
-    private static int expire = DAYS_IN_A_WEEK; //过期时间7天
+    private static Long expire = 43200000L; //过期时间12h
 
     /**
      * 生成JWT令牌
