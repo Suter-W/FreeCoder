@@ -65,7 +65,6 @@ class FreeCoderApplicationTests {
         String encodePassword = DigestUtils.sha256Hex(password);
         System.out.println("[sha-256] encode password=" + encodePassword);
     }
-
 //    @Test
 //    void testBCryptPasswordEncoder() {
 //        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

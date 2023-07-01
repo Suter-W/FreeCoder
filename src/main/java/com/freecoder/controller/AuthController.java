@@ -21,6 +21,7 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+
     @PostMapping("/login")
     public Result login(@RequestBody User user){
         log.info("餐厅管理员登录：{}",user);
