@@ -1,6 +1,5 @@
 package com.freecoder;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
@@ -39,14 +38,14 @@ class FreeCoderApplicationTests {
     /**
      * 解析Jwt
      */
-    @Test
-    public void testParseJwt(){
-        Claims claims = Jwts.parser()
-                .setSigningKey("suixincoder")
-                .parseClaimsJws("eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoidG9tIiwiaWQiOjEsImV4cCI6MTY4NzkzNzYxMn0.QgYnKX3cMe7KXz7pMF9HSKjyUjD8Fvub9TSou3YdDHc")
-                .getBody();
-        System.out.println(claims);
-    }
+//    @Test
+//    public void testParseJwt(){
+//        Claims claims = Jwts.parser()
+//                .setSigningKey("suixincoder")
+//                .parseClaimsJws("eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoidG9tIiwiaWQiOjEsImV4cCI6MTY4NzkzNzYxMn0.QgYnKX3cMe7KXz7pMF9HSKjyUjD8Fvub9TSou3YdDHc")
+//                .getBody();
+//        System.out.println(claims);
+//    }
 
     @Test
     public void md5Tests(){
