@@ -2,6 +2,7 @@ package com.freecoder.service.impl;
 
 import com.freecoder.mapper.AdminDishMapper;
 import com.freecoder.pojo.Dish;
+import com.freecoder.pojo.DishCategory;
 import com.freecoder.pojo.PageBean;
 import com.freecoder.service.AdminDishService;
 import com.github.pagehelper.Page;
@@ -38,5 +39,7 @@ public class AdminDishServiceImpl implements AdminDishService {
     public void deleteDishInfo(Integer dishID){
         adminDishMapper.deleteDishInfo(dishID);
     }
+
+    public List<DishCategory> getDcInfo(String restID){return adminDishMapper.getDcInfo(restID);}
 
 }
