@@ -112,10 +112,12 @@ public class AdminOrderController {
         Order orderInfo = adminOrderService.getOrderInfo(orderID);
         return Result.success(orderInfo);
     }
+
     /**
      * @Description 取出订单具体项
-     * @Date 11:17 2023/7/1
-     * @Param [java.lang.Integer] [tableID]
+     * @param tableID
+     * @Date 15:18 2023/7/1
+     * @Param [java.lang.Integer]
      * @return com.freecoder.pojo.Result
      **/
     @PostMapping("/getOrderItem")

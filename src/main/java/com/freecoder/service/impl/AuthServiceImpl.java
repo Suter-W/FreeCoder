@@ -12,6 +12,7 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private AuthMapper authMapper;
 
+    @Override
     public User login(User user){
         return authMapper.getByRestIDAndPassword(user);
     }

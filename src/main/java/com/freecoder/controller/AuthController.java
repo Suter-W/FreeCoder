@@ -21,7 +21,13 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-
+    /**
+     * @Description 用于实现登录功能，以及采用了过滤器的功能，能够拦截未登录（没有获得token令牌）的用户，增强安全性
+     * @param user
+     * @Date 16:44 2023/7/1
+     * @Param [com.freecoder.pojo.User]
+     * @return com.freecoder.pojo.Result
+     **/
     @PostMapping("/login")
     public Result login(@RequestBody User user){
         log.info("餐厅管理员登录：{}",user);
