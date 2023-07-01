@@ -28,11 +28,11 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 
     public void deleteTable(Integer tableID){adminOrderMapper.deleteTable(tableID);}
 
-    public Integer getTableID(String restID,String tableName,String tableType){return adminOrderMapper.getTableID(restID,tableName,tableType);}
-
-    public Integer getOrderingID(Integer tableID){return adminOrderMapper.getOrderingID(tableID);}
-
     public Order getOrderInfo(Integer orderID){return adminOrderMapper.getOrderInfo(orderID);}
 
     public List<OrderItem> getOrderItem(Integer orderID){return adminOrderMapper.getOrderItem(orderID);}
+
+    public Integer getTableID(String restID,String tableName,String tableType){return adminOrderMapper.getTableID(restID,tableName,tableType);}
+
+    public Integer getOrderingID(Integer tableID){return adminOrderMapper.getOrderingID(tableID);}
 }

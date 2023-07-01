@@ -21,19 +21,19 @@ class FreeCoderApplicationTests {
     /**
      * 生成Jwt
      */
-    @Test
-    public void testGenJwt(){
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("id",1);
-        claims.put("name","tom");
-
-        String Jwt = Jwts.builder()
-                .signWith(SignatureAlgorithm.HS256,"suixincoder")   //签名算法
-                .setClaims(claims)    //自定义内容（载荷）
-                .setExpiration(new Date(System.currentTimeMillis() + 3600*1000))   //设置有效期为一个小时
-                .compact();
-        System.out.println(Jwt);
-    }
+//    @Test
+//    public void testGenJwt(){
+//        Map<String, Object> claims = new HashMap<>();
+//        claims.put("id",1);
+//        claims.put("name","tom");
+//
+//        String Jwt = Jwts.builder()
+//                .signWith(SignatureAlgorithm.HS256,"suixincoder")   //签名算法
+//                .setClaims(claims)    //自定义内容（载荷）
+//                .setExpiration(new Date(System.currentTimeMillis() + 3600*1000))   //设置有效期为一个小时
+//                .compact();
+//        System.out.println(Jwt);
+//    }
 
     /**
      * 解析Jwt
@@ -64,7 +64,6 @@ class FreeCoderApplicationTests {
         String encodePassword = DigestUtils.sha256Hex(password);
         System.out.println("[sha-256] encode password=" + encodePassword);
     }
-
 //    @Test
 //    void testBCryptPasswordEncoder() {
 //        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

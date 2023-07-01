@@ -2,7 +2,7 @@ package com.freecoder.controller;
 
 import com.freecoder.pojo.Result;
 import com.freecoder.pojo.User;
-import com.freecoder.service.AdminLoginService;
+import com.freecoder.service.AuthService;
 import com.freecoder.utils.JwtUtils;
 import com.freecoder.utils.Md5Utils;
 import jakarta.annotation.security.PermitAll;
@@ -23,12 +23,19 @@ import java.util.Map;
 public class AuthController {
 
     @Autowired
-    private AdminLoginService adminLoginService;
+    private AuthService authService;
 
+    /**
+     * @Description 用于实现登录功能，以及采用了过滤器的功能，能够拦截未登录（没有获得token令牌）的用户，增强安全性
+     * @param user
+     * @Date 16:44 2023/7/1
+     * @Param [com.freecoder.pojo.User]
+     * @return com.freecoder.pojo.Result
+     **/
     @PostMapping("/login")
     public Result login(@RequestBody User user){
         log.info("餐厅管理员登录：{}",user);
-        User e = adminLoginService.login(user);
+        User e = authService.login(user);
 
         if(e != null){
             Map<String, Object> clamis = new HashMap<>();
@@ -52,7 +59,7 @@ public class AuthController {
         String password = Md5Utils.code(user.getPassword());
         System.out.println(password);
         user.setPassword(password);
-        adminLoginService.insert(user);
+        authService.insert(user);
         return "seccuss";
     }
 

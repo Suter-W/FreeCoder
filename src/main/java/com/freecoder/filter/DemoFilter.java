@@ -1,12 +1,11 @@
 package com.freecoder.filter;
 
 
-import jakarta.servlet.*;
-
+import javax.servlet.*;
 import java.io.IOException;
 
 //@WebFilter("/*")
-public class DemoFilter implements Filter{
+public class DemoFilter implements Filter {
 
     //初始化方法，只调用一次
     @Override

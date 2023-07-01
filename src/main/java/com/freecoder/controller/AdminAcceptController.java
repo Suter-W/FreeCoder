@@ -20,6 +20,15 @@ public class AdminAcceptController {
     @Autowired
     private AdminAcceptService adminAcceptService;
 
+    /**
+     * @Description //TODO
+     * @param restID
+     * @param tableName
+     * @param tableType
+     * @Date 11:42 2023/7/1
+     * @Param [java.lang.String, java.lang.String, java.lang.String]
+     * @return java.lang.Integer
+     **/
     public Integer gettableID(String restID,String tableName,String tableType){
         Integer tableID = adminAcceptService.getTableID(restID,tableName,tableType);
         return (tableID);

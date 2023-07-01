@@ -23,14 +23,15 @@ public interface AdminOrderMapper {
 
     void deleteTable(Integer tableID);
 
-    @Select("select tableID from table_info where restID = #{restID} and tableName = #{tableName} and tableType = #{tableType}")
-    Integer getTableID(String restID,String tableName,String tableType);
-
-    @Select("select orderID from order_info where tableID = #{tableID} and orderStatus != 0")
-    Integer getOrderingID(Integer tableID);
     @Select("select * from order_info where orderID = #{orderID}")
     Order getOrderInfo(Integer orderID);
 
     @Select("select * from order_item where orderID = #{orderID}")
     List<OrderItem> getOrderItem(Integer orderID);
+
+    @Select("select tableID from table_info where restID = #{restID} and tableName = #{tableName} and tableType = #{tableType}")
+    Integer getTableID(String restID,String tableName,String tableType);
+
+    @Select("select orderID from order_info where tableID = #{tableID} and orderStatus != 0")
+    Integer getOrderingID(Integer tableID);
 }

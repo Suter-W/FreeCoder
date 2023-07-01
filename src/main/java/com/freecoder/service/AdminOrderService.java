@@ -17,11 +17,11 @@ public interface AdminOrderService {
 
     void deleteTable(Integer tableID);
 
-    Integer getTableID(String restID,String tableName,String tableType);
-
-    Integer getOrderingID(Integer orderID);
-
     Order getOrderInfo(Integer orderID);
 
     List<OrderItem> getOrderItem(Integer orderID);
+
+    Integer getTableID(String restID,String tableName,String tableType);
+
+    Integer getOrderingID(Integer orderID);
 }
