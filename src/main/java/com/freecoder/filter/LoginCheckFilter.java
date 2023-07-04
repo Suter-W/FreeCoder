@@ -1,7 +1,7 @@
 package com.freecoder.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.freecoder.pojo.Result;
+import com.freecoder.model.Result;
 import com.freecoder.utils.JwtUtils;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;

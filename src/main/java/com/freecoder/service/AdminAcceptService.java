@@ -1,7 +1,7 @@
 package com.freecoder.service;
 
-import com.freecoder.pojo.Order;
-import com.freecoder.pojo.OrderItem;
+import com.freecoder.model.Order;
+import com.freecoder.model.OrderItem;
 
 import java.util.List;
 

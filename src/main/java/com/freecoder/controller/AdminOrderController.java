@@ -1,10 +1,10 @@
 package com.freecoder.controller;
 
 
-import com.freecoder.pojo.Order;
-import com.freecoder.pojo.OrderItem;
-import com.freecoder.pojo.Result;
-import com.freecoder.pojo.Table;
+import com.freecoder.model.Order;
+import com.freecoder.model.OrderItem;
+import com.freecoder.model.Result;
+import com.freecoder.model.Table;
 import com.freecoder.service.AdminOrderService;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class AdminOrderController {
      * @Description tableList为点餐页面开始罗列桌所用，提取该restID下的所有桌
      * @Date 11:15 2023/7/1
      * @Param [java.lang.String] [restID]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
     @GetMapping("/getTableList")
     public Result tableList(@RequestParam String restID){
@@ -54,8 +54,8 @@ public class AdminOrderController {
     /**
      * @Description addTable为添加桌
      * @Date 11:14 2023/7/1
-     * @Param [com.freecoder.pojo.Table] [table]
-     * @return com.freecoder.pojo.Result
+     * @Param [com.freecoder.model.Table] [table]
+     * @return com.freecoder.model.Result
      **/
     @PostMapping("/addTable")
     public Result addTable(@RequestBody Table table){
@@ -66,8 +66,8 @@ public class AdminOrderController {
     /**
      * @Description editTable为编辑桌
      * @Date 11:12 2023/7/1
-     * @Param [com.freecoder.pojo.Table] [table]
-     * @return com.freecoder.pojo.Result
+     * @Param [com.freecoder.model.Table] [table]
+     * @return com.freecoder.model.Result
      **/
     @PostMapping("/editTable")
     public Result editTable(@RequestBody Table table){
@@ -80,7 +80,7 @@ public class AdminOrderController {
      * @Description 通过餐厅ID、桌子ID和桌子的类型对应点单页面的每一个桌子，用于获取tableInfo表的全部内容并进行展示
      * @Date 11:09 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
     @GetMapping("/getTableInfo")
     public Result getTableInfo(@RequestParam Integer tableID){
@@ -93,7 +93,7 @@ public class AdminOrderController {
      * @Description 对创建的桌子进行删除操作
      * @Date 11:16 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
 
     @DeleteMapping("/deleteTable")
@@ -107,7 +107,7 @@ public class AdminOrderController {
      * @Description 取出订单信息
      * @Date 11:17 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
     @PostMapping("/getOrderInfo")
     public Result getOrderInfo(@RequestParam Integer tableID){
@@ -121,7 +121,7 @@ public class AdminOrderController {
      * @param tableID
      * @Date 15:18 2023/7/1
      * @Param [java.lang.Integer]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
     @PostMapping("/getOrderItem")
     public Result getOrderItem(@RequestParam Integer tableID){

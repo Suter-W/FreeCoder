@@ -1,8 +1,8 @@
 package com.freecoder.mapper;
 
 
-import com.freecoder.pojo.Order;
-import com.freecoder.pojo.OrderItem;
+import com.freecoder.model.Order;
+import com.freecoder.model.OrderItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;

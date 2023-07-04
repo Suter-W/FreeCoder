@@ -1,8 +1,8 @@
 package com.freecoder.controller;
 
-import com.freecoder.pojo.DishCategory;
-import com.freecoder.pojo.PageBean;
-import com.freecoder.pojo.Result;
+import com.freecoder.model.DishCategory;
+import com.freecoder.model.PageBean;
+import com.freecoder.model.Result;
 import com.freecoder.service.AdminDishCategoryService;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;

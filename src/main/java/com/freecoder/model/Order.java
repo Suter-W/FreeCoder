@@ -1,4 +1,4 @@
-package com.freecoder.pojo;
+package com.freecoder.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

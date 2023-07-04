@@ -1,8 +1,7 @@
-package com.freecoder.pojo;
+package com.freecoder.model;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

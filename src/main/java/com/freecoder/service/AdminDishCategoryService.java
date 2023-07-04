@@ -1,7 +1,7 @@
 package com.freecoder.service;
 
-import com.freecoder.pojo.DishCategory;
-import com.freecoder.pojo.PageBean;
+import com.freecoder.model.DishCategory;
+import com.freecoder.model.PageBean;
 import org.springframework.stereotype.Service;
 
 @Service

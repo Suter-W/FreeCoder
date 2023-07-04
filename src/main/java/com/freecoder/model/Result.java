@@ -1,4 +1,4 @@
-package com.freecoder.pojo;
+package com.freecoder.model;
 
 /**
  * 统一响应结果封装类

@@ -1,11 +1,10 @@
 package com.freecoder.service.impl;
 
 import com.freecoder.mapper.AdminDishMapper;
-import com.freecoder.pojo.Dish;
-import com.freecoder.pojo.DishCategory;
-import com.freecoder.pojo.PageBean;
+import com.freecoder.model.Dish;
+import com.freecoder.model.DishCategory;
+import com.freecoder.model.PageBean;
 import com.freecoder.service.AdminDishService;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

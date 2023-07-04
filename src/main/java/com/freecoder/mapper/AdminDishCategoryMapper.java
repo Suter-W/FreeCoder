@@ -1,6 +1,6 @@
 package com.freecoder.mapper;
 
-import com.freecoder.pojo.DishCategory;
+import com.freecoder.model.DishCategory;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
