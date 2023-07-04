@@ -6,6 +6,7 @@ import com.freecoder.pojo.OrderItem;
 import com.freecoder.pojo.Result;
 import com.freecoder.pojo.Table;
 import com.freecoder.service.AdminOrderService;
+import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/adminOrder")
+@PermitAll
+@CrossOrigin
 public class AdminOrderController {
 
     @Autowired

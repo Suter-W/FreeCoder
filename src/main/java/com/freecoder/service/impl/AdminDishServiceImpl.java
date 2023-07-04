@@ -49,4 +49,6 @@ public class AdminDishServiceImpl implements AdminDishService {
         adminDishMapper.deleteDishInfo(dishID);
     }
 
+    public List<DishCategory> getDcInfo(String restID){return adminDishMapper.getDcInfo(restID);}
+
 }

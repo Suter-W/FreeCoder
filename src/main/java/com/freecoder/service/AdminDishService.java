@@ -1,8 +1,11 @@
 package com.freecoder.service;
 
 import com.freecoder.pojo.Dish;
+import com.freecoder.pojo.DishCategory;
 import com.freecoder.pojo.PageBean;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface AdminDishService {
@@ -14,4 +17,6 @@ public interface AdminDishService {
     void updateDishInfo(Dish dish);
 
     void deleteDishInfo(Integer dishID);
+
+    List<DishCategory> getDcInfo(String restID);
 }
