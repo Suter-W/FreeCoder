@@ -19,7 +19,7 @@ public interface AdminDishMapper {
 
     @Delete("delete from dish_info where dishID = #{dishID}")
     void deleteDishInfo(Integer dishID);
-
-    @Select("select from dish_info where restID = #{restID}")
+    // 秉子哥，你倒是写注释啊！！！
+    @Select("select * from dish_info where restID = #{restID}")
     List<DishCategory> getDcInfo(String restID);
 }

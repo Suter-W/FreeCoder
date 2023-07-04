@@ -18,7 +18,7 @@ public class RSAEncrypt {
     public static void main(String[] args) throws Exception {
         //生成公钥和私钥
         String[] keyMap = new String[2];
-        String keyDir = "docs2";
+        String keyDir = "docs";
 
         genKeyPair(keyDir);
 
