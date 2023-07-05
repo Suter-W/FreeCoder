@@ -1,8 +1,11 @@
 package com.freecoder.service;
 
-import com.freecoder.pojo.DishCategory;
-import com.freecoder.pojo.PageBean;
+import com.freecoder.model.DishCategory;
+import com.freecoder.model.PageBean;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 @Service
 public interface AdminDishCategoryService {
@@ -10,4 +13,8 @@ public interface AdminDishCategoryService {
     PageBean getDishCategoryInfo(String restID,Integer page);
 
     void addDishCategory(DishCategory dishCategory);
+
+    void sortDishCategory(String restID,List<Integer> IDPresentList);
+
+    void deleteDishCategory(Integer dcID);
 }

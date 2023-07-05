@@ -1,6 +1,6 @@
 package com.freecoder.mapper;
 
-import com.freecoder.pojo.User;
+import com.freecoder.model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

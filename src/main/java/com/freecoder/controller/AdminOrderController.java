@@ -1,10 +1,10 @@
 package com.freecoder.controller;
 
 
-import com.freecoder.pojo.Order;
-import com.freecoder.pojo.OrderItem;
-import com.freecoder.pojo.Result;
-import com.freecoder.pojo.Table;
+import com.freecoder.model.Order;
+import com.freecoder.model.OrderItem;
+import com.freecoder.model.Result;
+import com.freecoder.model.Table;
 import com.freecoder.service.AdminOrderService;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;

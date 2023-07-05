@@ -1,7 +1,7 @@
 package com.freecoder.mapper;
 
-import com.freecoder.pojo.Dish;
-import com.freecoder.pojo.DishCategory;
+import com.freecoder.model.Dish;
+import com.freecoder.model.DishCategory;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
