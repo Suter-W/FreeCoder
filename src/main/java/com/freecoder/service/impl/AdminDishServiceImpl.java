@@ -19,22 +19,7 @@ public class AdminDishServiceImpl implements AdminDishService {
     private AdminDishMapper adminDishMapper;
 
     @Override
-    public PageBean getDishInfo(String restID, Integer page, String dishCategory, String dishName){
-        //设置分页参数
-//        PageHelper.startPage(page,5);
-//        List<Dish> dishList = adminDishMapper.getDishInfo(restID,dishCategory,dishName);
-//        Page<Dish> p = (Page<Dish>) dishList;
-//        PageBean pageBean = new PageBean(p.getTotal(),p.getResult());
-//        return pageBean;
-
-        //设置分页参数
-        PageHelper.startPage(page,5);
-        List<Dish> dishList = adminDishMapper.getDishInfo(restID,dishCategory,dishName);
-        PageInfo<Dish> p = new PageInfo<>(dishList);
-
-        PageBean pageBean = new PageBean(p.getTotal(),p.getList());
-        return pageBean;
-    }
+    public List<Dish> getDishInfo(String restID,String dishName){return adminDishMapper.getDishInfo(restID,dishName);}
 
     public void addDishInfo(Dish dish){
         adminDishMapper.addDishInfo(dish);

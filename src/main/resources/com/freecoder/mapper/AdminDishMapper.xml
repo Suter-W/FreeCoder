@@ -10,9 +10,6 @@
             <if test="dishName != null and dishName != ''">
                 and dishName like concat('%',#{dishName},'%')
             </if>
-            <if test="dishCategory != null and dishCategory != ''">
-                and dishCategory = #{dishCategory}
-            </if>
             order by dishID asc
         </where>
     </select>

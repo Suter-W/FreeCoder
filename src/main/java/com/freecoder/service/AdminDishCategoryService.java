@@ -10,7 +10,7 @@ import java.util.Map;
 @Service
 public interface AdminDishCategoryService {
 
-    PageBean getDishCategoryInfo(String restID,Integer page);
+    List<DishCategory> getDishCategoryInfo(String restID);
 
     void addDishCategory(DishCategory dishCategory);
 

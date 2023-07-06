@@ -6,9 +6,11 @@ import com.freecoder.model.User;
 import com.freecoder.service.AuthService;
 import com.freecoder.utils.JwtUtils;
 import com.freecoder.utils.Md5Utils;
+import jakarta.annotation.security.PermitAll;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +24,8 @@ import static com.freecoder.utils.RSAEncrypt.*;
 
 @RestController
 @Slf4j
+@PermitAll
+@CrossOrigin
 public class AuthController {
 
     @Autowired

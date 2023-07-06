@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface AdminDishMapper {
 
-    List<Dish> getDishInfo(String restID,String dishCategory,String dishName);
+    List<Dish> getDishInfo(String restID,String dishName);
 
     void addDishInfo(Dish dish);
 
