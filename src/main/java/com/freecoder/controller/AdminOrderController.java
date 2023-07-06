@@ -93,7 +93,7 @@ public class AdminOrderController {
      * @Description 对创建的桌子进行删除操作
      * @Date 11:16 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
 
     @DeleteMapping("/deleteTable")
@@ -107,7 +107,7 @@ public class AdminOrderController {
      * @Description 取出订单信息
      * @Date 11:17 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
     @GetMapping("/getOrderInfo")
     public Result getOrderInfo(@RequestParam Integer tableID) throws Exception {
@@ -124,7 +124,7 @@ public class AdminOrderController {
      * @param tableID
      * @Date 15:18 2023/7/1
      * @Param [java.lang.Integer]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
     @GetMapping("/getOrderItem")
     public Result getOrderItem(@RequestParam Integer tableID){
