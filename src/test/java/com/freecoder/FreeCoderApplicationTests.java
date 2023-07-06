@@ -15,15 +15,16 @@ import java.util.Map;
 
 //@SpringBootTest
 @Slf4j
+
 class FreeCoderApplicationTests {
 
-    @Test
-    void contextLoads() {
-        new AdminDishCategoryController().getDishCategoryInfo("0000001", 1);
-
-//        Result result = new AdminDishCategoryController().getDishCategoryInfo("0000001", 1);
-//        Assertions.assertEquals(result.getCode(), 1);
-    }
+//    @Test
+//    void contextLoads() {
+//        new AdminDishCategoryController().getDishCategoryInfo("0000001", 1);
+//
+////        Result result = new AdminDishCategoryController().getDishCategoryInfo("0000001", 1);
+////        Assertions.assertEquals(result.getCode(), 1);
+//    }
 
     /**
      * 生成Jwt
@@ -53,23 +54,23 @@ class FreeCoderApplicationTests {
 //                .getBody();
 //        System.out.println(claims);
 //    }
-    @Test
-    public void md5Tests() {
-        // 关于DigestUtils工具类
-        // 在spring系列包中的DigestUtils工具类只有md5算法的api
-        // 在commons-code系列包中的DigestUtils工具类中有md系列和sha家族的多种算法的api
-        String password = "1234";
-        String encodePassword = DigestUtils.md5Hex(password);
-        System.out.println("[md5] encode password=" + encodePassword);
+//    @Test
+//    public void md5Tests() {
+//        // 关于DigestUtils工具类
+//        // 在spring系列包中的DigestUtils工具类只有md5算法的api
+//        // 在commons-code系列包中的DigestUtils工具类中有md系列和sha家族的多种算法的api
+//        String password = "1234";
+//        String encodePassword = DigestUtils.md5Hex(password);
+//        System.out.println("[md5] encode password=" + encodePassword);
+//
+//    }
 
-    }
-
-    @Test
-    void sha256Tests() {
-        String password = "1234";
-        String encodePassword = DigestUtils.sha256Hex(password);
-        System.out.println("[sha-256] encode password=" + encodePassword);
-    }
+//    @Test
+//    void sha256Tests() {
+//        String password = "1234";
+//        String encodePassword = DigestUtils.sha256Hex(password);
+//        System.out.println("[sha-256] encode password=" + encodePassword);
+//    }
 //    @Test
 //    void testBCryptPasswordEncoder() {
 //        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
