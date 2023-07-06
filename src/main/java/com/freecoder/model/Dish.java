@@ -1,5 +1,6 @@
 package com.freecoder.model;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +25,8 @@ public class Dish {
     private Integer dishID; //菜品ID
 
     private String VipPrice; //折扣价格
+
+    private Integer dcID;//菜品种类的ID，主要用于外键
+
+    private Integer salesVolume;//菜品销量
 }

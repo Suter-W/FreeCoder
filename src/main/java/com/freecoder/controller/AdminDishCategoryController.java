@@ -29,10 +29,10 @@ public class AdminDishCategoryController {
     @Autowired
     private AdminDishCategoryService adminDishCategoryService;
 
-    @PostMapping("/getDishCategoryInfo")
-    public Result getDishCategoryInfo(@RequestParam String restID,@RequestParam(defaultValue = "1") Integer page){
-        PageBean pageBean = adminDishCategoryService.getDishCategoryInfo(restID,page);
-        return Result.success(pageBean);
+    @GetMapping("/getDishCategoryInfo")
+    public Result getDishCategoryInfo(@RequestParam String restID){
+        List<DishCategory> dcList = adminDishCategoryService.getDishCategoryInfo(restID);
+        return Result.success(dcList);
     }
 
 

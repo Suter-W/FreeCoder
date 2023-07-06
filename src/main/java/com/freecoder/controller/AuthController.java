@@ -6,9 +6,11 @@ import com.freecoder.model.User;
 import com.freecoder.service.AuthService;
 import com.freecoder.utils.JwtUtils;
 import com.freecoder.utils.Md5Utils;
+import jakarta.annotation.security.PermitAll;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +24,8 @@ import static com.freecoder.utils.RSAEncrypt.*;
 
 @RestController
 @Slf4j
+@PermitAll
+@CrossOrigin
 public class AuthController {
 
     @Autowired
@@ -82,8 +86,8 @@ public class AuthController {
      * @Description 用于实现登录功能，以及采用了过滤器的功能，能够拦截未登录（没有获得token令牌）的用户，增强安全性
      * @param user
      * @Date 16:44 2023/7/1
-     * @Param [com.freecoder.pojo.User]
-     * @return com.freecoder.pojo.Result
+     * @Param [com.freecoder.model.User]
+     * @return com.freecoder.model.Result
      **/
     public Result loginJWT(@RequestBody User user) throws Exception {
         log.info("餐厅管理员登录：{}",user);

@@ -8,6 +8,8 @@ import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("adminDish")
@@ -24,12 +26,11 @@ public class AdminDishController {
      * @return Result
      *
      */
-    @PostMapping("/getDishInfo")
-    public Result getDishInfo(@RequestParam String restID,
-                              @RequestParam(defaultValue = "1") Integer page,
-                              String dishCategory, String dishName) {
-        PageBean pageBean = adminDishService.getDishInfo(restID,page,dishCategory,dishName);
-        return Result.success(pageBean);
+    @GetMapping("/getDishInfo")
+    public Result getDishInfo(@RequestParam String restID,@RequestParam String dishName) {
+        List<Dish> dishList = adminDishService.getDishInfo(restID,dishName);
+//        PageBean pageBean = adminDishService.getDishInfo(restID,page,dishCategory,dishName);
+        return Result.success(dishList);
     }
 
     /**

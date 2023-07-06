@@ -41,7 +41,7 @@ public class AdminOrderController {
      * @Description tableList为点餐页面开始罗列桌所用，提取该restID下的所有桌
      * @Date 11:15 2023/7/1
      * @Param [java.lang.String] [restID]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
     @GetMapping("/getTableList")
     public Result tableList(@RequestParam String restID){
@@ -54,8 +54,8 @@ public class AdminOrderController {
     /**
      * @Description addTable为添加桌
      * @Date 11:14 2023/7/1
-     * @Param [com.freecoder.pojo.Table] [table]
-     * @return com.freecoder.pojo.Result
+     * @Param [com.freecoder.model.Table] [table]
+     * @return com.freecoder.model.Result
      **/
     @PostMapping("/addTable")
     public Result addTable(@RequestBody Table table){
@@ -66,8 +66,8 @@ public class AdminOrderController {
     /**
      * @Description editTable为编辑桌
      * @Date 11:12 2023/7/1
-     * @Param [com.freecoder.pojo.Table] [table]
-     * @return com.freecoder.pojo.Result
+     * @Param [com.freecoder.model.Table] [table]
+     * @return com.freecoder.model.Result
      **/
     @PostMapping("/editTable")
     public Result editTable(@RequestBody Table table){
@@ -80,7 +80,7 @@ public class AdminOrderController {
      * @Description 通过餐厅ID、桌子ID和桌子的类型对应点单页面的每一个桌子，用于获取tableInfo表的全部内容并进行展示
      * @Date 11:09 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.pojo.Result
+     * @return com.freecoder.model.Result
      **/
     @GetMapping("/getTableInfo")
     public Result getTableInfo(@RequestParam Integer tableID){
@@ -109,8 +109,11 @@ public class AdminOrderController {
      * @Param [java.lang.Integer] [tableID]
      * @return com.freecoder.pojo.Result
      **/
-    @PostMapping("/getOrderInfo")
-    public Result getOrderInfo(@RequestParam Integer tableID){
+    @GetMapping("/getOrderInfo")
+    public Result getOrderInfo(@RequestParam Integer tableID) throws Exception {
+        if (tableID < 0) {
+            throw new IllegalArgumentException("Order ID cannot be negative");
+        }
         Integer orderID = getOrderingID(tableID);
         Order orderInfo = adminOrderService.getOrderInfo(orderID);
         return Result.success(orderInfo);
@@ -123,7 +126,7 @@ public class AdminOrderController {
      * @Param [java.lang.Integer]
      * @return com.freecoder.pojo.Result
      **/
-    @PostMapping("/getOrderItem")
+    @GetMapping("/getOrderItem")
     public Result getOrderItem(@RequestParam Integer tableID){
         Integer orderID = getOrderingID(tableID);
         List<OrderItem> orderItem = adminOrderService.getOrderItem(orderID);

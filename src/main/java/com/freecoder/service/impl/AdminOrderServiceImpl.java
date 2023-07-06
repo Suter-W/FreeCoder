@@ -20,15 +20,26 @@ public class AdminOrderServiceImpl implements AdminOrderService {
         return adminOrderMapper.tableList(restID);
     }
 
-    public void addTable(Table table) {adminOrderMapper.addTable(table);}
+    public boolean addTable(Table table){
+        boolean addTableStatus = adminOrderMapper.addTable(table);
+        return addTableStatus;
+    }
 
-    public void editTable(Table table){adminOrderMapper.editTable(table);}
+    public boolean editTable(Table table){
+        boolean editTableStatus = adminOrderMapper.editTable(table);
+        return editTableStatus;
+    }
 
     public Table getTableInfo(Integer tableID){return adminOrderMapper.getTableInfo(tableID);}
 
-    public void deleteTable(Integer tableID){adminOrderMapper.deleteTable(tableID);}
+    public boolean deleteTable(Integer tableID){
+        boolean deleteTableStatus = adminOrderMapper.deleteTable(tableID);
+        return deleteTableStatus;
+    }
 
-    public Order getOrderInfo(Integer orderID){return adminOrderMapper.getOrderInfo(orderID);}
+    public Order getOrderInfo(Integer orderID){
+        return adminOrderMapper.getOrderInfo(orderID);
+    }
 
     public List<OrderItem> getOrderItem(Integer orderID){return adminOrderMapper.getOrderItem(orderID);}
 

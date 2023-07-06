@@ -1,56 +1,44 @@
 package com.freecoder.controller;
 
-import com.freecoder.model.DishCategory;
-import com.freecoder.service.AdminDishCategoryService;
+import com.freecoder.model.Dish;
+import com.freecoder.service.AdminDishService;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-//@RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AdminDishCategoryControllerTest {
+class AdminDishControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    AdminDishCategoryService adminDishCategoryService;
+    AdminDishService adminDishService;
     /**
-     * @Description 测试菜品分类的查询方法
-     * restID 餐厅号  page 分页查询的页码
-     * @Date 20:36 2023/7/5
+     * @Description 测试获取菜品信息页面的全部数据的功能
+     * restID 餐厅号  dishName 菜品名称（该数据可以为空，表示全部查找）
+     * @Date 15:20 2023/7/6
      * token用于通过过滤器的拦截，从而正常使用
      * @return void
      **/
 //    @Test
-//    public void getDishCategoryInfoTest() throws Exception {
-//        int page = 2;
-//
+//    void getDishInfo() throws Exception {
 //        String  token = "eyJhbGciOiJIUzI1NiJ9.eyJyZXN0SUQiOiIwMDAwMDAxIiwicGFzc3dvcmQiOiIxNWUyYjBkM2MzMzg5MWViYjBmMWVmNjA5ZWM0MTk0MjBjMjBlMzIwY2U5NGM2NWZiYzhjMzMxMjQ0OGViMjI1IiwiZXhwIjoxNjg4NTYzNjg4fQ.yASLFAdIOxcNs69qs6KpPk_lGMRmNkIMmy0KyNyBKMg";
-//        String response = mockMvc.perform(MockMvcRequestBuilders.get("/adminDishCategory/getDishCategoryInfo")
+//        String response = mockMvc.perform(MockMvcRequestBuilders.get("/adminDish/getDishInfo")
 //                        .param("restID","0000001")
-//                        .param("page",String.valueOf(page))
+//                        .param("dishName","")
 //                        .header("Content-Type", "application/json")
 //                        .header("Authorization", "Bearer " + token))
 //                .andDo(print())
@@ -63,24 +51,25 @@ public class AdminDishCategoryControllerTest {
 //    }
 
     @Test
-    public void getDishCategoryInfoTest() throws Exception {
-        assertNotNull(adminDishCategoryService.getDishCategoryInfo("0000001"));
+    void getDishInfo() throws Exception {
+        assertNotNull(adminDishService.getDishInfo("0000001",""));
     }
 
     /**
-     * @Description 测试菜品分类模块的增加菜品分类功能
-     * responseBody 存储restID 餐厅号  dcName 菜品分类名  dcOrder 菜品分类顺序  dishNumber 该分类下对应菜品的总数
-     * @Date 11:07 2023/7/6
+     * @Description 测试更改dish_info表，即更新菜品信息功能
+     * 一个请求体body 包括restID 餐厅号  dishCategory 菜品分类  dishPrice  菜品价格  dishDescription 菜品描述
+     * dishName 菜品名称  dishImage  菜品图  VipPrice  会员价格  dcID  菜品分类的ID，外键
+     * @Date 15:38 2023/7/6
      * token用于通过过滤器的拦截，从而正常使用
      * @return void
      **/
 //    @Test
-//    @Transactional //用于事务管理和回滚操作，将数据库的修改取消
-//    public void addDishCategoryTest() throws Exception {
-//        String responseBody = "{\"restID\": \"0000001\", \"dcName\": \"湘菜\", \"dcOrder\": 7, \"dishNumber\": 0}";
+//    @Transactional
+//    void addDishInfo() throws Exception {
+//        String responseBody = "{\"restID\": \"0000001\", \"dishCategory\": \"面食\", \"dishPrice\": \"9\", \"dishDescription\": \"己行通最查三解形月。\", \"dishName\": \"冷面\", \"dishImage\": \"http://dummyimage.com/120x240\", \"VipPrice\": \"30\",\"dcID\": 6}";
 //
 //        String  token = "eyJhbGciOiJIUzI1NiJ9.eyJyZXN0SUQiOiIwMDAwMDAxIiwicGFzc3dvcmQiOiIxNWUyYjBkM2MzMzg5MWViYjBmMWVmNjA5ZWM0MTk0MjBjMjBlMzIwY2U5NGM2NWZiYzhjMzMxMjQ0OGViMjI1IiwiZXhwIjoxNjg4NTYzNjg4fQ.yASLFAdIOxcNs69qs6KpPk_lGMRmNkIMmy0KyNyBKMg";
-//        String response = mockMvc.perform(MockMvcRequestBuilders.post("/adminDishCategory/addDishCategory")
+//        String response = mockMvc.perform(MockMvcRequestBuilders.post("/adminDish/addDishInfo")
 //                        .content(responseBody)
 //                        .header("Content-Type", "application/json")
 //                        .header("Authorization", "Bearer " + token))
@@ -94,31 +83,38 @@ public class AdminDishCategoryControllerTest {
 //    }
 
     @Test
-    @Transactional //用于事务管理和回滚操作，将数据库的修改取消
-    public void addDishCategoryTest() throws Exception {
-        DishCategory dishCategory = new DishCategory();
-        dishCategory.setRestID("0000001");
-        dishCategory.setDcName("湘菜");
-        dishCategory.setDcOrder(7);
-        dishCategory.setDishNumber(0);
+    @Transactional
+    void addDishInfo() throws Exception {
+        Dish dish = new Dish();
+        dish.setRestID("0000001");
+        dish.setDishCategory("面食");
+        dish.setDishPrice("9");
+        dish.setDishDescription("己行通最查三解形月");
+        dish.setDishName("冷面");
+        dish.setDishImage("http://dummyimage.com/120x240");
+        dish.setVipPrice("30");
+        dish.setDcID(6);
 
-        assertTrue(adminDishCategoryService.addDishCategory(dishCategory));
+        assertTrue(adminDishService.addDishInfo(dish));
+
     }
 
     /**
-     * @Description 测试菜品分类模块的删除菜品分类功能
-     * 一个Query参数 dcID 餐品分类表的主键
-     * @Date 11:10 2023/7/6
+     * @Description 测试更改dish_info表，即更新菜品信息功能
+     * 一个请求体body 可以修改包括dish_info表中的参数
+     * @Date 15:54 2023/7/6
      * token用于通过过滤器的拦截，从而正常使用
      * @return void
      **/
 //    @Test
 //    @Transactional
-//    public void deleteDishCategoryTest() throws Exception{
+//    void updateDishInfo() throws Exception {
+//        //该responseBody的内容可以修改，update采用的是动态SQL，可以修改同一行中任意个参数
+//        String responseBody = "{\"dishImage\": \"http://dummyimage.com/468x60\", \"dishDescription\": \"好喝\", \"dishID\": 15}";
 //
 //        String  token = "eyJhbGciOiJIUzI1NiJ9.eyJyZXN0SUQiOiIwMDAwMDAxIiwicGFzc3dvcmQiOiIxNWUyYjBkM2MzMzg5MWViYjBmMWVmNjA5ZWM0MTk0MjBjMjBlMzIwY2U5NGM2NWZiYzhjMzMxMjQ0OGViMjI1IiwiZXhwIjoxNjg4NTYzNjg4fQ.yASLFAdIOxcNs69qs6KpPk_lGMRmNkIMmy0KyNyBKMg";
-//        String response = mockMvc.perform(MockMvcRequestBuilders.delete("/adminDishCategory/deleteDishCategory")
-//                        .param("dcID","10")
+//        String response = mockMvc.perform(MockMvcRequestBuilders.post("/adminDish/updateDishInfo")
+//                        .content(responseBody)
 //                        .header("Content-Type", "application/json")
 //                        .header("Authorization", "Bearer " + token))
 //                .andDo(print())
@@ -132,27 +128,28 @@ public class AdminDishCategoryControllerTest {
 
     @Test
     @Transactional
-    public void deleteDishCategoryTest() throws Exception{
-        assertTrue(adminDishCategoryService.deleteDishCategory(9));
+    void updateDishInfo() throws Exception {
+        Dish dish = new Dish();
+        dish.setDishImage("http://dummyimage.com/120x240");
+        dish.setDishDescription("好喝");
+        dish.setDishID(15);
+
+        assertTrue(adminDishService.updateDishInfo(dish));
     }
 
     /**
-     * @Description 测试菜品分类模块的更新菜品顺序的功能
-     * 一个Query参数 restID 餐厅号 一个请求体 存储前端返回的主键ID的数组用于重新排序
-     * @Date 11:13 2023/7/6
+     * @Description 测试删除dish_info表中内容，即删除菜品功能
+     * dishID  菜品ID dish_info的主键
+     * @Date 15:59 2023/7/6
      * token用于通过过滤器的拦截，从而正常使用
      * @return void
      **/
 //    @Test
 //    @Transactional
-//    public void sortDishCategoryTest() throws Exception{
-//
-//        String requestBody = "[5, 3, 8, 9, 1, 2, 6, 7, 4]";
-//
+//    void deleteDishInfo() throws Exception {
 //        String  token = "eyJhbGciOiJIUzI1NiJ9.eyJyZXN0SUQiOiIwMDAwMDAxIiwicGFzc3dvcmQiOiIxNWUyYjBkM2MzMzg5MWViYjBmMWVmNjA5ZWM0MTk0MjBjMjBlMzIwY2U5NGM2NWZiYzhjMzMxMjQ0OGViMjI1IiwiZXhwIjoxNjg4NTYzNjg4fQ.yASLFAdIOxcNs69qs6KpPk_lGMRmNkIMmy0KyNyBKMg";
-//        String response = mockMvc.perform(MockMvcRequestBuilders.post("/adminDishCategory/sortDishCategory")
-//                        .param("restID","0000001")
-//                        .content(requestBody)
+//        String response = mockMvc.perform(MockMvcRequestBuilders.delete("/adminDish/deleteDishInfo")
+//                        .param("dishID","13")
 //                        .header("Content-Type", "application/json")
 //                        .header("Authorization", "Bearer " + token))
 //                .andDo(print())
@@ -166,8 +163,7 @@ public class AdminDishCategoryControllerTest {
 
     @Test
     @Transactional
-    public void sortDishCategoryTest() throws Exception{
-        List<Integer> IDPresentList = Arrays.asList(5, 3, 8, 9, 1, 2, 6, 7, 4);
-        assertTrue(adminDishCategoryService.sortDishCategory("0000001",IDPresentList));
+    void deleteDishInfo() throws Exception {
+        assertTrue(adminDishService.deleteDishInfo(13));
     }
 }
