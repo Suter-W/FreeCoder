@@ -1,22 +1,20 @@
 package com.freecoder;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 //@SpringBootTest
 @Slf4j
 class FreeCoderApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+//    @Test
+//    void contextLoads() {
+//        new AdminDishCategoryController().getDishCategoryInfo("0000001", 1);
+//
+////        Result result = new AdminDishCategoryController().getDishCategoryInfo("0000001", 1);
+////        Assertions.assertEquals(result.getCode(), 1);
+//    }
 
     /**
      * 生成Jwt
@@ -46,9 +44,8 @@ class FreeCoderApplicationTests {
 //                .getBody();
 //        System.out.println(claims);
 //    }
-
     @Test
-    public void md5Tests(){
+    public void md5Tests() {
         // 关于DigestUtils工具类
         // 在spring系列包中的DigestUtils工具类只有md5算法的api
         // 在commons-code系列包中的DigestUtils工具类中有md系列和sha家族的多种算法的api
@@ -93,9 +90,6 @@ class FreeCoderApplicationTests {
 //        log.info("flag_false:{}", flag_false);
 //
 //    }
-
-
-
 
 
 }

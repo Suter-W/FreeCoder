@@ -8,8 +8,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName AdminDishCategoryServiceImpl
@@ -42,6 +44,18 @@ public class AdminDishCategoryServiceImpl implements AdminDishCategoryService {
 
     public void addDishCategory(DishCategory dishCategory){
         adminDishCategoryMapper.addDishCategory(dishCategory);
+    }
+
+//    public void sortDishCategory(DishCategory dishCategory,List<Integer> dcOrderList,List<Integer> dcOrderListOriginal){
+//        adminDishCategoryMapper.sortDishCategory(dishCategory,dcOrderList,dcOrderListOriginal);
+//    }
+
+    public void sortDishCategory(String restID,List<Integer> IDPresentList){
+        adminDishCategoryMapper.sortDishCategory(restID, IDPresentList);
+    }
+
+    public void deleteDishCategory(Integer dcID){
+        adminDishCategoryMapper.deleteDishCategory(dcID);
     }
 
 }

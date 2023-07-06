@@ -11,20 +11,28 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-
-//@RunWith(SpringRunner.class)//表明要在测试环境跑了，底层使用的junit测试工具
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AuthControllerTest {
+public class AdminDishCategoryControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
+    /**
+     * @Description 还未完成的测试
+     * @param
+     * @Date 20:36 2023/7/5
+     * @Param []
+     * @return void
+     **/
     @Test
-    public void testLogin() throws Exception {
-        String response = mockMvc.perform(MockMvcRequestBuilders.post("/login")
-                        .content("frDqyqoWf5nzGZSsOPWSf5bR8RifIWbtqWhNJjWehv296FBumOirU8z1p4%2BF5rsfZX2uj3JcUfEeIsSUx4J2mg8%2B%2FSYXJ9EdlLOOGCuGkT56MaIFI15y20WaZAwhcambLccTfrAzWFYGzf5RnXpuOQu76CzNRn3b8jDQOw%2F9IWA%3D")
-                        .header("Content-Type", "application/json"))
+    public void getDishCategoryInfoTest() throws Exception {
+        String  token = "eyJhbGciOiJIUzI1NiJ9.eyJyZXN0SUQiOiIwMDAwMDAxIiwicGFzc3dvcmQiOiIxNWUyYjBkM2MzMzg5MWViYjBmMWVmNjA5ZWM0MTk0MjBjMjBlMzIwY2U5NGM2NWZiYzhjMzMxMjQ0OGViMjI1IiwiZXhwIjoxNjg4NTYzNjg4fQ.yASLFAdIOxcNs69qs6KpPk_lGMRmNkIMmy0KyNyBKMg";
+        String response = mockMvc.perform(MockMvcRequestBuilders.post("/adminDishCategory/getDishCategoryInfo")
+                        .param("restID", "00000001")
+                        .param("page","1")
+                        .header("Content-Type", "application/json")
+                        .header("Authorization", "Bearer " + token))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn().getResponse().getContentAsString();
         DocumentContext jsonRes = JsonPath.parse(response);
