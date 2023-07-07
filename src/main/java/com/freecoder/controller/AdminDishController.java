@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("adminDish")
+@RequestMapping("/web/adminDish")
 @PermitAll
 @CrossOrigin
 public class AdminDishController {

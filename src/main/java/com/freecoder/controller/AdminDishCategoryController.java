@@ -21,7 +21,7 @@ import java.util.Map;
  * @DATE 2023/7/4 10:43
  */
 @RestController
-@RequestMapping("adminDishCategory")
+@RequestMapping("/web/adminDishCategory")
 @PermitAll
 @CrossOrigin
 public class AdminDishCategoryController {
