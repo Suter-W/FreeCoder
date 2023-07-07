@@ -39,20 +39,23 @@ public class AdminDishCategoryServiceImpl implements AdminDishCategoryService {
             return adminDishCategoryMapper.getDishCategoryInfo(restID);
     }
 
-    public void addDishCategory(DishCategory dishCategory){
-        adminDishCategoryMapper.addDishCategory(dishCategory);
+    public boolean addDishCategory(DishCategory dishCategory){
+        boolean addDishCategoryStatus = adminDishCategoryMapper.addDishCategory(dishCategory);
+        return addDishCategoryStatus;
     }
 
 //    public void sortDishCategory(DishCategory dishCategory,List<Integer> dcOrderList,List<Integer> dcOrderListOriginal){
 //        adminDishCategoryMapper.sortDishCategory(dishCategory,dcOrderList,dcOrderListOriginal);
 //    }
 
-    public void sortDishCategory(String restID,List<Integer> IDPresentList){
-        adminDishCategoryMapper.sortDishCategory(restID, IDPresentList);
+    public boolean sortDishCategory(String restID,List<Integer> IDPresentList){
+        boolean sortDishCategoryStatus = adminDishCategoryMapper.sortDishCategory(restID, IDPresentList);
+        return sortDishCategoryStatus;
     }
 
-    public void deleteDishCategory(Integer dcID){
-        adminDishCategoryMapper.deleteDishCategory(dcID);
+    public boolean deleteDishCategory(Integer dcID){
+        boolean deleteDishCategoryStatus = adminDishCategoryMapper.deleteDishCategory(dcID);
+        return deleteDishCategoryStatus;
     }
 
     public DishCategory searchDishByid(Integer dcID){return adminDishCategoryMapper.searchDishByid(dcID);}

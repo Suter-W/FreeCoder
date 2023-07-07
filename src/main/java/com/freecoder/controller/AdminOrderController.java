@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/adminOrder")
+@RequestMapping("/web/adminOrder")
 @PermitAll
 @CrossOrigin
 public class AdminOrderController {
@@ -109,8 +109,11 @@ public class AdminOrderController {
      * @Param [java.lang.Integer] [tableID]
      * @return com.freecoder.model.Result
      **/
-    @PostMapping("/getOrderInfo")
-    public Result getOrderInfo(@RequestParam Integer tableID){
+    @GetMapping("/getOrderInfo")
+    public Result getOrderInfo(@RequestParam Integer tableID) throws Exception {
+        if (tableID < 0) {
+            throw new IllegalArgumentException("Order ID cannot be negative");
+        }
         Integer orderID = getOrderingID(tableID);
         Order orderInfo = adminOrderService.getOrderInfo(orderID);
         return Result.success(orderInfo);
@@ -123,7 +126,7 @@ public class AdminOrderController {
      * @Param [java.lang.Integer]
      * @return com.freecoder.model.Result
      **/
-    @PostMapping("/getOrderItem")
+    @GetMapping("/getOrderItem")
     public Result getOrderItem(@RequestParam Integer tableID){
         Integer orderID = getOrderingID(tableID);
         List<OrderItem> orderItem = adminOrderService.getOrderItem(orderID);

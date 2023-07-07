@@ -14,8 +14,8 @@
         </where>
     </select>
     <insert id="addDishInfo">
-        insert into dish_info (restID,dishImage,dishName,dishDescription,dishPrice,dishCategory,VipPrice) values (#{restID},
-        #{dishImage},#{dishName},#{dishDescription},#{dishPrice},#{dishCategory},#{VipPrice})
+        insert into dish_info (restID,dishImage,dishName,dishDescription,dishPrice,dishCategory,VipPrice,dcID) values (#{restID},
+        #{dishImage},#{dishName},#{dishDescription},#{dishPrice},#{dishCategory},#{VipPrice},#{dcID})
     </insert>
     <update id="updateDishInfo">
         update dish_info

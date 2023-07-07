@@ -21,16 +21,19 @@ public class AdminDishServiceImpl implements AdminDishService {
     @Override
     public List<Dish> getDishInfo(String restID,String dishName){return adminDishMapper.getDishInfo(restID,dishName);}
 
-    public void addDishInfo(Dish dish){
-        adminDishMapper.addDishInfo(dish);
+    public boolean addDishInfo(Dish dish){
+        boolean addDishInfoStatus = adminDishMapper.addDishInfo(dish);
+        return  addDishInfoStatus;
     }
 
-    public void updateDishInfo(Dish dish){
-        adminDishMapper.updateDishInfo(dish);
+    public boolean updateDishInfo(Dish dish){
+        boolean updateDishInfoStatus = adminDishMapper.updateDishInfo(dish);
+        return updateDishInfoStatus;
     }
 
-    public void deleteDishInfo(Integer dishID){
-        adminDishMapper.deleteDishInfo(dishID);
+    public boolean deleteDishInfo(Integer dishID){
+        boolean deleteDishInfoStatus = adminDishMapper.deleteDishInfo(dishID);
+        return deleteDishInfoStatus;
     }
 
     public List<DishCategory> getDcInfo(String restID){return adminDishMapper.getDcInfo(restID);}

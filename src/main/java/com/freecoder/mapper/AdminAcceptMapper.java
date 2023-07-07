@@ -28,5 +28,5 @@ public interface AdminAcceptMapper {
     List<OrderItem> getPendingItem(Integer orderID);
 
     @Update("update order_info set orderStatus = 2 where orderID = #{orderID}")
-    void acceptOrder(Integer orderID);
+    boolean acceptOrder(Integer orderID);
 }
