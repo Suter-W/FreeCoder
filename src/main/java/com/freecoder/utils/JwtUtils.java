@@ -3,15 +3,10 @@ package com.freecoder.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.Key;
 import java.util.Date;
 import java.util.Map;
 
-import io.jsonwebtoken.io.Serializer;
 import org.apache.commons.codec.digest.DigestUtils;
 
 
@@ -21,9 +16,13 @@ public class JwtUtils {
 //    private static SecretKey signKey = Keys.secretKeyFor(SignatureAlgorithm.HS256); //签名密钥
 
     // 2，指定一个字符串用于生成密钥
-    private static String strKey = "free.coder.com";
-    private static String signKey = DigestUtils.sha256Hex(strKey);
+
+    private static String signWebKey = DigestUtils.sha256Hex("free.coder.com");
+
+    private static String signWeChatKey = DigestUtils.sha256Hex("free.coder.wechat.com");
+
     private static Long expire = 43200000L; //过期时间12h
+
 
     /**
      * 生成JWT令牌
@@ -31,13 +30,13 @@ public class JwtUtils {
      * @param claims JWT第二部分负载 payload 中存储的内容
      * @return
      */
-    public static String generateJwt(Map<String, Object> claims) {
+    public static String generateWebJwt(Map<String, Object> claims) {
         String jwt = Jwts.builder()
                 .addClaims(claims)
-                .signWith(SignatureAlgorithm.HS256, signKey)
+                .signWith(SignatureAlgorithm.HS256, signWebKey)
                 .setExpiration(new Date(System.currentTimeMillis() + expire))
                 .compact();
-        System.out.println("这是密钥内容" + signKey);
+        System.out.println("这是密钥内容" + signWebKey);
         return jwt;
     }
 
@@ -47,9 +46,27 @@ public class JwtUtils {
      * @param jwt JWT令牌
      * @return JWT第二部分负载 payload 中存储的内容
      */
-    public static Claims parseJWT(String jwt) {
+    public static Claims parseWebJWT(String jwt) {
         Claims claims = Jwts.parser()
-                .setSigningKey(signKey)
+                .setSigningKey(signWebKey)
+                .parseClaimsJws(jwt)
+                .getBody();
+        return claims;
+    }
+
+    public static String generateWeChatJwt(Map<String, Object> claims) {
+        String jwt = Jwts.builder()
+                .addClaims(claims)
+                .signWith(SignatureAlgorithm.HS256, signWeChatKey)
+                .setExpiration(new Date(System.currentTimeMillis() + expire))
+                .compact();
+        System.out.println("这是密钥内容" + signWeChatKey);
+        return jwt;
+    }
+
+    public static Claims parseWeChatJWT(String jwt) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(signWeChatKey)
                 .parseClaimsJws(jwt)
                 .getBody();
         return claims;

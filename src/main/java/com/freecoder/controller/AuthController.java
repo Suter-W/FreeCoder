@@ -102,7 +102,7 @@ public class AuthController {
             System.out.println("sha256"+password);
 
             clamis.put("password",password);
-            String jwt = JwtUtils.generateJwt(clamis);
+            String jwt = JwtUtils.generateWebJwt(clamis);
             return Result.success(jwt);
         }
 
