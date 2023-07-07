@@ -3,8 +3,10 @@ package com.freecoder.filter;
 import com.alibaba.fastjson.JSONObject;
 import com.freecoder.model.Result;
 import com.freecoder.utils.JwtUtils;
+import jakarta.annotation.security.PermitAll;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -14,6 +16,8 @@ import java.io.IOException;
 
 @Slf4j
 @WebFilter("/*")
+@CrossOrigin
+@PermitAll
 public class LoginCheckFilter implements Filter {
 
     @Override

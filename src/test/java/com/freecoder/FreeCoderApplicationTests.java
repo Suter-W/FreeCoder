@@ -19,7 +19,7 @@ class FreeCoderApplicationTests {
 
     @Test
     void contextLoads() {
-        new AdminDishCategoryController().getDishCategoryInfo("0000001", 1);
+        new AdminDishCategoryController().getDishCategoryInfo("0000001");
 
 //        Result result = new AdminDishCategoryController().getDishCategoryInfo("0000001", 1);
 //        Assertions.assertEquals(result.getCode(), 1);

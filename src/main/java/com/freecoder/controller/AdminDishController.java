@@ -26,7 +26,7 @@ public class AdminDishController {
      * @return Result
      *
      */
-    @PostMapping("/getDishInfo")
+    @GetMapping("/getDishInfo")
     public Result getDishInfo(@RequestParam String restID,@RequestParam String dishName) {
         List<Dish> dishList = adminDishService.getDishInfo(restID,dishName);
 //        PageBean pageBean = adminDishService.getDishInfo(restID,page,dishCategory,dishName);
