@@ -26,7 +26,7 @@ public class AdminDishCategoryServiceImpl implements AdminDishCategoryService {
 
 
     @Override
-    public PageBean getDishCategoryInfo(String restID,Integer page){
+    public List<DishCategory> getDishCategoryInfo(String restID){
 //        //设置分页参数
 //        PageHelper.startPage(page,5);
 //        List<DishCategory> dishCategoryList = adminDishCategoryMapper.getDishCategoryInfo(restID);
@@ -35,27 +35,26 @@ public class AdminDishCategoryServiceImpl implements AdminDishCategoryService {
 //        return pageBean;
 
         // 设置分页参数
-        PageHelper.startPage(page, 5);
-        List<DishCategory> dishCategoryList = adminDishCategoryMapper.getDishCategoryInfo(restID);
-        PageInfo<DishCategory> pageInfo = new PageInfo<>(dishCategoryList);
-        PageBean pageBean = new PageBean(pageInfo.getTotal(), pageInfo.getList());
-        return pageBean;
+            return adminDishCategoryMapper.getDishCategoryInfo(restID);
     }
 
-    public void addDishCategory(DishCategory dishCategory){
-        adminDishCategoryMapper.addDishCategory(dishCategory);
+    public boolean addDishCategory(DishCategory dishCategory){
+        boolean addDishCategoryStatus = adminDishCategoryMapper.addDishCategory(dishCategory);
+        return addDishCategoryStatus;
     }
 
 //    public void sortDishCategory(DishCategory dishCategory,List<Integer> dcOrderList,List<Integer> dcOrderListOriginal){
 //        adminDishCategoryMapper.sortDishCategory(dishCategory,dcOrderList,dcOrderListOriginal);
 //    }
 
-    public void sortDishCategory(String restID,List<Integer> IDPresentList){
-        adminDishCategoryMapper.sortDishCategory(restID, IDPresentList);
+    public boolean sortDishCategory(String restID,List<Integer> IDPresentList){
+        boolean sortDishCategoryStatus = adminDishCategoryMapper.sortDishCategory(restID, IDPresentList);
+        return sortDishCategoryStatus;
     }
 
-    public void deleteDishCategory(Integer dcID){
-        adminDishCategoryMapper.deleteDishCategory(dcID);
+    public boolean deleteDishCategory(Integer dcID){
+        boolean deleteDishCategoryStatus = adminDishCategoryMapper.deleteDishCategory(dcID);
+        return deleteDishCategoryStatus;
     }
 
 }

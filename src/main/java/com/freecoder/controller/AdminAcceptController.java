@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/adminAccept")
+@RequestMapping("/web/adminAccept")
 @PermitAll
 @CrossOrigin
 public class AdminAcceptController {

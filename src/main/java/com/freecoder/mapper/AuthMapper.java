@@ -17,5 +17,5 @@ public interface AuthMapper {
     User getByRestIDAndPassword(User user);
 
     @Insert("insert into restaurants (restID, password, RestName, RestAddr, RestPhoneNum) values (#{restID},#{password},#{RestName},#{RestAddr},#{RestPhoneNum})")
-    void insertUser(User user);
+    boolean insertUser(User user);
 }

@@ -6,12 +6,11 @@ import com.freecoder.model.User;
 import com.freecoder.service.AuthService;
 import com.freecoder.utils.JwtUtils;
 import com.freecoder.utils.Md5Utils;
+import jakarta.annotation.security.PermitAll;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -22,6 +21,9 @@ import static com.freecoder.utils.RSAEncrypt.*;
 
 @RestController
 @Slf4j
+@PermitAll
+@CrossOrigin
+@RequestMapping("/web")
 public class AuthController {
 
     @Autowired
@@ -98,7 +100,7 @@ public class AuthController {
             System.out.println("sha256"+password);
 
             clamis.put("password",password);
-            String jwt = JwtUtils.generateJwt(clamis);
+            String jwt = JwtUtils.generateWebJwt(clamis);
             return Result.success(jwt);
         }
 

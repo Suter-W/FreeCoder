@@ -14,14 +14,14 @@ public interface AdminOrderMapper {
     @Select("select * from table_info where restID = #{restID}")
     List<Table> tableList(String restID);
 
-    void addTable(Table table);
+    boolean addTable(Table table);
 
-    void editTable(Table table);
+    boolean editTable(Table table);
 
     @Select("select * from table_info where tableID = #{tableID}")
     Table getTableInfo(Integer tableID);
 
-    void deleteTable(Integer tableID);
+    boolean deleteTable(Integer tableID);
 
     @Select("select * from order_info where orderID = #{orderID}")
     Order getOrderInfo(Integer orderID);

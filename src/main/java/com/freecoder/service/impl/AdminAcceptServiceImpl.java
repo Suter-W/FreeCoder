@@ -25,6 +25,6 @@ public class AdminAcceptServiceImpl implements AdminAcceptService {
 
     public List<OrderItem> getPendingItem(Integer orderID){return adminAcceptMapper.getPendingItem(orderID);}
 
-    public void acceptOrder(Integer orderID){adminAcceptMapper.acceptOrder(orderID);}
+    public boolean acceptOrder(Integer orderID){boolean acceptOrderStatus = adminAcceptMapper.acceptOrder(orderID);return acceptOrderStatus;}
 }
 

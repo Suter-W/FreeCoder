@@ -10,15 +10,12 @@
             <if test="dishName != null and dishName != ''">
                 and dishName like concat('%',#{dishName},'%')
             </if>
-            <if test="dishCategory != null and dishCategory != ''">
-                and dishCategory = #{dishCategory}
-            </if>
             order by dishID asc
         </where>
     </select>
     <insert id="addDishInfo">
-        insert into dish_info (restID,dishImage,dishName,dishDescription,dishPrice,dishCategory,VipPrice) values (#{restID},
-        #{dishImage},#{dishName},#{dishDescription},#{dishPrice},#{dishCategory},#{VipPrice})
+        insert into dish_info (restID,dishImage,dishName,dishDescription,dishPrice,dishCategory,VipPrice,dcID) values (#{restID},
+        #{dishImage},#{dishName},#{dishDescription},#{dishPrice},#{dishCategory},#{VipPrice},#{dcID})
     </insert>
     <update id="updateDishInfo">
         update dish_info

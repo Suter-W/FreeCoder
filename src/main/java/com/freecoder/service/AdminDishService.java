@@ -10,13 +10,13 @@ import java.util.List;
 @Service
 public interface AdminDishService {
 
-    PageBean getDishInfo(String restID, Integer page, String dishCategory, String dishName);
+    List<Dish> getDishInfo(String restID,String dishName);
 
-    void addDishInfo(Dish dish);
+    boolean addDishInfo(Dish dish);
 
-    void updateDishInfo(Dish dish);
+    boolean updateDishInfo(Dish dish);
 
-    void deleteDishInfo(Integer dishID);
+    boolean deleteDishInfo(Integer dishID);
 
     List<DishCategory> getDcInfo(String restID);
 }
