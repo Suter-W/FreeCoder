@@ -10,10 +10,7 @@ import jakarta.annotation.security.PermitAll;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -26,6 +23,7 @@ import static com.freecoder.utils.RSAEncrypt.*;
 @Slf4j
 @PermitAll
 @CrossOrigin
+@RequestMapping("/web")
 public class AuthController {
 
     @Autowired

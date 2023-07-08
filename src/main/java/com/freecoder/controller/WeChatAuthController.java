@@ -24,6 +24,7 @@ import java.util.Map;
 @RestController
 @CrossOrigin
 @PermitAll
+@RequestMapping("/wxapp")
 public class WeChatAuthController {
 
     private WebClient webClient = WebClient.create();
@@ -44,7 +45,7 @@ public class WeChatAuthController {
                 .retrieve()
                 .bodyToMono(String.class)
                 .flatMap(data -> {
-                    data="{\"session_key\":\"jmPFaP8JVzZ\\/dpjEZYX2aA==\",\"openid\":\"oGKXV5WO4f96WIORcYvyodGCXxtg\"}";
+//                    data="{\"session_key\":\"jmPFaP8JVzZ\\/dpjEZYX2aA==\",\"openid\":\"oGKXV5WO4f96WIORcYvyodGCXxtg\"}";
                     System.out.println(data);
                     try {
                         // 使用 Jackson Object Mapper 解析 JSON 数据
