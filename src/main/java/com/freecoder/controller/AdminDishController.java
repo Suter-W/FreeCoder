@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("adminDish")
+@RequestMapping("/web/adminDish")
 @PermitAll
 @CrossOrigin
 public class AdminDishController {
@@ -42,6 +42,7 @@ public class AdminDishController {
      */
     @PostMapping("/addDishInfo")
     public Result addDishInfo(@RequestBody Dish dish) {
+        System.out.println(dish);
         adminDishService.addDishInfo(dish);
         return Result.success();
     }

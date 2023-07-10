@@ -14,5 +14,5 @@ public interface AuthService {
     
     User login(User user);
 
-    void insert(User user);
+    boolean insert(User user);
 }

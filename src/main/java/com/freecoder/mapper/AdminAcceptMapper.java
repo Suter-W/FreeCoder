@@ -28,5 +28,8 @@ public interface AdminAcceptMapper {
     List<OrderItem> getPendingItem(Integer orderID);
 
     @Update("update order_info set orderStatus = 2 where orderID = #{orderID}")
-    void acceptOrder(Integer orderID);
+    boolean acceptOrder(Integer orderID);
+
+    @Update("update table_info t1 join order_info t2 ON t1.tableID = t2.tableID set t1.tableStatus = 1,t1.tableUse = t2.orderUse where t2.orderID = #{orderID} ")
+    void setTableStatus(Integer orderID);
 }

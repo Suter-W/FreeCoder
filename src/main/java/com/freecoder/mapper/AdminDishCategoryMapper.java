@@ -12,11 +12,12 @@ public interface AdminDishCategoryMapper {
 
     List<DishCategory> getDishCategoryInfo(String restID);
 
-    void addDishCategory(DishCategory dishCategory);
+    boolean addDishCategory(DishCategory dishCategory);
 
-    void sortDishCategory(String restID,List<Integer> IDPresentList);
+    boolean sortDishCategory(String restID,List<Integer> IDPresentList);
 
-    void deleteDishCategory(Integer dcID);
+    boolean deleteDishCategory(Integer dcID);
+
 
     @Select("select * from dish_category where dcID = #{dcID}")
     DishCategory searchDishByid(Integer dcID);

@@ -6,13 +6,14 @@ import com.freecoder.model.OrderItem;
 import com.freecoder.model.Result;
 import com.freecoder.service.AdminAcceptService;
 import jakarta.annotation.security.PermitAll;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/adminAccept")
+@RequestMapping("/web/adminAccept")
 @PermitAll
 @CrossOrigin
 public class AdminAcceptController {
@@ -82,9 +83,20 @@ public class AdminAcceptController {
      * @param orderID 订单编号
      * @return Result
      */
-    @PostMapping("/acceptOrder")
+    @GetMapping("/acceptOrder")
     public Result acceptOrder(@RequestParam Integer orderID){
         adminAcceptService.acceptOrder(orderID);
+        return Result.success();
+    }
+
+    /**
+     * 接单后将桌置为占用
+     * @param orderID 订单编号
+     * @return Result
+     */
+    @GetMapping("/setTableStatus")
+    public Result setTableStatus(@RequestParam Integer orderID){
+        adminAcceptService.setTableStatus(orderID);
         return Result.success();
     }
 }

@@ -9,13 +9,13 @@ import java.util.List;
 public interface AdminOrderService {
     List<Table> tableList(String restID);
 
-    void addTable(Table table);
+    boolean addTable(Table table);
 
-    void editTable(Table table);
+    boolean editTable(Table table);
 
     Table getTableInfo(Integer tableID);
 
-    void deleteTable(Integer tableID);
+    boolean deleteTable(Integer tableID);
 
     Order getOrderInfo(Integer orderID);
 
@@ -24,4 +24,8 @@ public interface AdminOrderService {
     Integer getTableID(String restID,String tableName,String tableType);
 
     Integer getOrderingID(Integer orderID);
+
+    void orderSettle(Integer orderID);
+
+    void tableSettle(Integer tableID);
 }

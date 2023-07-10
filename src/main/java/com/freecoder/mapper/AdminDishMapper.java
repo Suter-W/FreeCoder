@@ -13,13 +13,13 @@ public interface AdminDishMapper {
 
     List<Dish> getDishInfo(String restID,String dishName);
 
-    void addDishInfo(Dish dish);
+    boolean addDishInfo(Dish dish);
 
-    void updateDishInfo(Dish dish);
+    boolean updateDishInfo(Dish dish);
 
     @Delete("delete from dish_info where dishID = #{dishID}")
-    void deleteDishInfo(Integer dishID);
-    // 秉子哥，你倒是写注释啊！！！
+    boolean deleteDishInfo(Integer dishID);
+
     @Select("select * from dish_info where restID = #{restID}")
     List<DishCategory> getDcInfo(String restID);
 }
