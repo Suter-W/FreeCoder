@@ -5,6 +5,9 @@ import com.freecoder.utils.JwtUtils;
 //import com.freecoder.utils.JwtWeChatUtils;
 import jakarta.annotation.security.PermitAll;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,6 +29,15 @@ import java.util.Map;
 @PermitAll
 @RequestMapping("/wxapp")
 public class WeChatAuthController {
+
+    @Autowired
+    Environment env;
+
+//    private String appid = env.getProperty("weChat_appid");
+//
+//    private String secret = env.getProperty("weChat_secret");
+//
+//    private String grantType = env.getProperty("grantType");
 
     private WebClient webClient = WebClient.create();
 
