@@ -17,4 +17,6 @@ public interface AdminAcceptService {
     List<OrderItem> getPendingItem(Integer orderID);
 
     boolean acceptOrder(Integer orderID);
+
+    void setTableStatus(Integer orderID);
 }

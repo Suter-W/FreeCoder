@@ -15,7 +15,7 @@
     </select>
     <insert id="addDishInfo">
         insert into dish_info (restID,dishImage,dishName,dishDescription,dishPrice,dishCategory,VipPrice,dcID) values (#{restID},
-        #{dishImage},#{dishName},#{dishDescription},#{dishPrice},#{dishCategory},#{VipPrice},#{dcID})
+        #{dishImage},#{dishName},#{dishDescription},#{dishPrice},#{dishCategory},#{vipPrice},#{dcID})
     </insert>
     <update id="updateDishInfo">
         update dish_info

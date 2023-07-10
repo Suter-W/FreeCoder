@@ -5,6 +5,7 @@ import com.freecoder.model.OrderItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -15,4 +16,6 @@ public interface AdminBillMapper {
 
     @Select("select * from order_item where restID = #{restID} and orderID = #{orderID}")
     List<OrderItem> getHistoricalOrderDetails(String restID, Integer orderID);
+
+    List<Order> getHistoricalBill(Integer page, String restID,LocalDate begin, LocalDate end);
 }

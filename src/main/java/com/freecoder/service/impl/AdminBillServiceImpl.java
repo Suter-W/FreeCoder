@@ -3,10 +3,14 @@ package com.freecoder.service.impl;
 import com.freecoder.mapper.AdminBillMapper;
 import com.freecoder.model.Order;
 import com.freecoder.model.OrderItem;
+import com.freecoder.model.PageBean;
 import com.freecoder.service.AdminBillService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -30,4 +34,11 @@ public class AdminBillServiceImpl implements AdminBillService {
         return adminBillMapper.getHistoricalOrderDetails(restID,orderID);
     }
 
+    public PageBean getHistoricalBill(Integer page,String restID, LocalDate begin, LocalDate end) {
+        PageHelper.startPage(page,6);
+        List<Order> orderList = adminBillMapper.getHistoricalBill(page,restID,begin,end);
+        Page<Order> p = (Page<Order>) orderList;
+        PageBean pageBean = new PageBean(p.getTotal(),p.getResult());
+        return pageBean;
+    }
 }
