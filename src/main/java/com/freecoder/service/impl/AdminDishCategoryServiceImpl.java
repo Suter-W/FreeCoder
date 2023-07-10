@@ -1,6 +1,7 @@
 package com.freecoder.service.impl;
 
 import com.freecoder.mapper.AdminDishCategoryMapper;
+import com.freecoder.model.Dish;
 import com.freecoder.model.DishCategory;
 import com.freecoder.model.PageBean;
 import com.freecoder.service.AdminDishCategoryService;
@@ -57,4 +58,5 @@ public class AdminDishCategoryServiceImpl implements AdminDishCategoryService {
         return deleteDishCategoryStatus;
     }
 
+    public DishCategory searchDishByid(Integer dcID){return adminDishCategoryMapper.searchDishByid(dcID);}
 }

@@ -17,4 +17,7 @@ public interface AdminDishCategoryService {
     boolean sortDishCategory(String restID,List<Integer> IDPresentList);
 
     boolean deleteDishCategory(Integer dcID);
+
+    DishCategory searchDishByid(Integer dcID);
+
 }

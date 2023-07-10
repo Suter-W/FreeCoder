@@ -1,14 +1,15 @@
 package com.freecoder.controller;
 
-import com.freecoder.model.Order;
-import com.freecoder.model.OrderItem;
-import com.freecoder.model.Result;
+import com.freecoder.model.*;
 import com.freecoder.service.AdminBillService;
 import jakarta.annotation.security.PermitAll;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -52,5 +53,22 @@ public class AdminBillController {
     public Result getHistoricalOrderDetails(@RequestParam String restID,@RequestParam Integer orderID){
         List<OrderItem> orderItemList = adminBillService.getHistoricalOrderDetails(restID,orderID);
         return Result.success(orderItemList);
+    }
+
+    /**
+     * @Description 前端账单界面分页条件查询实现
+     * @param page 页码
+     * @param begin 查询开始时间
+     * @param end   查询结束时间
+     * @return  pageBean
+     * @Date 9:35 2023/7/8
+     */
+    @GetMapping("/getHistoricalBill")
+    public Result getHistoricalBill(@RequestParam(defaultValue = "1")Integer page,
+                                    @RequestParam String restID,
+                                    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDate begin,
+                                    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDate end) {
+        PageBean pageBean = adminBillService.getHistoricalBill(page,restID, begin, end);
+        return Result.success(pageBean);
     }
 }

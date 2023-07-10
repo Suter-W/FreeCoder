@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.freecoder.model.Result;
 import com.freecoder.utils.JwtUtils;
 
+import jakarta.annotation.security.PermitAll;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.IOException;
 
@@ -33,13 +35,6 @@ public class LoginCheckFilter implements Filter {
         String url = req.getRequestURL().toString();
         log.info("请求的url：{}", url);
 
-        // 2. 判断请求url中是否包含login，如果包含，说明是登录操作，放行
-        if (url.contains("/login") || url.contains("/wechatLogin")) {
-            log.info("登录操作，放行。。。");
-            filterChain.doFilter(servletRequest, servletResponse);
-            return;
-        }
-
         // 3. 获取请求方法
         String method = req.getMethod();
 
@@ -49,6 +44,15 @@ public class LoginCheckFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
+
+        // 2. 判断请求url中是否包含login，如果包含，说明是登录操作，放行
+        if (url.contains("/login") || url.contains("/wechatLogin")) {
+            log.info("登录操作，放行。。。");
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
+
+
 
         // 5. 获取请求头中的令牌（token）
         String token = req.getHeader("Authorization");

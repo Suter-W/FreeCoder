@@ -35,7 +35,6 @@ public class AdminDishCategoryController {
         return Result.success(dcList);
     }
 
-
     @PostMapping("/addDishCategory")
     public Result addDishCategory(@RequestBody DishCategory dishCategory){
 
@@ -73,5 +72,12 @@ public class AdminDishCategoryController {
         return Result.success("成功删除了该分类");
 
     }
+    @GetMapping("/searchDishByid")
+    public Result searchDishByid(@RequestParam Integer dcID){
+        DishCategory dishCategory = adminDishCategoryService.searchDishByid(dcID);
+        return Result.success(dishCategory);
+    }
+
+
 
 }
