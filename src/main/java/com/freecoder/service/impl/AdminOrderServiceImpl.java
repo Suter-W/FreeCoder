@@ -46,4 +46,8 @@ public class AdminOrderServiceImpl implements AdminOrderService {
     public Integer getTableID(String restID,String tableName,String tableType){return adminOrderMapper.getTableID(restID,tableName,tableType);}
 
     public Integer getOrderingID(Integer tableID){return adminOrderMapper.getOrderingID(tableID);}
+
+    public void orderSettle(Integer orderID){adminOrderMapper.orderSettle(orderID);}
+
+    public void tableSettle(Integer tableID){adminOrderMapper.tableSettle(tableID);}
 }

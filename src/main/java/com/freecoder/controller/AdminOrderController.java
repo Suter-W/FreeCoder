@@ -132,4 +132,27 @@ public class AdminOrderController {
         List<OrderItem> orderItem = adminOrderService.getOrderItem(orderID);
         return Result.success(orderItem);
     }
+
+    /**
+     * @Description 将订单置为结束
+     * @param tableID 桌号
+     * @return Result
+     */
+    @GetMapping("/orderSettle")
+    public Result orderSettle(@RequestParam Integer tableID){
+        Integer orderID = getOrderingID(tableID);
+        adminOrderService.orderSettle(orderID);
+        return Result.success();
+    }
+
+    /**
+     * @Description 将桌置为空闲
+     * @param tableID 桌号
+     * @return
+     */
+    @GetMapping("/tableSettle")
+    public Result tableSettle(@RequestParam Integer tableID){
+        adminOrderService.tableSettle(tableID);
+        return Result.success();
+    }
 }

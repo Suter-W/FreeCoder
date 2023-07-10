@@ -5,6 +5,7 @@ import com.freecoder.model.OrderItem;
 import com.freecoder.model.Table;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -34,4 +35,10 @@ public interface AdminOrderMapper {
 
     @Select("select orderID from order_info where tableID = #{tableID} and orderStatus != 0")
     Integer getOrderingID(Integer tableID);
+
+    @Update("update order_info set orderStatus = 0 where orderID = #{orderID}")
+    void orderSettle(Integer orderID);
+
+    @Update("update table_info set tableStatus = 0,tableUse = 0 where tableID = #{tableID}")
+    void tableSettle(Integer tableID);
 }
