@@ -1,23 +1,16 @@
 package com.freecoder.controller;
 
-import com.freecoder.model.Order;
-import com.freecoder.model.Table;
-import com.freecoder.service.AdminOrderService;
-import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.JsonPath;
-import org.junit.jupiter.api.Assertions;
+import com.freecoder.web.model.Tables;
+import com.freecoder.web.service.AdminOrderService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -86,13 +79,13 @@ class AdminOrderControllerTest {
     @Test
     @Transactional
     void addTable() throws Exception {
-        Table table = new Table();
-        table.setRestID("0000002");
-        table.setTableName("08");
-        table.setTableLimit(4);
-        table.setTableType("大厅");
+        Tables tables = new Tables();
+        tables.setRestID("0000002");
+        tables.setTableName("08");
+        tables.setTableLimit(4);
+        tables.setTableType("大厅");
 
-        assertTrue(adminOrderService.addTable(table));
+        assertTrue(adminOrderService.addTable(tables));
     }
 
     /**
@@ -124,13 +117,13 @@ class AdminOrderControllerTest {
     @Test
     @Transactional
     void editTable() throws Exception {
-        Table table = new Table();
-        table.setTableID(5);
-        table.setTableName("20");
-        table.setTableLimit(6);
-        table.setTableType("大厅");
+        Tables tables = new Tables();
+        tables.setTableID(5);
+        tables.setTableName("20");
+        tables.setTableLimit(6);
+        tables.setTableType("大厅");
 
-        assertTrue(adminOrderService.editTable(table));
+        assertTrue(adminOrderService.editTable(tables));
     }
     /**
      * @Description 测试通过餐厅ID、桌子ID和桌子的类型对应点单页面的每一个桌子，用于获取tableInfo表的全部内容并进行展示的功能

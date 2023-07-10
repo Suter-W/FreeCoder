@@ -47,12 +47,12 @@
         </javaClientGenerator>
 
         <!-- 指定数据库表 -->
-        <table tableName="dish_category" domainObjectName="DishCategory"/>
-        <table tableName="dish_info" domainObjectName="Dish"/>
-        <table tableName="order_info" domainObjectName="Order"/>
-        <table tableName="order_item" domainObjectName="OrderItem"/>
-        <table tableName="restaurants" domainObjectName="Restaurants"/>
-        <table tableName="table_info" domainObjectName="Table"/>
+        <tableInfo tableName="dish_category" domainObjectName="DishCategory"/>
+        <tableInfo tableName="dish_info" domainObjectName="Dish"/>
+        <tableInfo tableName="order_info" domainObjectName="Order"/>
+        <tableInfo tableName="order_item" domainObjectName="OrderItem"/>
+        <tableInfo tableName="restaurants" domainObjectName="Restaurants"/>
+        <tableInfo tableName="table_info" domainObjectName="Table"/>
 
     </context>
 </generatorConfiguration>

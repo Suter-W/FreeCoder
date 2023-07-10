@@ -1,22 +1,12 @@
 package com.freecoder.controller;
 
-import com.freecoder.model.User;
-import com.freecoder.service.AuthService;
-import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.JsonPath;
-import org.junit.jupiter.api.Assertions;
+import com.freecoder.web.model.Restaurant;
+import com.freecoder.web.service.AuthService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -46,11 +36,11 @@ public class AuthControllerTest {
 
     @Test
     public void testLogin() throws Exception {
-        User user = new User();
-        user.setRestID("0000001");
-        user.setPassword("123456789");
+        Restaurant restaurant = new Restaurant();
+        restaurant.setRestID("0000001");
+        restaurant.setPassword("123456789");
 
-        assertNotNull(authService.login(user));
+        assertNotNull(authService.login(restaurant));
     }
 
 }
