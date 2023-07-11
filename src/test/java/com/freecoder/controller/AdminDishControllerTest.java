@@ -94,7 +94,6 @@ class AdminDishControllerTest {
         dish.setDishImage("http://dummyimage.com/120x240");
         dish.setVipPrice("30");
         dish.setDcID(6);
-
         assertTrue(adminDishService.addDishInfo(dish));
 
     }
