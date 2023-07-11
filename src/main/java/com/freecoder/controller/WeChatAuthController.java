@@ -7,6 +7,7 @@ import jakarta.annotation.security.PermitAll;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.core.env.StandardEnvironment;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -30,22 +31,22 @@ import java.util.Map;
 @RequestMapping("/wxapp")
 public class WeChatAuthController {
 
-    @Autowired
-    Environment env;
 
-//    private String appid = env.getProperty("weChat_appid");
-//
-//    private String secret = env.getProperty("weChat_secret");
-//
-//    private String grantType = env.getProperty("grantType");
+    Environment env = new StandardEnvironment();
+
+    private String appid = env.getProperty("weChat_appid");
+
+    private String secret = env.getProperty("weChat_secret");
+
+    private String grantType = env.getProperty("grantType");
 
     private WebClient webClient = WebClient.create();
 
     @GetMapping("/wechatLogin")
     public Result getJsCode(@RequestParam String jsCode){
-        String appid = "wx2c83501229e9d8ed";
-        String secret = "bc57fe0a79c8782a34c2cf9c368d9be7";
-        String grantType = "authorization_code";
+//        String appid = "wx2c83501229e9d8ed";
+//        String secret = "bc57fe0a79c8782a34c2cf9c368d9be7";
+//        String grantType = "authorization_code";
 
         //拼接参数为链接
         String url = "https://api.weixin.qq.com/sns/jscode2session?appid="+appid+"&secret="+secret+"&js_code="+jsCode+"&grant_type="+grantType;

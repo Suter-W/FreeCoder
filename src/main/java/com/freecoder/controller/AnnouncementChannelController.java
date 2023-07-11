@@ -1,6 +1,13 @@
 package com.freecoder.controller;
 
+import com.freecoder.model.Result;
+import com.freecoder.utils.GoEasyServer;
+import io.goeasy.GoEasy;
+import io.goeasy.publish.GoEasyError;
+import io.goeasy.publish.PublishListener;
 import jakarta.annotation.security.PermitAll;
+import org.apache.kerby.cms.type.PasswordRecipientInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.async.DeferredResult;
@@ -22,7 +29,22 @@ public class AnnouncementChannelController {
 
     private final Queue<DeferredResult<String>> connections = new ConcurrentLinkedQueue<>();
 
+    @GetMapping("/getPolling")
+    public Result getPolling(@RequestParam String polling){
+        GoEasy goEasy = new GoEasy("https://rest-hz.goeasy.io","BC-a0191921df274d3f826449fca32b26e9");
+        goEasy.publish("my_channel", polling, new PublishListener() {
+            @Override
+            public void onSuccess() {
+                System.out.println("Publish success.");
+            }
 
+            @Override
+            public void onFailed(GoEasyError error) {
+                System.out.println("Failed to Publish message, error:" + error.getCode() + " , " + error.getContent());
+            }
+        });
+        return Result.success("连接成功");
+    }
 
     @GetMapping("/long-polling")
     public void handleLongPolling(@RequestParam String message) {

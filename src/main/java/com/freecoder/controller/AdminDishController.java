@@ -19,6 +19,8 @@ public class AdminDishController {
     @Autowired
     private AdminDishService adminDishService;
 
+    @Autowired
+    private ImageUploadApplication imageUploadApplication;
     /**
      * 获取菜品信息页面的全部数据
      *
