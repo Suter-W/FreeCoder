@@ -1,7 +1,7 @@
 package com.freecoder.web.controller;
 
+import com.freecoder.response.MyResult;
 import com.freecoder.web.model.DishCategory;
-import com.freecoder.web.model.Result;
 import com.freecoder.web.service.AdminDishCategoryService;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +24,17 @@ public class AdminDishCategoryController {
     private AdminDishCategoryService adminDishCategoryService;
 
     @GetMapping("/getDishCategoryInfo")
-    public Result getDishCategoryInfo(@RequestParam String restID){
+    public MyResult getDishCategoryInfo(@RequestParam String restID){
         List<DishCategory> dcList = adminDishCategoryService.getDishCategoryInfo(restID);
-        return Result.success(dcList);
+        return MyResult.success(dcList);
     }
 
 
     @PostMapping("/addDishCategory")
-    public Result addDishCategory(@RequestBody DishCategory dishCategory){
+    public MyResult addDishCategory(@RequestBody DishCategory dishCategory){
 
         adminDishCategoryService.addDishCategory(dishCategory);
-        return Result.success();
+        return MyResult.success();
     }
 
     /**
@@ -43,13 +43,13 @@ public class AdminDishCategoryController {
      * @param IDPresentList     前端传入的修改后的dcID
      * @Date 10:25 2023/7/5
      * @Param [java.lang.String, java.util.List<java.lang.Integer>]
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
     @PostMapping("/sortDishCategory")
-    public Result sortDishCategory(@RequestParam String restID,@RequestBody List<Integer> IDPresentList){
+    public MyResult sortDishCategory(@RequestParam String restID, @RequestBody List<Integer> IDPresentList){
 
         adminDishCategoryService.sortDishCategory(restID,IDPresentList);
-        return Result.success("顺序更换成功");
+        return MyResult.success("顺序更换成功");
     }
 
 
@@ -58,13 +58,13 @@ public class AdminDishCategoryController {
      * @param dcID  主键分类ID
      * @Date 14:53 2023/7/5
      * @Param [java.lang.Integer]
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
     @DeleteMapping("/deleteDishCategory")
-    public Result deleteDishCategory(@RequestParam Integer dcID){
+    public MyResult deleteDishCategory(@RequestParam Integer dcID){
 
         adminDishCategoryService.deleteDishCategory(dcID);
-        return Result.success("成功删除了该分类");
+        return MyResult.success("成功删除了该分类");
 
     }
 

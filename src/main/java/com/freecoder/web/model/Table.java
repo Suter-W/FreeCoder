@@ -1,18 +1,14 @@
 package com.freecoder.web.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tables {
-    @Id
+public class Table {
     private Integer tableID;
     private String restID;
     private String tableName;

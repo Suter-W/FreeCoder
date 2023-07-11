@@ -1,10 +1,10 @@
 package com.freecoder.web.controller;
 
 
+import com.freecoder.response.MyResult;
 import com.freecoder.web.model.Order;
 import com.freecoder.web.model.OrderItem;
-import com.freecoder.web.model.Result;
-import com.freecoder.web.model.Tables;
+import com.freecoder.web.model.Table;
 import com.freecoder.web.service.AdminOrderService;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,38 +41,38 @@ public class AdminOrderController {
      * @Description tableList为点餐页面开始罗列桌所用，提取该restID下的所有桌
      * @Date 11:15 2023/7/1
      * @Param [java.lang.String] [restID]
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
     @GetMapping("/getTableList")
-    public Result tableList(@RequestParam String restID){
+    public MyResult tableList(@RequestParam String restID){
 
-        List<Tables> tablesList = adminOrderService.tableList(restID);
-        System.out.println(tablesList);
-        return Result.success(tablesList);
+        List<Table> tableList = adminOrderService.tableList(restID);
+        System.out.println(tableList);
+        return MyResult.success(tableList);
     }
 
     /**
      * @Description addTable为添加桌
      * @Date 11:14 2023/7/1
-     * @Param [com.freecoder.web.model.TableInfo] [tables]
-     * @return com.freecoder.web.model.Response
+     * @Param [com.freecoder.web.model.TableInfo] [table]
+     * @return com.freecoder.web.model.Result
      **/
     @PostMapping("/addTable")
-    public Result addTable(@RequestBody Tables tables){
-        adminOrderService.addTable(tables);
-        return(Result.success()) ;
+    public MyResult addTable(@RequestBody Table table){
+        adminOrderService.addTable(table);
+        return(MyResult.success()) ;
     }
 
     /**
      * @Description editTable为编辑桌
      * @Date 11:12 2023/7/1
-     * @Param [com.freecoder.web.model.TableInfo] [tables]
-     * @return com.freecoder.web.model.Response
+     * @Param [com.freecoder.web.model.TableInfo] [table]
+     * @return com.freecoder.web.model.Result
      **/
     @PostMapping("/editTable")
-    public Result editTable(@RequestBody Tables tables){
-        adminOrderService.editTable(tables);
-        return(Result.success());
+    public MyResult editTable(@RequestBody Table table){
+        adminOrderService.editTable(table);
+        return(MyResult.success());
     }
 
 
@@ -80,12 +80,12 @@ public class AdminOrderController {
      * @Description 通过餐厅ID、桌子ID和桌子的类型对应点单页面的每一个桌子，用于获取tableInfo表的全部内容并进行展示
      * @Date 11:09 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
     @GetMapping("/getTableInfo")
-    public Result getTableInfo(@RequestParam Integer tableID){
-        Tables tables = adminOrderService.getTableInfo(tableID);
-        return(Result.success(tables));
+    public MyResult getTableInfo(@RequestParam Integer tableID){
+        Table table = adminOrderService.getTableInfo(tableID);
+        return(MyResult.success(table));
     }
 
 
@@ -93,13 +93,13 @@ public class AdminOrderController {
      * @Description 对创建的桌子进行删除操作
      * @Date 11:16 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
 
     @DeleteMapping("/deleteTable")
-    public Result deleteTable(@RequestParam Integer tableID){
+    public MyResult deleteTable(@RequestParam Integer tableID){
         adminOrderService.deleteTable(tableID);
-        return Result.success();
+        return MyResult.success();
     }
 
 
@@ -107,16 +107,16 @@ public class AdminOrderController {
      * @Description 取出订单信息
      * @Date 11:17 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
     @GetMapping("/getOrderInfo")
-    public Result getOrderInfo(@RequestParam Integer tableID) throws Exception {
+    public MyResult getOrderInfo(@RequestParam Integer tableID) throws Exception {
         if (tableID < 0) {
             throw new IllegalArgumentException("Order ID cannot be negative");
         }
         Integer orderID = getOrderingID(tableID);
         Order orderInfo = adminOrderService.getOrderInfo(orderID);
-        return Result.success(orderInfo);
+        return MyResult.success(orderInfo);
     }
 
     /**
@@ -124,12 +124,12 @@ public class AdminOrderController {
      * @param tableID
      * @Date 15:18 2023/7/1
      * @Param [java.lang.Integer]
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
     @GetMapping("/getOrderItem")
-    public Result getOrderItem(@RequestParam Integer tableID){
+    public MyResult getOrderItem(@RequestParam Integer tableID){
         Integer orderID = getOrderingID(tableID);
         List<OrderItem> orderItem = adminOrderService.getOrderItem(orderID);
-        return Result.success(orderItem);
+        return MyResult.success(orderItem);
     }
 }

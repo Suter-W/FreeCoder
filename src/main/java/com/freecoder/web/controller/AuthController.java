@@ -1,8 +1,8 @@
 package com.freecoder.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.freecoder.response.MyResult;
 import com.freecoder.web.model.Restaurant;
-import com.freecoder.web.model.Result;
 import com.freecoder.web.service.AuthService;
 import com.freecoder.utils.JwtUtils;
 import com.freecoder.utils.Md5Utils;
@@ -30,7 +30,7 @@ public class AuthController {
 
 
 //    @PostMapping("/login")
-//    public Response login(@RequestBody Restaurant user){
+//    public Result login(@RequestBody Restaurant user){
 //        log.info("餐厅管理员登录：{}",user);
 //        Restaurant e = authService.login(user);
 //
@@ -43,14 +43,14 @@ public class AuthController {
 //
 //            clamis.put("password",password);
 //            String jwt = JwtUtils.generateJwt(clamis);
-//            return Response.success(jwt);
+//            return Result.success(jwt);
 //        }
 //
-//        return Response.eraror("使用了错误的餐厅ID或密码");
+//        return Result.eraror("使用了错误的餐厅ID或密码");
 //    }
 
     @PostMapping("/login")
-    public Result login(@RequestBody String ciphertext) throws Exception {
+    public MyResult login(@RequestBody String ciphertext) throws Exception {
 //        System.out.println("body: " + ciphertext);/
 //        System.out.println(ciphertext.equals("{\r\n    \"restID\":\"0000001\",\r\n    \"password\":\"123456789\"\r\n}"));
 //        String pubKey = loadKey( "docs/id_rsa.pub");
@@ -76,7 +76,7 @@ public class AuthController {
             e.printStackTrace();
         }
 
-        return Result.error("请求参数不符合要求");
+        return MyResult.error("请求参数不符合要求");
 
     }
     /**
@@ -84,9 +84,9 @@ public class AuthController {
      * @param restaurant
      * @Date 16:44 2023/7/1
      * @Param [com.freecoder.web.model.Restaurant]
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
-    public Result loginJWT(@RequestBody Restaurant restaurant) throws Exception {
+    public MyResult loginJWT(@RequestBody Restaurant restaurant) throws Exception {
         log.info("餐厅管理员登录：{}", restaurant);
         System.out.printf("餐厅管理员登录：{\s}", restaurant);
         Restaurant e = authService.login(restaurant);
@@ -100,10 +100,10 @@ public class AuthController {
 
             clamis.put("password",password);
             String jwt = JwtUtils.generateWebJwt(clamis);
-            return Result.success(jwt);
+            return MyResult.success(jwt);
         }
 
-        return Result.error("使用了错误的餐厅ID或密码");
+        return MyResult.error("使用了错误的餐厅ID或密码");
     }
 
     /**

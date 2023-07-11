@@ -2,18 +2,18 @@ package com.freecoder.web.service;
 
 import com.freecoder.web.model.Order;
 import com.freecoder.web.model.OrderItem;
-import com.freecoder.web.model.Tables;
+import com.freecoder.web.model.Table;
 
 import java.util.List;
 
 public interface AdminOrderService {
-    List<Tables> tableList(String restID);
+    List<Table> tableList(String restID);
 
-    boolean addTable(Tables tables);
+    boolean addTable(Table table);
 
-    boolean editTable(Tables tables);
+    boolean editTable(Table table);
 
-    Tables getTableInfo(Integer tableID);
+    Table getTableInfo(Integer tableID);
 
     boolean deleteTable(Integer tableID);
 

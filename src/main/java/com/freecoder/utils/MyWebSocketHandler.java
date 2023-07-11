@@ -33,7 +33,7 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
         // 执行业务逻辑...
 
         // 向客户端发送响应消息
-        String response = "Response message";
+        String response = "Result message";
         session.sendMessage(new TextMessage(response));
     }
 

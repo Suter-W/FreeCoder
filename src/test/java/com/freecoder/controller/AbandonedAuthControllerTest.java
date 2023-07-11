@@ -44,7 +44,7 @@
 //
 //        // 处理服务器的响应
 //        int statusCode = connection.getResponseCode();
-//        System.out.println("Response Code: " + statusCode);
+//        System.out.println("Result Code: " + statusCode);
 //
 //        BufferedReader reader;
 //        if (statusCode == HttpURLConnection.HTTP_OK) {
@@ -59,7 +59,7 @@
 //            response.append(line);
 //        }
 //        reader.close();
-//        System.out.println("Response Body: " + response.toString());
+//        System.out.println("Result Body: " + response.toString());
 //        Assertions.assertTrue(statusCode==200);
 //    }
 //

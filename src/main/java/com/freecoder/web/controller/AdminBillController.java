@@ -2,7 +2,7 @@ package com.freecoder.web.controller;
 
 import com.freecoder.web.model.Order;
 import com.freecoder.web.model.OrderItem;
-import com.freecoder.web.model.Result;
+import com.freecoder.response.MyResult;
 import com.freecoder.web.service.AdminBillService;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +31,12 @@ public class AdminBillController {
      * @param restID  餐厅号
      * @Date 9:11 2023/7/7
      *
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
     @GetMapping("/getHistoricalOrders")
-    public Result getHistoricalOrders(@RequestParam String restID){
+    public MyResult getHistoricalOrders(@RequestParam String restID){
         List<Order> orderList = adminBillService.getHistoricalOrders(restID);
-        return Result.success(orderList);
+        return MyResult.success(orderList);
     }
 
     /**
@@ -45,11 +45,11 @@ public class AdminBillController {
      * @param orderID  订单号
      * @Date 9:35 2023/7/7
      *
-     * @return com.freecoder.web.model.Response
+     * @return com.freecoder.web.model.Result
      **/
     @GetMapping("/getHistoricalOrderDetails")
-    public Result getHistoricalOrderDetails(@RequestParam String restID,@RequestParam Integer orderID){
+    public MyResult getHistoricalOrderDetails(@RequestParam String restID, @RequestParam Integer orderID){
         List<OrderItem> orderItemList = adminBillService.getHistoricalOrderDetails(restID,orderID);
-        return Result.success(orderItemList);
+        return MyResult.success(orderItemList);
     }
 }

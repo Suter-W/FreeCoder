@@ -1,6 +1,6 @@
 package com.freecoder.controller;
 
-import com.freecoder.web.model.Tables;
+import com.freecoder.web.model.Table;
 import com.freecoder.web.service.AdminOrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,13 +79,13 @@ class AdminOrderControllerTest {
     @Test
     @Transactional
     void addTable() throws Exception {
-        Tables tables = new Tables();
-        tables.setRestID("0000002");
-        tables.setTableName("08");
-        tables.setTableLimit(4);
-        tables.setTableType("大厅");
+        Table table = new Table();
+        table.setRestID("0000002");
+        table.setTableName("08");
+        table.setTableLimit(4);
+        table.setTableType("大厅");
 
-        assertTrue(adminOrderService.addTable(tables));
+        assertTrue(adminOrderService.addTable(table));
     }
 
     /**
@@ -117,13 +117,13 @@ class AdminOrderControllerTest {
     @Test
     @Transactional
     void editTable() throws Exception {
-        Tables tables = new Tables();
-        tables.setTableID(5);
-        tables.setTableName("20");
-        tables.setTableLimit(6);
-        tables.setTableType("大厅");
+        Table table = new Table();
+        table.setTableID(5);
+        table.setTableName("20");
+        table.setTableLimit(6);
+        table.setTableType("大厅");
 
-        assertTrue(adminOrderService.editTable(tables));
+        assertTrue(adminOrderService.editTable(table));
     }
     /**
      * @Description 测试通过餐厅ID、桌子ID和桌子的类型对应点单页面的每一个桌子，用于获取tableInfo表的全部内容并进行展示的功能

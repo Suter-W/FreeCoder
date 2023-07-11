@@ -1,4 +1,4 @@
-package com.freecoder.utils.response;
+package com.freecoder.response.httpResult;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
@@ -11,7 +11,6 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
@@ -21,54 +20,54 @@ import java.lang.annotation.Annotation;
 
 @Slf4j
 @RestControllerAdvice
-public class ResponseBodyAdviceImpl implements ResponseBodyAdvice<Object> {
+public class HttpResultBodyAdvice implements ResponseBodyAdvice<Object> {
 
-    private static final Class<? extends Annotation> ANNOTATION_TYPE = ResponseBody.class;
+    private static final Class<? extends Annotation> ANNOTATION_TYPE = HttpResultBody.class;
 
-    /** åˆ¤æ–­ç±»æˆ–è€…æ–¹æ³•æ˜¯å¦ä½¿ç”¨äº† @ResponseBody */
+    /** ÅĞ¶ÏÀà»òÕß·½·¨ÊÇ·ñÊ¹ÓÃÁË @ResponseResultBody */
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         return AnnotatedElementUtils.hasAnnotation(returnType.getContainingClass(), ANNOTATION_TYPE) || returnType.hasMethodAnnotation(ANNOTATION_TYPE);
     }
 
-    /** å½“ç±»æˆ–è€…æ–¹æ³•ä½¿ç”¨äº† @ResponseBody å°±ä¼šè°ƒç”¨è¿™ä¸ªæ–¹æ³• */
+    /** µ±Àà»òÕß·½·¨Ê¹ÓÃÁË @ResponseResultBody ¾Í»áµ÷ÓÃÕâ¸ö·½·¨ */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        if (body instanceof Response) {
+        if (body instanceof HttpResult) {
             return body;
         }
-        return Response.success(body);
+        return new HttpResult(HttpStatus.OK, body);
     }
 
 
     /**
-     * æä¾›å¯¹æ ‡å‡†Spring MVCå¼‚å¸¸çš„å¤„ç†
+     * Ìá¹©¶Ô±ê×¼Spring MVCÒì³£µÄ´¦Àí
      *
      * @param ex      the target exception
      * @param request the current request
      */
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<Response<?>> exceptionHandler(Exception ex, WebRequest request) {
+    public final ResponseEntity<HttpResult<?>> exceptionHandler(Exception ex, WebRequest request) {
         log.error("ExceptionHandler: {}", ex.getMessage());
         HttpHeaders headers = new HttpHeaders();
-        if (ex instanceof ResponseException) {
-            return this.handleResponseException((ResponseException) ex, headers, request);
+        if (ex instanceof HttpResultException) {
+            return this.handleHttpResultException((HttpResultException) ex, headers, request);
         }
-        // TODO: 2019/10/05 galaxy è¿™é‡Œå¯ä»¥è‡ªå®šä¹‰å…¶ä»–çš„å¼‚å¸¸æ‹¦æˆª
+        // ÕâÀï¿ÉÒÔ×Ô¶¨ÒåÆäËûµÄÒì³£À¹½Ø
         return this.handleException(ex, headers, request);
     }
 
-    /** å¯¹ResponseExceptionç±»è¿”å›è¿”å›ç»“æœçš„å¤„ç† */
-    protected ResponseEntity<Response<?>> handleResponseException(ResponseException ex, HttpHeaders headers, WebRequest request) {
-        Response<?> body = Response.failure(ex.getResponseStatus());
-        HttpStatus status = ex.getResponseStatus().getHttpStatus();
+    /** ¶ÔHttpResultExceptionÀà·µ»Ø·µ»Ø½á¹ûµÄ´¦Àí */
+    protected ResponseEntity<HttpResult<?>> handleHttpResultException(HttpResultException ex, HttpHeaders headers, WebRequest request) {
+        HttpResult<?> body = new HttpResult(HttpStatus.INTERNAL_SERVER_ERROR, ex.getHttpStatus());
+        HttpStatus status = ex.getHttpStatus();
         return this.handleExceptionInternal(ex, body, headers, status, request);
     }
 
-    /** å¼‚å¸¸ç±»çš„ç»Ÿä¸€å¤„ç† */
-    protected ResponseEntity<Response<?>> handleException(Exception ex, HttpHeaders headers, WebRequest request) {
-        Response<?> body = Response.failure();
+    /** Òì³£ÀàµÄÍ³Ò»´¦Àí */
+    protected ResponseEntity<HttpResult<?>> handleException(Exception ex, HttpHeaders headers, WebRequest request) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
+        HttpResult<?> body = new HttpResult(status, null);
         return this.handleExceptionInternal(ex, body, headers, status, request);
     }
 
@@ -80,8 +79,8 @@ public class ResponseBodyAdviceImpl implements ResponseBodyAdvice<Object> {
      * request attribute and creates a {@link ResponseEntity} from the given
      * body, headers, and status.
      */
-    protected ResponseEntity<Response<?>> handleExceptionInternal(
-            Exception ex, Response<?> body, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<HttpResult<?>> handleExceptionInternal(
+            Exception ex, HttpResult<?> body, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
         if (HttpStatus.INTERNAL_SERVER_ERROR.equals(status)) {
             request.setAttribute(WebUtils.ERROR_EXCEPTION_ATTRIBUTE, ex, WebRequest.SCOPE_REQUEST);

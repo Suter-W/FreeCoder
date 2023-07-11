@@ -2,7 +2,7 @@ package com.freecoder.web.mapper;
 
 import com.freecoder.web.model.Order;
 import com.freecoder.web.model.OrderItem;
-import com.freecoder.web.model.Tables;
+import com.freecoder.web.model.Table;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -12,14 +12,14 @@ import java.util.List;
 public interface AdminOrderMapper {
 
     @Select("select * from table_info where restID = #{restID}")
-    List<Tables> tableList(String restID);
+    List<Table> tableList(String restID);
 
-    boolean addTable(Tables tables);
+    boolean addTable(Table table);
 
-    boolean editTable(Tables tables);
+    boolean editTable(Table table);
 
     @Select("select * from table_info where tableID = #{tableID}")
-    Tables getTableInfo(Integer tableID);
+    Table getTableInfo(Integer tableID);
 
     boolean deleteTable(Integer tableID);
 
