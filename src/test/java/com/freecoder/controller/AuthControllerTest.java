@@ -1,5 +1,6 @@
 package com.freecoder.controller;
 
+
 import com.freecoder.web.model.Restaurant;
 import com.freecoder.web.service.AuthService;
 import org.junit.jupiter.api.Test;
@@ -42,5 +43,4 @@ public class AuthControllerTest {
 
         assertNotNull(authService.login(restaurant));
     }
-
 }
