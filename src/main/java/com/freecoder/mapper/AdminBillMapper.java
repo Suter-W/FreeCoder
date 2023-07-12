@@ -18,4 +18,10 @@ public interface AdminBillMapper {
     List<OrderItem> getHistoricalOrderDetails(String restID, Integer orderID);
 
     List<Order> getHistoricalBill(Integer page, String restID,LocalDate begin, LocalDate end);
+
+    @Select("select * from order_info where orderID = #{orderID}")
+    Order getOrderInfoByid(Integer orderID);
+
+    @Select("select * from order_item where orderID = #{orderID}")
+    List<OrderItem> getOrderItemByid(Integer orderID);
 }
