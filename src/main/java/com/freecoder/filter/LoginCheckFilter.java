@@ -5,17 +5,24 @@ import com.freecoder.response.MyResult;
 import com.freecoder.response.result.Result;
 import com.freecoder.response.result.ResultStatus;
 import com.freecoder.utils.JwtUtils;
+
+import jakarta.annotation.security.PermitAll;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.io.IOException;
 
+
 @Slf4j
 @WebFilter("/*")
+@CrossOrigin
+@PermitAll
 public class LoginCheckFilter implements Filter {
 
     @Override
@@ -25,7 +32,6 @@ public class LoginCheckFilter implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
-
 
         // 1. 获取请求url
         String url = req.getRequestURL().toString();
@@ -55,11 +61,20 @@ public class LoginCheckFilter implements Filter {
         // 6. 判断令牌是否存在，如果不存在，返回错误结果（未登录）
         if (!StringUtils.hasLength(token) || !token.startsWith("Bearer ")) {
             log.info("请求头token为空，返回未登录的信息");
-            MyResult error = MyResult.error("NOT_LOGIN");
-            String notLogin = JSONObject.toJSONString(error);
-            res.setContentType("application/json;charset=UTF-8");
-            res.getWriter().write(notLogin);
-            return;
+            MyResult error;
+            if (!url.contains("/wxapp/")) {
+//                error = MyResult.error("NOT_LOGIN", "redirect:http://localhost:8080/web/login");
+//                res.getWriter().write("HTTP/1.1 302 Found\nLocation: http://localhost:8080/web/login");
+                res.sendRedirect("http://localhost:8080/web/login");
+                return;
+            } else {
+                error = com.freecoder.response.MyResult.error("NOT_LOGIN");
+                String notLogin = JSONObject.toJSONString(error);
+                res.setContentType("application/json;charset=UTF-8");
+                res.getWriter().write(notLogin);
+                return;
+            }
+
         }
 
         // 7. 提取令牌

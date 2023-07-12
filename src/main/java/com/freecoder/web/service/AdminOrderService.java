@@ -23,5 +23,9 @@ public interface AdminOrderService {
 
     Integer getTableID(String restID,String tableName,String tableType);
 
-    Integer getOrderingID(Integer orderID);
+    Integer getOrderingID(Integer tableID);
+
+    boolean orderSettle(Integer orderID);
+
+    boolean tableSettle(Integer tableID);
 }

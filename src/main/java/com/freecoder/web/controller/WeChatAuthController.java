@@ -4,6 +4,8 @@ import com.freecoder.response.MyResult;
 import com.freecoder.utils.JwtUtils;
 //import com.freecoder.utils.JwtWeChatUtils;
 import jakarta.annotation.security.PermitAll;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.StandardEnvironment;
 import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,6 +27,15 @@ import java.util.Map;
 @PermitAll
 @RequestMapping("/wxapp")
 public class WeChatAuthController {
+
+
+    Environment env = new StandardEnvironment();
+//
+//    private String appid = env.getProperty("weChat_appid");
+//
+//    private String secret = env.getProperty("weChat_secret");
+//
+//    private String grantType = env.getProperty("grantType");
 
     private WebClient webClient = WebClient.create();
 
@@ -58,7 +69,7 @@ public class WeChatAuthController {
                             System.out.println("errcode: " + errcode);
                             System.out.println("errmsg: " + errmsg);
 
-                            return Mono.just(MyResult.error("js_code失效"));
+                            return Mono.just(com.freecoder.response.MyResult.error("error","js_code失效"));
                             // 进一步处理其他逻辑...
                         } else if (jsonNode.has("session_key") && jsonNode.has("openid")) {
                             // 第二种情况，包含 param1 和 param2 参数
@@ -71,7 +82,7 @@ public class WeChatAuthController {
                             clamis.put("openid",openId);
 
                             String jwt = JwtUtils.generateWeChatJwt(clamis);
-                            return Mono.just(MyResult.success(jwt));
+                            return Mono.just(com.freecoder.response.MyResult.success(jwt));
 
                             // 进一步处理其他逻辑...
                         } else {
@@ -81,7 +92,7 @@ public class WeChatAuthController {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    return Mono.just(MyResult.error("token有误"));
+                    return Mono.just(MyResult.error("error","token有误"));
                 });
         return response.block();
     }

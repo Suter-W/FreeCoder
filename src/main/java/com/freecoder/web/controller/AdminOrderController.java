@@ -41,38 +41,38 @@ public class AdminOrderController {
      * @Description tableList为点餐页面开始罗列桌所用，提取该restID下的所有桌
      * @Date 11:15 2023/7/1
      * @Param [java.lang.String] [restID]
-     * @return com.freecoder.web.model.Result
+     * @return com.freecoder.response.MyResult
      **/
     @GetMapping("/getTableList")
     public MyResult tableList(@RequestParam String restID){
 
         List<Table> tableList = adminOrderService.tableList(restID);
         System.out.println(tableList);
-        return MyResult.success(tableList);
+        return com.freecoder.response.MyResult.success(tableList);
     }
 
     /**
      * @Description addTable为添加桌
      * @Date 11:14 2023/7/1
-     * @Param [com.freecoder.web.model.TableInfo] [table]
-     * @return com.freecoder.web.model.Result
+     * @Param [com.freecoder.model.Table] [table]
+     * @return com.freecoder.response.MyResult
      **/
     @PostMapping("/addTable")
     public MyResult addTable(@RequestBody Table table){
         adminOrderService.addTable(table);
-        return(MyResult.success()) ;
+        return(com.freecoder.response.MyResult.success("success","添加成功")) ;
     }
 
     /**
      * @Description editTable为编辑桌
      * @Date 11:12 2023/7/1
-     * @Param [com.freecoder.web.model.TableInfo] [table]
-     * @return com.freecoder.web.model.Result
+     * @Param [com.freecoder.model.Table] [table]
+     * @return com.freecoder.response.MyResult
      **/
     @PostMapping("/editTable")
     public MyResult editTable(@RequestBody Table table){
         adminOrderService.editTable(table);
-        return(MyResult.success());
+        return(com.freecoder.response.MyResult.success("success","编辑成功"));
     }
 
 
@@ -80,12 +80,12 @@ public class AdminOrderController {
      * @Description 通过餐厅ID、桌子ID和桌子的类型对应点单页面的每一个桌子，用于获取tableInfo表的全部内容并进行展示
      * @Date 11:09 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.web.model.Result
+     * @return com.freecoder.response.MyResult
      **/
     @GetMapping("/getTableInfo")
     public MyResult getTableInfo(@RequestParam Integer tableID){
         Table table = adminOrderService.getTableInfo(tableID);
-        return(MyResult.success(table));
+        return(com.freecoder.response.MyResult.success(table));
     }
 
 
@@ -93,13 +93,13 @@ public class AdminOrderController {
      * @Description 对创建的桌子进行删除操作
      * @Date 11:16 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.web.model.Result
+     * @return com.freecoder.response.MyResult
      **/
 
     @DeleteMapping("/deleteTable")
     public MyResult deleteTable(@RequestParam Integer tableID){
         adminOrderService.deleteTable(tableID);
-        return MyResult.success();
+        return com.freecoder.response.MyResult.success("success","删除成功");
     }
 
 
@@ -107,7 +107,7 @@ public class AdminOrderController {
      * @Description 取出订单信息
      * @Date 11:17 2023/7/1
      * @Param [java.lang.Integer] [tableID]
-     * @return com.freecoder.web.model.Result
+     * @return com.freecoder.response.MyResult
      **/
     @GetMapping("/getOrderInfo")
     public MyResult getOrderInfo(@RequestParam Integer tableID) throws Exception {
@@ -116,7 +116,7 @@ public class AdminOrderController {
         }
         Integer orderID = getOrderingID(tableID);
         Order orderInfo = adminOrderService.getOrderInfo(orderID);
-        return MyResult.success(orderInfo);
+        return com.freecoder.response.MyResult.success(orderInfo);
     }
 
     /**
@@ -124,12 +124,35 @@ public class AdminOrderController {
      * @param tableID
      * @Date 15:18 2023/7/1
      * @Param [java.lang.Integer]
-     * @return com.freecoder.web.model.Result
+     * @return com.freecoder.response.MyResult
      **/
     @GetMapping("/getOrderItem")
     public MyResult getOrderItem(@RequestParam Integer tableID){
         Integer orderID = getOrderingID(tableID);
         List<OrderItem> orderItem = adminOrderService.getOrderItem(orderID);
         return MyResult.success(orderItem);
+    }
+
+    /**
+     * @Description 将订单置为结束
+     * @param tableID 桌号
+     * @return MyResult
+     */
+    @GetMapping("/orderSettle")
+    public MyResult orderSettle(@RequestParam Integer tableID){
+        Integer orderID = getOrderingID(tableID);
+        adminOrderService.orderSettle(orderID);
+        return com.freecoder.response.MyResult.success("success","操作完成");
+    }
+
+    /**
+     * @Description 将桌置为空闲
+     * @param tableID 桌号
+     * @return
+     */
+    @GetMapping("/tableSettle")
+    public MyResult tableSettle(@RequestParam Integer tableID){
+        adminOrderService.tableSettle(tableID);
+        return com.freecoder.response.MyResult.success("success","操作完成");
     }
 }

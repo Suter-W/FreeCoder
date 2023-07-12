@@ -26,7 +26,7 @@ public class Message {
     private String msgContent;
 
     @NotNull
-    @Column(name = "msgcime", nullable = false)
+    @Column(name = "msgtime", nullable = false)
     private Instant msgTime;
 
     @Size(max = 7)

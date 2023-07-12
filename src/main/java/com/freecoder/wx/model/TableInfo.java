@@ -13,12 +13,12 @@ import lombok.Setter;
 @Table(name = "table_info")
 public class TableInfo {
     @Id
-    @Column(name = "tableid", nullable = false)
+    @Column(name = "tableID", nullable = false)
     private Integer id;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "restid", nullable = false)
+    @JoinColumn(name = "restID", nullable = false)
     private Restaurant restID;
 
     @Size(max = 10)

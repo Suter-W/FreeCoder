@@ -1,5 +1,5 @@
-//package com.freecoder.controller;
-//
+package com.freecoder.web.controller;
+
 //import org.junit.jupiter.api.Assertions;
 //import org.junit.jupiter.api.Test;
 //
@@ -10,11 +10,12 @@
 //import java.net.URL;
 //import java.net.URLEncoder;
 //
-//import static com.freecoder.utils.RSAEncrypt.encrypt;
-//import static com.freecoder.utils.RSAEncrypt.loadKey;
-//
-//class AbandonedAuthControllerTest {
-//
+//import static com.freecoder.utils.RSAEncrypt.*;
+
+//本测试是前期使用http请求测试login方法，由于maven打包无法通过测试，已经弃用，仅用于参考！！！
+
+class AbandonedAuthControllerTest {
+
 //    @Test
 //    void loginTest() throws Exception {
 //        String restID = "0000001";
@@ -44,7 +45,7 @@
 //
 //        // 处理服务器的响应
 //        int statusCode = connection.getResponseCode();
-//        System.out.println("Result Code: " + statusCode);
+//        System.out.println("Response Code: " + statusCode);
 //
 //        BufferedReader reader;
 //        if (statusCode == HttpURLConnection.HTTP_OK) {
@@ -59,8 +60,8 @@
 //            response.append(line);
 //        }
 //        reader.close();
-//        System.out.println("Result Body: " + response.toString());
+//        System.out.println("Response Body: " + response.toString());
 //        Assertions.assertTrue(statusCode==200);
 //    }
-//
-//}
+
+}

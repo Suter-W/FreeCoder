@@ -16,6 +16,4 @@ public interface AuthMapper {
     @Select("select * from restaurants where restID = #{restID} and password = #{password};")
     Restaurant getByRestIDAndPassword(Restaurant restaurant);
 
-    @Insert("insert into restaurants (restID, password, RestName, RestAddr, RestPhoneNum) values (#{restID},#{password},#{RestName},#{RestAddr},#{RestPhoneNum})")
-    boolean insertUser(Restaurant restaurant);
 }

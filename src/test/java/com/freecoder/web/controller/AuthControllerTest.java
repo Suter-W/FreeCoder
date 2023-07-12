@@ -1,5 +1,4 @@
-package com.freecoder.controller;
-
+package com.freecoder.web.controller;
 
 import com.freecoder.web.model.Restaurant;
 import com.freecoder.web.service.AuthService;
@@ -43,4 +42,5 @@ public class AuthControllerTest {
 
         assertNotNull(authService.login(restaurant));
     }
+
 }

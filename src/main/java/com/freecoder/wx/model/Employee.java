@@ -12,7 +12,7 @@ import lombok.*;
 
 @Data
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class Employee {

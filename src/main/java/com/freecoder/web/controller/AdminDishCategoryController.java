@@ -26,15 +26,14 @@ public class AdminDishCategoryController {
     @GetMapping("/getDishCategoryInfo")
     public MyResult getDishCategoryInfo(@RequestParam String restID){
         List<DishCategory> dcList = adminDishCategoryService.getDishCategoryInfo(restID);
-        return MyResult.success(dcList);
+        return com.freecoder.response.MyResult.success(dcList);
     }
-
 
     @PostMapping("/addDishCategory")
     public MyResult addDishCategory(@RequestBody DishCategory dishCategory){
 
         adminDishCategoryService.addDishCategory(dishCategory);
-        return MyResult.success();
+        return com.freecoder.response.MyResult.success("success","添加成功");
     }
 
     /**
@@ -43,13 +42,13 @@ public class AdminDishCategoryController {
      * @param IDPresentList     前端传入的修改后的dcID
      * @Date 10:25 2023/7/5
      * @Param [java.lang.String, java.util.List<java.lang.Integer>]
-     * @return com.freecoder.web.model.Result
+     * @return com.freecoder.response.MyResult
      **/
     @PostMapping("/sortDishCategory")
     public MyResult sortDishCategory(@RequestParam String restID, @RequestBody List<Integer> IDPresentList){
 
         adminDishCategoryService.sortDishCategory(restID,IDPresentList);
-        return MyResult.success("顺序更换成功");
+        return com.freecoder.response.MyResult.success("success","顺序更换成功");
     }
 
 
@@ -58,14 +57,21 @@ public class AdminDishCategoryController {
      * @param dcID  主键分类ID
      * @Date 14:53 2023/7/5
      * @Param [java.lang.Integer]
-     * @return com.freecoder.web.model.Result
+     * @return com.freecoder.response.MyResult
      **/
     @DeleteMapping("/deleteDishCategory")
     public MyResult deleteDishCategory(@RequestParam Integer dcID){
 
         adminDishCategoryService.deleteDishCategory(dcID);
-        return MyResult.success("成功删除了该分类");
+        return MyResult.success("success","成功删除了该分类");
 
     }
+    @GetMapping("/searchDishByid")
+    public MyResult searchDishByid(@RequestParam Integer dcID){
+        DishCategory dishCategory = adminDishCategoryService.searchDishByid(dcID);
+        return com.freecoder.response.MyResult.success(dishCategory);
+    }
+
+
 
 }

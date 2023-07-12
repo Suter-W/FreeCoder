@@ -14,5 +14,4 @@ public interface AuthService {
     
     Restaurant login(Restaurant restaurant);
 
-    boolean insert(Restaurant restaurant);
 }

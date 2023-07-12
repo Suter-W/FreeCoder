@@ -52,4 +52,5 @@ public class AdminDishCategoryServiceImpl implements AdminDishCategoryService {
         return deleteDishCategoryStatus;
     }
 
+    public DishCategory searchDishByid(Integer dcID){return adminDishCategoryMapper.searchDishByid(dcID);}
 }

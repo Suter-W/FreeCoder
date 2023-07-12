@@ -5,8 +5,6 @@ import com.freecoder.response.MyResult;
 import com.freecoder.web.model.Restaurant;
 import com.freecoder.web.service.AuthService;
 import com.freecoder.utils.JwtUtils;
-import com.freecoder.utils.Md5Utils;
-import com.freecoder.utils.RSAEncrypt;
 import jakarta.annotation.security.PermitAll;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -17,6 +15,8 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.freecoder.utils.RSAEncrypt.*;
 
 @RestController
 @Slf4j
@@ -30,7 +30,7 @@ public class AuthController {
 
 
 //    @PostMapping("/login")
-//    public Result login(@RequestBody Restaurant user){
+//    public MyResult login(@RequestBody Restaurant user){
 //        log.info("餐厅管理员登录：{}",user);
 //        Restaurant e = authService.login(user);
 //
@@ -43,10 +43,10 @@ public class AuthController {
 //
 //            clamis.put("password",password);
 //            String jwt = JwtUtils.generateJwt(clamis);
-//            return Result.success(jwt);
+//            return MyResult.success(jwt);
 //        }
 //
-//        return Result.eraror("使用了错误的餐厅ID或密码");
+//        return MyResult.eraror("使用了错误的餐厅ID或密码");
 //    }
 
     @PostMapping("/login")
@@ -59,10 +59,10 @@ public class AuthController {
 //
 
         //RSA解密
-        String key = RSAEncrypt.loadKey( "docs/id_rsa");
+        String key = loadKey( "docs/id_rsa");
         ciphertext = URLDecoder.decode(ciphertext, "UTF-8");
         System.out.println("body: " + ciphertext);
-        String messageDe = RSAEncrypt.decrypt(ciphertext, key);
+        String messageDe = decrypt(ciphertext, key);
         System.out.println("还原后的字符串为:" + messageDe);
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -76,15 +76,15 @@ public class AuthController {
             e.printStackTrace();
         }
 
-        return MyResult.error("请求参数不符合要求");
+        return com.freecoder.response.MyResult.error("error","请求参数不符合要求");
 
     }
     /**
      * @Description 用于实现登录功能，以及采用了过滤器的功能，能够拦截未登录（没有获得token令牌）的用户，增强安全性
      * @param restaurant
      * @Date 16:44 2023/7/1
-     * @Param [com.freecoder.web.model.Restaurant]
-     * @return com.freecoder.web.model.Result
+     * @Param [com.freecoder.model.Restaurant]
+     * @return com.freecoder.response.MyResult
      **/
     public MyResult loginJWT(@RequestBody Restaurant restaurant) throws Exception {
         log.info("餐厅管理员登录：{}", restaurant);
@@ -100,25 +100,11 @@ public class AuthController {
 
             clamis.put("password",password);
             String jwt = JwtUtils.generateWebJwt(clamis);
-            return MyResult.success(jwt);
+            return MyResult.success("success",jwt);
         }
 
-        return MyResult.error("使用了错误的餐厅ID或密码");
+        return com.freecoder.response.MyResult.error("error","使用了错误的餐厅ID或密码");
     }
 
-    /**
-     * 新增用户(注册)
-     *
-     * @param restaurant
-     * @return
-     */
-    @PostMapping("addUser")
-    public String addUser(Restaurant restaurant){
-        String password = Md5Utils.code(restaurant.getPassword());
-        System.out.println(password);
-        restaurant.setPassword(password);
-        authService.insert(restaurant);
-        return "seccuss";
-    }
 
 }

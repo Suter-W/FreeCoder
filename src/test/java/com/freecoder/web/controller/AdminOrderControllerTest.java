@@ -1,4 +1,4 @@
-package com.freecoder.controller;
+package com.freecoder.web.controller;
 
 import com.freecoder.web.model.Table;
 import com.freecoder.web.service.AdminOrderService;
@@ -118,7 +118,7 @@ class AdminOrderControllerTest {
     @Transactional
     void editTable() throws Exception {
         Table table = new Table();
-        table.setTableID(5);
+        table.setTableID(20);
         table.setTableName("20");
         table.setTableLimit(6);
         table.setTableType("大厅");
@@ -150,7 +150,7 @@ class AdminOrderControllerTest {
 
     @Test
     void getTableInfo() throws Exception {
-        assertNotNull(adminOrderService.getTableInfo(3));
+        assertNotNull(adminOrderService.getTableInfo(20));
     }
 
     /**
@@ -215,7 +215,7 @@ class AdminOrderControllerTest {
      **/
     @Test
     void getOrderInfo() throws Exception {
-        assertNotNull(adminOrderService.getOrderInfo(2));
+        assertNotNull(adminOrderService.getOrderInfo(20));
     }
 
     /**
@@ -244,5 +244,20 @@ class AdminOrderControllerTest {
     @Test
     void getOrderItem() throws Exception {
         assertNotNull(adminOrderService.getOrderItem(1));
+    }
+
+    @Test
+    void getOrderingID() throws Exception{
+        assertNotNull(adminOrderService.getOrderingID(13));
+    }
+
+    @Test
+    void orderSettle() throws Exception{
+        assertTrue(adminOrderService.orderSettle(1));
+    }
+
+    @Test
+    void tableSettle() throws Exception{
+        assertTrue(adminOrderService.tableSettle(1));
     }
 }

@@ -1,4 +1,4 @@
-package com.freecoder.controller;
+package com.freecoder.web.controller;
 
 import com.freecoder.web.service.AdminBillService;
 import org.junit.jupiter.api.Test;
@@ -21,5 +21,15 @@ class AdminBillControllerTest {
     @Test
     void getHistoricalOrderDetails() {
         assertNotNull(adminBillService.getHistoricalOrderDetails("0000001",3));
+    }
+
+    @Test
+    void getOrderInfoByid(){
+        assertNotNull(adminBillService.getOrderInfoByid(1));
+    }
+
+    @Test
+    void getOrderItemByid(){
+        assertNotNull(adminBillService.getOrderItemByid(1));
     }
 }

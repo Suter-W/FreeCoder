@@ -17,8 +17,4 @@ public class AuthServiceImpl implements AuthService {
         return authMapper.getByRestIDAndPassword(restaurant);
     }
 
-    public boolean insert(Restaurant restaurant){
-        boolean insertStatus = authMapper.insertUser(restaurant);
-        return insertStatus;
-    }
 }

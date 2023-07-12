@@ -1,4 +1,4 @@
-package com.freecoder.controller;
+package com.freecoder.web.controller;
 
 import com.freecoder.web.model.Dish;
 import com.freecoder.web.service.AdminDishService;
@@ -89,7 +89,6 @@ class AdminDishControllerTest {
         dish.setDishImage("http://dummyimage.com/120x240");
         dish.setVipPrice("30");
         dish.setDcID(6);
-
         assertTrue(adminDishService.addDishInfo(dish));
 
     }

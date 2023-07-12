@@ -22,34 +22,35 @@ public class AdminDishController {
      * 获取菜品信息页面的全部数据
      *
      * @param restID 餐厅号
-     * @return Result
+     * @return MyResult
      *
      */
     @GetMapping("/getDishInfo")
     public MyResult getDishInfo(@RequestParam String restID, @RequestParam String dishName) {
         List<Dish> dishList = adminDishService.getDishInfo(restID,dishName);
 //        PageBean pageBean = adminDishService.getDishInfo(restID,page,dishCategory,dishName);
-        return MyResult.success(dishList);
+        return com.freecoder.response.MyResult.success(dishList);
     }
 
     /**
      * 插入dish_info表项，即添加菜品
      *
      * @param dish  菜品实体类
-     * @return Result
+     * @return MyResult
      *
      */
     @PostMapping("/addDishInfo")
     public MyResult addDishInfo(@RequestBody Dish dish) {
+        System.out.println(dish);
         adminDishService.addDishInfo(dish);
-        return MyResult.success();
+        return com.freecoder.response.MyResult.success("success","添加成功");
     }
 
     /**
      * 更改dish_info表，即更新菜品信息功能
      *
      * @param dish  菜品实体类
-     * @return Result
+     * @return MyResult
      *
      */
 
@@ -57,20 +58,20 @@ public class AdminDishController {
     public MyResult updateDishInfo(@RequestBody Dish dish) {
 
         adminDishService.updateDishInfo(dish);
-        return MyResult.success();
+        return com.freecoder.response.MyResult.success("success","更新成功");
     }
 
     /**
      * 删除dish_info表中内容，即删除菜品
      *
      * @param dishID  菜品号
-     * @return Result
+     * @return MyResult
      *
      */
 
     @DeleteMapping("/deleteDishInfo")
     public MyResult deleteDishInfo(@RequestParam Integer dishID) {
         adminDishService.deleteDishInfo(dishID);
-        return MyResult.success();
+        return com.freecoder.response.MyResult.success("success","删除成功");
     }
 }
