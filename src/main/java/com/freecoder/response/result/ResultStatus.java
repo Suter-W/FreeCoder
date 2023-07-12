@@ -7,8 +7,7 @@ import org.springframework.http.HttpStatus;
 @ToString
 @Getter
 public enum ResultStatus {
-
-    SUCCESS(HttpStatus.OK, "00000", "OK"),
+    OK(HttpStatus.OK, "00000", "OK"),
     CREATED(HttpStatus.CREATED, "00000", "Created"),
     NO_CONTENT(HttpStatus.NO_CONTENT, "00000", "No Content"),
     ACCEPTED(HttpStatus.ACCEPTED, "00000", "Accepted"),
@@ -16,7 +15,8 @@ public enum ResultStatus {
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "B0000", "Internal Server Error"),
     INVALID_TOKEN(HttpStatus.BAD_REQUEST, "A0001", "Invalid Token"),
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "A0002", "Unauthorized"),
-    NOT_FOUND(HttpStatus.NOT_FOUND,"A0003","Not Found")
+    NOT_FOUND(HttpStatus.NOT_FOUND,"A0003","Not Found"),
+    FORBIDDEN(HttpStatus.FORBIDDEN,"A0004","Forbidden Operation")
     ;
 
     /** 返回的HTTP状态码,  符合http请求 */
@@ -30,5 +30,9 @@ public enum ResultStatus {
         this.httpStatus = httpStatus;
         this.code = code;
         this.message = message;
+    }
+
+    public HttpStatus getHttpStatus() {
+        return this.httpStatus;
     }
 }

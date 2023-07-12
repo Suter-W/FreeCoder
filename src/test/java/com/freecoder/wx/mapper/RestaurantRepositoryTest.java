@@ -1,6 +1,6 @@
 package com.freecoder.wx.mapper;
 
-import com.freecoder.wx.model.Customer;
+import com.freecoder.web.model.Restaurant;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,13 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-public class CustomerJpaRepositoryTest {
+class RestaurantRepositoryTest {
     @Autowired
-    CustomerJpaRepository repository;
+    RestaurantRepository repository;
 
     @Test
-    void saveCustomerTest() {
-        List<Customer> all = repository.findAll();
-        System.out.println(all.size());
+    void FindRestaurantTest() {
+        List<Restaurant> all = repository.findAll();
+        System.out.println(all.get(0).toString());
     }
 }

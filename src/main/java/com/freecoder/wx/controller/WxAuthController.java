@@ -28,9 +28,4 @@ public class WxAuthController {
             return Result.failure(ResultStatus.INTERNAL_SERVER_ERROR,"登录失败");
         }
     }
-
-    @GetMapping("/logins")
-    public String logins(){
-        return "logins 被调用";
-    }
 }

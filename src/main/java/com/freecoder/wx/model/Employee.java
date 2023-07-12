@@ -1,5 +1,6 @@
 package com.freecoder.wx.model;
 
+import com.freecoder.web.model.Restaurant;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,17 +15,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class Customer {
-
-
-    public Customer(@NonNull String openId, String sessionKey, String nickName, String avatarUrl, boolean isVip) {
-        this.openId = openId;
-        this.sessionKey = sessionKey;
-        this.nickName = nickName;
-        this.avatarUrl = avatarUrl;
-        this.isVip = isVip;
-    }
-
+public class Employee {
     /**
      * 自定义id,用于数据查询
      */
@@ -46,6 +37,25 @@ public class Customer {
 
     private String avatarUrl;
 
-    private Boolean isVip;
+    private String phoneNum;
+
+    private EmployeeType type;
+
+    @ManyToOne
+    @JoinColumn(name = "rest_id")
+    private Restaurant restaurant;
 }
+
+enum EmployeeType {
+    COOK("cook"),
+    WAITER("waiter");
+
+    private String jobType;
+
+    EmployeeType(String jobType){
+        this.jobType = jobType;
+    }
+}
+
+
 

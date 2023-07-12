@@ -49,7 +49,7 @@ public class Result<T> {
 
     public static <T> Result<T> success(ResultStatus resultStatus, String msg, T data) {
         if (resultStatus == null){
-            return new Result<T>(ResultStatus.SUCCESS, msg, data);
+            return new Result<T>(ResultStatus.OK, msg, data);
         }
         return new Result<T>(resultStatus, msg, data);
     }

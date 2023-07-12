@@ -60,7 +60,7 @@ public class WxAuthServiceImpl implements WxAuthService {
                             String errmsg = jsonNode.get("errmsg").asText();
                             System.out.println("errcode: " + errcode);
                             System.out.println("errmsg: " + errmsg);
-                            return Mono.just(Result.failure(ResultStatus.BAD_REQUEST,errmsg));
+                            return Mono.just(Result.failure(ResultStatus.BAD_REQUEST, errmsg));
                         } else if (jsonNode.has("session_key") && jsonNode.has("openid")) {
                             // 获取到了openid 和 session_key
                             String sessionKey = jsonNode.get("session_key").asText();
@@ -68,20 +68,29 @@ public class WxAuthServiceImpl implements WxAuthService {
                             System.out.println("session_key: " + sessionKey);
                             System.out.println("openid: " + openId);
 
-                            if (!jpaRepository.existsByOpenId(openId)){
-                                register(new Customer(openId));
+                            if (!jpaRepository.existsByOpenId(openId)) {
+                                register(
+                                        new Customer(openId, sessionKey,
+                                                "微信用户",
+                                                "https://img0.baidu.com/it/u=3070762535,1739046062&fm=253&fmt=auto&app=138&f=JPEG?w=222&h=220\n",
+                                                false));
                             }
 
-                            Map<String, Object> clamis = new HashMap<>();
-                            clamis.put("openid", openId);
+                            Customer customer = jpaRepository.findByOpenId(openId).get();
 
+                            Map<String, Object> clamis = new HashMap<>();
+                            clamis.put("id", customer.getId());
                             String jwt = JwtUtils.generateWeChatJwt(clamis);
-                            return Mono.just(Result.success(jwt));
+                            System.out.println("token:" + jwt);
+                            HashMap<String, Object> map = new HashMap();
+                            map.put("token", jwt);
+                            map.put("customer", customer);
+                            return Mono.just(Result.success(map));
 
                             // 进一步处理其他逻辑...
                         } else {
                             // 其他未知情况或错误处理
-                            return Mono.just(Result.failure(ResultStatus.BAD_REQUEST,"Unknown JSON structure"));
+                            return Mono.just(Result.failure(ResultStatus.BAD_REQUEST, "Unknown JSON structure"));
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -92,10 +101,9 @@ public class WxAuthServiceImpl implements WxAuthService {
     }
 
 
-
     @Override
     public Result register(Customer customer) {
-        return Result.success( jpaRepository.save(customer));
+        return Result.success(jpaRepository.save(customer));
     }
 
     @Override
