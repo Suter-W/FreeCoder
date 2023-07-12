@@ -19,11 +19,11 @@ public enum ResultStatus {
     FORBIDDEN(HttpStatus.FORBIDDEN,"A0004","Forbidden Operation")
     ;
 
-    /** ·µ»ØµÄHTTP×´Ì¬Âë,  ·ûºÏhttpÇëÇó */
+    /** è¿”å›çš„HTTPçŠ¶æ€ç ,  ç¬¦åˆhttpè¯·æ±‚ */
     private HttpStatus httpStatus;
-    /** ÒµÎñÒì³£Âë */
+    /** ä¸šåŠ¡å¼‚å¸¸ç  */
     private String code;
-    /** ÒµÎñÒì³£ĞÅÏ¢ÃèÊö */
+    /** ä¸šåŠ¡å¼‚å¸¸ä¿¡æ¯æè¿° */
     private String message;
 
     ResultStatus(HttpStatus httpStatus, String code, String message) {
