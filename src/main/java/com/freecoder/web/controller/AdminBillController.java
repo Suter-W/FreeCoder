@@ -39,7 +39,7 @@ public class AdminBillController {
     @GetMapping("/getHistoricalOrders")
     public MyResult getHistoricalOrders(@RequestParam String restID){
         List<Order> orderList = adminBillService.getHistoricalOrders(restID);
-        return com.freecoder.response.MyResult.success(orderList);
+        return MyResult.success(orderList);
     }
 
     /**
@@ -53,7 +53,7 @@ public class AdminBillController {
     @GetMapping("/getHistoricalOrderDetails")
     public MyResult getHistoricalOrderDetails(@RequestParam String restID, @RequestParam Integer orderID){
         List<OrderItem> orderItemList = adminBillService.getHistoricalOrderDetails(restID,orderID);
-        return com.freecoder.response.MyResult.success(orderItemList);
+        return MyResult.success(orderItemList);
     }
 
     /**

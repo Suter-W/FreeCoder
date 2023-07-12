@@ -16,7 +16,7 @@ public class AdminDishServiceImpl implements AdminDishService {
     private AdminDishMapper adminDishMapper;
 
     @Override
-    public List<Dish> getDishInfo(String restID,String dishName){return adminDishMapper.getDishInfo(restID,dishName);}
+    public List<Dish> getDishInfo(String restID, String dishName){return adminDishMapper.getDishInfo(restID,dishName);}
 
     public boolean addDishInfo(Dish dish){
         boolean addDishInfoStatus = adminDishMapper.addDishInfo(dish);

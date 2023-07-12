@@ -1,19 +1,13 @@
 package com.freecoder.web.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 public class Dish {
-
-    @Id
     private String restID; //餐厅ID
 
     private String dishImage; //菜品图片
