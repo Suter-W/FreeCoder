@@ -3,14 +3,18 @@ package com.freecoder.wx.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "table_info")
 public class TableInfo {
+    public TableInfo(Integer id) {
+        this.id = id;
+    }
+
     @Id
     @Column(name = "tableID", nullable = false)
     private Integer id;

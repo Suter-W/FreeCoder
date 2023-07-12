@@ -11,8 +11,8 @@ import lombok.*;
 
 @Data
 @Entity
-@NoArgsConstructor(force = true)
 @AllArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 public class Customer {
 

@@ -3,17 +3,19 @@ package com.freecoder.wx.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 
-@Getter
-@Setter
+@Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "order_info")
 public class OrderInfo {
     @Id
@@ -33,7 +35,7 @@ public class OrderInfo {
 
     @Size(max = 10)
     @NotNull
-    @Column(name = "costumerid", nullable = false, length = 10)
+    @Column(name = "costumerid", nullable = false)
     private String costumerid;
 
     @NotNull
@@ -58,5 +60,4 @@ public class OrderInfo {
     @Size(max = 255)
     @Column(name = "orderremark")
     private String orderRemark;
-
 }

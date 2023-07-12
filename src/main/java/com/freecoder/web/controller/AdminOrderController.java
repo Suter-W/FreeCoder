@@ -159,14 +159,14 @@ public class AdminOrderController {
         return com.freecoder.response.MyResult.success("success","操作完成");
     }
 
-    @PostMapping("/addOrderInfo")
+//    @PostMapping("/addOrderInfo")
     public MyResult addOrderInfo(@RequestBody Order order){
         System.out.println("shujuleiej1"+order);
         adminOrderService.addOrderInfo(order);
         return MyResult.success("success","添加成功");
     }
 
-    @GetMapping("/getOrderID")
+//    @GetMapping("/getOrderID")
     public Integer getNewOrderID(@RequestParam String restID){
         Integer orderID = adminOrderService.getNewOrderID(restID);
         return  orderID;

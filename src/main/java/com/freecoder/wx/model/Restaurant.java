@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -14,6 +15,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name="restaurants")
 public class Restaurant {
+    public Restaurant(String restID) {
+        this.restID = restID;
+    }
+
     @Id
     private String restID;
 
