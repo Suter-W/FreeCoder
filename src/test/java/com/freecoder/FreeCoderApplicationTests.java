@@ -1,18 +1,8 @@
 package com.freecoder;
 
-import com.freecoder.controller.AdminDishCategoryController;
-import com.freecoder.model.Result;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @SpringBootTest
 @Slf4j

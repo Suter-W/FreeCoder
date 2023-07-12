@@ -12,7 +12,7 @@ import java.net.http.HttpResponse;
 public class TestRequest {
     public static void testRequest(String host, String url, String auth, String requestBody) {
 //        HttpResponse<String> response = (HttpResponse<String>) Unirest.post(host+url)
-//                .header("User-Agent", "Apifox/1.0.0 (https://apifox.com)")
+//                .header("Restaurant-Agent", "Apifox/1.0.0 (https://apifox.com)")
 //                .header("Content-Type", "application/json")
 //                .header("Authorization", auth)
 //                .header("Accept", "*/*")
