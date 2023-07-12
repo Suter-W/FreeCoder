@@ -21,4 +21,17 @@
     <delete id="deleteTable">
         delete from table_Info where tableID = #{tableID}
     </delete>
+
+    <insert id="addOrderInfo">
+        insert into order_info (restID, tableID, costumerid, ordertime, orderUse, orderPrice, isVIP, orderStatus, orderRemark) VALUES (#{restID},
+        #{tableID},#{costumerID},#{orderTime},#{orderUse},#{orderPrice},#{isVIP},3,#{orderRemark});
+    </insert>
+
+    <insert id="addNewOrderItem">
+        insert into order_item (orderID,dishName,quantity,unitPrice,orderItemPrice,restID,dishID) VALUES
+        <foreach collection="items" item="item" separator=",">
+            (#{orderID},#{item.dishName},#{item.quantity},#{item.unitPrice},#{item.orderItemPrice},#{restID},#{item.dishID})
+        </foreach>
+    </insert>
+
 </mapper>
