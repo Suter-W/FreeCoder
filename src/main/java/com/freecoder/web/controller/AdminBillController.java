@@ -72,4 +72,14 @@ public class AdminBillController {
         PageBean pageBean = adminBillService.getHistoricalBill(page,restID, begin, end);
         return Result.success(pageBean);
     }
+    @GetMapping("/getOrderInfoByid")
+    public Result getOrderInfoByid(@RequestParam Integer orderID){
+        Order order = adminBillService.getOrderInfoByid(orderID);
+        return Result.success(order);
+    }
+    @GetMapping("/getOrderItemByid")
+    public Result getOrderItemByid(@RequestParam Integer orderID){
+        List<OrderItem> itemList = adminBillService.getOrderItemByid(orderID);
+        return Result.success(itemList);
+    }
 }

@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.freecoder.web.mapper.AdminBillMapper">
-    <select id="getHistoricalBill">
+    <select id="getHistoricalBill" resultType="com.freecoder.web.model.Order">
         SELECT *
         FROM order_info
         WHERE restID = #{restID}

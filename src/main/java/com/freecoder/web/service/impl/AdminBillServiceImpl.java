@@ -41,4 +41,8 @@ public class AdminBillServiceImpl implements AdminBillService {
         PageBean pageBean = new PageBean(p.getTotal(),p.getResult());
         return pageBean;
     }
+
+    public Order getOrderInfoByid(Integer orderID){return adminBillMapper.getOrderInfoByid(orderID);};
+
+    public List<OrderItem> getOrderItemByid(Integer orderID){return adminBillMapper.getOrderItemByid(orderID);};
 }
