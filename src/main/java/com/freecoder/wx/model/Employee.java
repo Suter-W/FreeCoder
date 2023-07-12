@@ -1,6 +1,5 @@
 package com.freecoder.wx.model;
 
-import com.freecoder.web.model.Restaurant;
 import jakarta.persistence.*;
 import lombok.*;
 

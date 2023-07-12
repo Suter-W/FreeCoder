@@ -51,12 +51,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public MyResult login(@RequestBody String ciphertext) throws Exception {
-//        System.out.println("body: " + ciphertext);/
-//        System.out.println(ciphertext.equals("{\r\n    \"restID\":\"0000001\",\r\n    \"password\":\"123456789\"\r\n}"));
-//        String pubKey = loadKey( "docs/id_rsa.pub");
-//        ciphertext = encrypt(ciphertext,pubKey);
-//        System.out.println("加密后的字符串为："+ ciphertext);
-//
 
         //RSA解密
         String key = loadKey( "docs/id_rsa");

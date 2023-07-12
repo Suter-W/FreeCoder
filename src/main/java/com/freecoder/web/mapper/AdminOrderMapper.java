@@ -3,11 +3,14 @@ package com.freecoder.web.mapper;
 import com.freecoder.web.model.Order;
 import com.freecoder.web.model.OrderItem;
 import com.freecoder.web.model.Table;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.aspectj.weaver.ast.Or;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface AdminOrderMapper {
@@ -41,4 +44,12 @@ public interface AdminOrderMapper {
 
     @Update("update table_info set tableStatus = 0,tableUse = 0 where tableID = #{tableID}")
     boolean tableSettle(Integer tableID);
+
+    boolean addOrderInfo(Order order);
+
+    @Select("select orderID from order_info where restID = #{restID} order by orderID DESC LIMIT 1")
+    Integer getNewOrderID(String restID);
+
+
+    boolean addNewOrderItem(List<Map<String, Object>> items,String restID,Integer orderID);
 }
