@@ -37,8 +37,8 @@ public interface AdminOrderMapper {
     Integer getOrderingID(Integer tableID);
 
     @Update("update order_info set orderStatus = 0 where orderID = #{orderID}")
-    void orderSettle(Integer orderID);
+    boolean orderSettle(Integer orderID);
 
     @Update("update table_info set tableStatus = 0,tableUse = 0 where tableID = #{tableID}")
-    void tableSettle(Integer tableID);
+    boolean tableSettle(Integer tableID);
 }

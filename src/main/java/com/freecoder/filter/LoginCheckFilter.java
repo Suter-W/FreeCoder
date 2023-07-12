@@ -1,7 +1,7 @@
 package com.freecoder.filter;
 
 import com.alibaba.fastjson.JSONObject;
-import com.freecoder.response.Result;
+import com.freecoder.response.MyResult;
 import com.freecoder.utils.JwtUtils;
 
 
@@ -59,14 +59,14 @@ public class LoginCheckFilter implements Filter {
         // 6. 判断令牌是否存在，如果不存在，返回错误结果（未登录）
         if (!StringUtils.hasLength(token) || !token.startsWith("Bearer ")) {
             log.info("请求头token为空，返回未登录的信息");
-            Result error;
+            MyResult error;
             if (!url.contains("/wxapp/")) {
-//                error = Result.error("NOT_LOGIN", "redirect:http://localhost:8080/web/login");
+//                error = MyResult.error("NOT_LOGIN", "redirect:http://localhost:8080/web/login");
 //                res.getWriter().write("HTTP/1.1 302 Found\nLocation: http://localhost:8080/web/login");
                 res.sendRedirect("http://localhost:8080/web/login");
                 return;
             } else {
-                error = Result.error("NOT_LOGIN");
+                error = com.freecoder.response.MyResult.error("NOT_LOGIN");
                 String notLogin = JSONObject.toJSONString(error);
                 res.setContentType("application/json;charset=UTF-8");
                 res.getWriter().write(notLogin);
@@ -92,7 +92,7 @@ public class LoginCheckFilter implements Filter {
         } catch (Exception e) {
             e.printStackTrace();
             log.info("解析令牌失败，返回未登录的信息");
-            Result error = Result.error("NOT_LOGIN");
+            MyResult error = com.freecoder.response.MyResult.error("NOT_LOGIN");
             String notLogin = JSONObject.toJSONString(error);
             res.setContentType("application/json;charset=UTF-8");
             res.getWriter().write(notLogin);

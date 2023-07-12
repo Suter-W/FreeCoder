@@ -22,4 +22,14 @@ class AdminBillControllerTest {
     void getHistoricalOrderDetails() {
         assertNotNull(adminBillService.getHistoricalOrderDetails("0000001",3));
     }
+
+    @Test
+    void getOrderInfoByid(){
+        assertNotNull(adminBillService.getOrderInfoByid(1));
+    }
+
+    @Test
+    void getOrderItemByid(){
+        assertNotNull(adminBillService.getOrderItemByid(1));
+    }
 }

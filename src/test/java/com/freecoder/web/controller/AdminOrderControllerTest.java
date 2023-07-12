@@ -245,4 +245,19 @@ class AdminOrderControllerTest {
     void getOrderItem() throws Exception {
         assertNotNull(adminOrderService.getOrderItem(1));
     }
+
+    @Test
+    void getOrderingID() throws Exception{
+        assertNotNull(adminOrderService.getOrderingID(13));
+    }
+
+    @Test
+    void orderSettle() throws Exception{
+        assertTrue(adminOrderService.orderSettle(1));
+    }
+
+    @Test
+    void tableSettle() throws Exception{
+        assertTrue(adminOrderService.tableSettle(1));
+    }
 }

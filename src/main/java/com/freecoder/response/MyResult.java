@@ -3,15 +3,15 @@ package com.freecoder.response;
 /**
  * 统一响应结果封装类
  */
-public class Result {
+public class MyResult {
     private Integer code;//1 成功 , 0 失败
     private String msg; //提示信息
     private Object data; //数据 data
 
-    public Result() {
+    public MyResult() {
     }
 
-    public Result(Integer code, String msg, Object data) {
+    public MyResult(Integer code, String msg, Object data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
@@ -41,36 +41,36 @@ public class Result {
         this.data = data;
     }
 
-    public static Result success() {
-        return new Result(1, "success", null);
+    public static MyResult success() {
+        return new MyResult(1, "success", null);
     }
 
-    public static Result success(String msg) {
-        return new Result(1, msg, null);
+    public static MyResult success(String msg) {
+        return new MyResult(1, msg, null);
     }
-    public static Result success(Object data) {
-        return new Result(1, "success", data);
-    }
-
-    public static Result success(String msg, Object data) {
-        return new Result(1, msg, data);
+    public static MyResult success(Object data) {
+        return new MyResult(1, "success", data);
     }
 
-    public static Result error(String msg) {
-        return new Result(0, msg, null);
+    public static MyResult success(String msg, Object data) {
+        return new MyResult(1, msg, data);
     }
 
-    public static Result error(Object data) {
-        return new Result(0, "error", data);
+    public static MyResult error(String msg) {
+        return new MyResult(0, msg, null);
     }
 
-    public static Result error(String msg, Object data) {
-        return new Result(0, msg, data);
+    public static MyResult error(Object data) {
+        return new MyResult(0, "error", data);
+    }
+
+    public static MyResult error(String msg, Object data) {
+        return new MyResult(0, msg, data);
     }
 
     @Override
     public String toString() {
-        return "Result{" +
+        return "MyResult{" +
                 "code=" + code +
                 ", msg='" + msg + '\'' +
                 ", data=" + data +

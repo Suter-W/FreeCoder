@@ -1,6 +1,6 @@
 package com.freecoder.web.controller;
 
-import com.freecoder.response.Result;
+import com.freecoder.response.MyResult;
 import com.freecoder.utils.JwtUtils;
 //import com.freecoder.utils.JwtWeChatUtils;
 import jakarta.annotation.security.PermitAll;
@@ -40,7 +40,7 @@ public class WeChatAuthController {
     private WebClient webClient = WebClient.create();
 
     @GetMapping("/wechatLogin")
-    public Result getJsCode(@RequestParam String jsCode){
+    public MyResult getJsCode(@RequestParam String jsCode){
         String appid = "wx2c83501229e9d8ed";
         String secret = "bc57fe0a79c8782a34c2cf9c368d9be7";
         String grantType = "authorization_code";
@@ -50,7 +50,7 @@ public class WeChatAuthController {
 
 
         // 发送HTTP GET请求并获取响应
-        Mono<Result> response = webClient.get()
+        Mono<MyResult> response = webClient.get()
                 .uri(url)
                 .retrieve()
                 .bodyToMono(String.class)
@@ -69,7 +69,7 @@ public class WeChatAuthController {
                             System.out.println("errcode: " + errcode);
                             System.out.println("errmsg: " + errmsg);
 
-                            return Mono.just(Result.error("error","js_code失效"));
+                            return Mono.just(com.freecoder.response.MyResult.error("error","js_code失效"));
                             // 进一步处理其他逻辑...
                         } else if (jsonNode.has("session_key") && jsonNode.has("openid")) {
                             // 第二种情况，包含 param1 和 param2 参数
@@ -82,7 +82,7 @@ public class WeChatAuthController {
                             clamis.put("openid",openId);
 
                             String jwt = JwtUtils.generateWeChatJwt(clamis);
-                            return Mono.just(Result.success(jwt));
+                            return Mono.just(com.freecoder.response.MyResult.success(jwt));
 
                             // 进一步处理其他逻辑...
                         } else {
@@ -92,7 +92,7 @@ public class WeChatAuthController {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    return Mono.just(Result.error("error","token有误"));
+                    return Mono.just(MyResult.error("error","token有误"));
                 });
         return response.block();
     }
