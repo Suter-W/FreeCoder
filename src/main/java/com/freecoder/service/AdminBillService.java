@@ -16,4 +16,8 @@ public interface AdminBillService {
     List<OrderItem> getHistoricalOrderDetails(String restID, Integer orderID);
 
     PageBean getHistoricalBill(Integer page, String restID,LocalDate begin, LocalDate end);
+
+    Order getOrderInfoByid(Integer orderID);
+
+    List<OrderItem> getOrderItemByid(Integer orderID);
 }
