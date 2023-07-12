@@ -28,4 +28,15 @@ public class WxAuthController {
             return Result.failure(ResultStatus.INTERNAL_SERVER_ERROR,"登录失败");
         }
     }
+
+    @GetMapping("/employees/login")
+    public Result employeeLogin(@RequestParam String code){
+        System.out.println(code);
+        try {
+            Result result = authService.employeeLogin(code);
+            return result;
+        }catch (Exception e){
+            return Result.failure(ResultStatus.INTERNAL_SERVER_ERROR,"登录失败");
+        }
+    }
 }

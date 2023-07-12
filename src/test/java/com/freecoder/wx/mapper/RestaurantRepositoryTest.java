@@ -1,6 +1,6 @@
 package com.freecoder.wx.mapper;
 
-import com.freecoder.web.model.Restaurant;
+import com.freecoder.wx.model.Restaurant;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
