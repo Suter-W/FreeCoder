@@ -19,7 +19,7 @@ public class JwtUtils {
 
     private static String signWebKey = DigestUtils.sha256Hex("free.coder.com");
 
-    private static String signWeChatKey = DigestUtils.sha256Hex("free.coder.wechat.com");
+//    private static String signWeChatKey = DigestUtils.sha256Hex("free.coder.wechat.com");
 
     private static Long expire = 43200000L; //过期时间12h
 
@@ -57,16 +57,16 @@ public class JwtUtils {
     public static String generateWeChatJwt(Map<String, Object> claims) {
         String jwt = Jwts.builder()
                 .addClaims(claims)
-                .signWith(SignatureAlgorithm.HS256, signWeChatKey)
+                .signWith(SignatureAlgorithm.HS256, signWebKey)
                 .setExpiration(new Date(System.currentTimeMillis() + expire))
                 .compact();
-        System.out.println("这是密钥内容" + signWeChatKey);
+        System.out.println("这是密钥内容" + signWebKey);
         return jwt;
     }
 
     public static Claims parseWeChatJWT(String jwt) {
         Claims claims = Jwts.parser()
-                .setSigningKey(signWeChatKey)
+                .setSigningKey(signWebKey)
                 .parseClaimsJws(jwt)
                 .getBody();
         return claims;

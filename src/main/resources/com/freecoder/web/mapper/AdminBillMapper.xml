@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.freecoder.web.mapper.AdminBillMapper">
+    <select id="getHistoricalBill">
+        SELECT *
+        FROM order_info
+        WHERE restID = #{restID}
+        <choose>
+            <!-- 当 begin 和 end 都为空时，不设置任何条件 -->
+            <when test="begin == null and end == null"></when>
+
+            <!-- 当 begin 不为空而 end 为空时，查询大于等于 begin 的数据 -->
+            <when test="begin != null and end == null">
+                AND orderTime &gt;= #{begin}
+            </when>
+
+            <!-- 当 begin 为空而 end 不为空时，查询小于等于 end 的数据 -->
+            <when test="begin == null and end != null">
+                AND orderTime &lt;= #{end}
+            </when>
+
+            <!-- 当 begin 和 end 都不为空时，查询在 begin 和 end 之间的数据 -->
+            <otherwise>
+                AND orderTime BETWEEN #{begin} AND #{end}
+            </otherwise>
+        </choose>
+        order by orderTime desc
+    </select>
+</mapper>

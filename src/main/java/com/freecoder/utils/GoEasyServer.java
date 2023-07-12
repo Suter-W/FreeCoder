@@ -35,6 +35,10 @@ public class GoEasyServer {
         });
     }
 
+    public static void main(String[] args) {
+        GoEasyServer.publish("165lai4g555");
+    }
+
 
 }
 
