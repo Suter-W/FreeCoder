@@ -19,13 +19,13 @@ public class HttpResultBodyAdvice implements ResponseBodyAdvice<Object> {
 
     private static final Class<? extends Annotation> ANNOTATION_TYPE = HttpResultBody.class;
 
-    /** ÅĞ¶ÏÀà»òÕß·½·¨ÊÇ·ñÊ¹ÓÃÁË @ResponseResultBody */
+    /** åˆ¤æ–­ç±»æˆ–è€…æ–¹æ³•æ˜¯å¦ä½¿ç”¨äº† @ResponseResultBody */
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         return AnnotatedElementUtils.hasAnnotation(returnType.getContainingClass(), ANNOTATION_TYPE) || returnType.hasMethodAnnotation(ANNOTATION_TYPE);
     }
 
-    /** µ±Àà»òÕß·½·¨Ê¹ÓÃÁË @ResponseResultBody ¾Í»áµ÷ÓÃÕâ¸ö·½·¨ */
+    /** å½“ç±»æˆ–è€…æ–¹æ³•ä½¿ç”¨äº† @ResponseResultBody å°±ä¼šè°ƒç”¨è¿™ä¸ªæ–¹æ³• */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
         if (body instanceof HttpResult) {
@@ -34,9 +34,9 @@ public class HttpResultBodyAdvice implements ResponseBodyAdvice<Object> {
         return new HttpResult(HttpStatus.OK, body);
     }
 
-//  ÕâÒ»²¿·ÖÓëResponseResultBodyAdviceÖĞµÄÒì³£´¦ÀíÖØ¸´£¨³åÍ»£©ÁË
+//  è¿™ä¸€éƒ¨åˆ†ä¸ResponseResultBodyAdviceä¸­çš„å¼‚å¸¸å¤„ç†é‡å¤ï¼ˆå†²çªï¼‰äº†
 //    /**
-//     * Ìá¹©¶Ô±ê×¼Spring MVCÒì³£µÄ´¦Àí
+//     * æä¾›å¯¹æ ‡å‡†Spring MVCå¼‚å¸¸çš„å¤„ç†
 //     *
 //     * @param ex      the target exception
 //     * @param request the current request
@@ -48,18 +48,18 @@ public class HttpResultBodyAdvice implements ResponseBodyAdvice<Object> {
 //        if (ex instanceof HttpResultException) {
 //            return this.handleHttpResultException((HttpResultException) ex, headers, request);
 //        }
-//        // ÕâÀï¿ÉÒÔ×Ô¶¨ÒåÆäËûµÄÒì³£À¹½Ø
+//        // è¿™é‡Œå¯ä»¥è‡ªå®šä¹‰å…¶ä»–çš„å¼‚å¸¸æ‹¦æˆª
 //        return this.handleException(ex, headers, request);
 //    }
 //
-//    /** ¶ÔHttpResultExceptionÀà·µ»Ø·µ»Ø½á¹ûµÄ´¦Àí */
+//    /** å¯¹HttpResultExceptionç±»è¿”å›è¿”å›ç»“æœçš„å¤„ç† */
 //    protected ResponseEntity<HttpResult<?>> handleHttpResultException(HttpResultException ex, HttpHeaders headers, WebRequest request) {
 //        HttpResult<?> body = new HttpResult(HttpStatus.INTERNAL_SERVER_ERROR, ex.getHttpStatus());
 //        HttpStatus status = ex.getHttpStatus();
 //        return this.handleExceptionInternal(ex, body, headers, status, request);
 //    }
 //
-//    /** Òì³£ÀàµÄÍ³Ò»´¦Àí */
+//    /** å¼‚å¸¸ç±»çš„ç»Ÿä¸€å¤„ç† */
 //    protected ResponseEntity<HttpResult<?>> handleException(Exception ex, HttpHeaders headers, WebRequest request) {
 //        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
 //        HttpResult<?> body = new HttpResult(status, null);

@@ -7,15 +7,15 @@ import lombok.ToString;
 @ToString
 public class Result<T> {
     /**
-     * ÒµÎñ´íÎóÂë
+     * ä¸šåŠ¡é”™è¯¯ç 
      */
     private String code;
     /**
-     * ĞÅÏ¢ÃèÊö
+     * ä¿¡æ¯æè¿°
      */
     private String message;
     /**
-     * ·µ»Ø²ÎÊı
+     * è¿”å›å‚æ•°
      */
     private T data;
 
@@ -29,7 +29,7 @@ public class Result<T> {
     }
 
     /**
-     * ÒµÎñ³É¹¦·µ»ØÒµÎñ´úÂëºÍÃèÊöĞÅÏ¢
+     * ä¸šåŠ¡æˆåŠŸè¿”å›ä¸šåŠ¡ä»£ç å’Œæè¿°ä¿¡æ¯
      */
     public static Result<Void> success() {
         return success(null, null);
@@ -55,14 +55,14 @@ public class Result<T> {
     }
 
     /**
-     * ÒµÎñÒì³£·µ»ØÒµÎñ´úÂëºÍÃèÊöĞÅÏ¢
+     * ä¸šåŠ¡å¼‚å¸¸è¿”å›ä¸šåŠ¡ä»£ç å’Œæè¿°ä¿¡æ¯
      */
     public static Result<Void> failure() {
         return failure(null, null);
     }
 
     /**
-     * ÒµÎñÒì³£·µ»ØÒµÎñ´úÂë,ÃèÊöºÍ·µ»ØµÄ²ÎÊı
+     * ä¸šåŠ¡å¼‚å¸¸è¿”å›ä¸šåŠ¡ä»£ç ,æè¿°å’Œè¿”å›çš„å‚æ•°
      */
     public static Result<Void> failure(ResultStatus resultStatus) {
         return failure(resultStatus, null);
@@ -73,7 +73,7 @@ public class Result<T> {
     }
 
     /**
-     * ÒµÎñÒì³£·µ»ØÒµÎñ´úÂë,ÃèÊöºÍ·µ»ØµÄ²ÎÊı
+     * ä¸šåŠ¡å¼‚å¸¸è¿”å›ä¸šåŠ¡ä»£ç ,æè¿°å’Œè¿”å›çš„å‚æ•°
      */
     public static Result<Void> failure(ResultStatus resultStatus, String msg) {
         return failure(resultStatus, msg, null);

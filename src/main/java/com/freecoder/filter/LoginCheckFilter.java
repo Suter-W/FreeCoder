@@ -2,6 +2,8 @@ package com.freecoder.filter;
 
 import com.alibaba.fastjson.JSONObject;
 import com.freecoder.response.MyResult;
+import com.freecoder.response.result.Result;
+import com.freecoder.response.result.ResultStatus;
 import com.freecoder.utils.JwtUtils;
 
 import jakarta.annotation.security.PermitAll;
