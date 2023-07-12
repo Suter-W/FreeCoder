@@ -126,7 +126,7 @@ class AdminDishControllerTest {
         Dish dish = new Dish();
         dish.setDishImage("http://dummyimage.com/120x240");
         dish.setDishDescription("好喝");
-        dish.setDishID(15);
+        dish.setDishID(6);
 
         assertTrue(adminDishService.updateDishInfo(dish));
     }

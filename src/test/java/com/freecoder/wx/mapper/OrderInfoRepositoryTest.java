@@ -21,7 +21,7 @@ class OrderInfoRepositoryTest {
 ////        List<OrderItem> items = new ArrayList<>();
 //        OrderInfo order = new OrderInfo(1000,new Restaurant("0000001"),new TableInfo(1),"dawei", Instant.now(), 3,new BigDecimal(1231), false, (byte)3,"",items);
 //        orderInfoRepository.save(order);
-        List<OrderInfo> all = orderInfoRepository.findAll();
-        System.out.println(all);
+//        List<OrderInfo> all = orderInfoRepository.findAll();
+//        System.out.println(all);
     }
 }

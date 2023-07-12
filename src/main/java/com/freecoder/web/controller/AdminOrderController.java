@@ -7,10 +7,13 @@ import com.freecoder.web.model.OrderItem;
 import com.freecoder.web.model.Table;
 import com.freecoder.web.service.AdminOrderService;
 import jakarta.annotation.security.PermitAll;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/web/adminOrder")
@@ -155,4 +158,47 @@ public class AdminOrderController {
         adminOrderService.tableSettle(tableID);
         return com.freecoder.response.MyResult.success("success","操作完成");
     }
+
+//    @PostMapping("/addOrderInfo")
+    public MyResult addOrderInfo(@RequestBody Order order){
+        System.out.println("shujuleiej1"+order);
+        adminOrderService.addOrderInfo(order);
+        return MyResult.success("success","添加成功");
+    }
+
+//    @GetMapping("/getOrderID")
+    public Integer getNewOrderID(@RequestParam String restID){
+        Integer orderID = adminOrderService.getNewOrderID(restID);
+        return  orderID;
+    }
+
+    @PostMapping("/addNewOrderItem")
+    public MyResult addNewOrderItem(@RequestBody Map<String, Object> req) {
+        System.out.println("req:" + req);
+        List<Map<String, Object>> items = (List<Map<String, Object>>) req.get("Items");
+        System.out.println("items:" + items);
+
+        Order order = new Order();
+        order.setRestID((String) req.get("restID"));
+        order.setIsVIP(Integer.valueOf(req.get("isVIP").toString()));
+        order.setOrderPrice(Double.valueOf(req.get("orderPrice").toString()));
+        order.setOrderUse(Integer.valueOf(req.get("orderUse").toString()));
+        order.setOrderTime((String) req.get("ordertime"));
+        order.setCostumerID((String) req.get("costumerid"));
+        order.setTableID(Integer.valueOf(req.get("tableID").toString()));
+        order.setOrderRemark((String) req.get("orderRemark"));
+        System.out.println("order:" + order);
+        addOrderInfo(order);
+
+        if (items == null || items.isEmpty()) {
+            return MyResult.error("参数错误", "传递的Items列表为空");
+        }
+
+        String restID = (String) req.get("restID");
+        Integer orderID = getNewOrderID(restID);
+        adminOrderService.addNewOrderItem(items, restID,orderID);
+
+        return MyResult.success("success", "添加成功");
+    }
+
 }
