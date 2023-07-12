@@ -47,7 +47,6 @@ public class AdminOrderController {
     public Result tableList(@RequestParam String restID){
 
         List<Table> tableList = adminOrderService.tableList(restID);
-        System.out.println(tableList);
         return Result.success(tableList);
     }
 
