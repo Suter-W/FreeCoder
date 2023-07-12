@@ -19,4 +19,5 @@ public class Order {
     private double orderPrice;
     private boolean isVIP;
     private Integer orderStatus;
+    private String orderRemark;
 }

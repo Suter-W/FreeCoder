@@ -77,7 +77,7 @@ public class AuthController {
             e.printStackTrace();
         }
 
-        return Result.error("success","请求参数不符合要求");
+        return Result.error("error","请求参数不符合要求");
 
     }
     /**
@@ -104,7 +104,7 @@ public class AuthController {
             return Result.success("success",jwt);
         }
 
-        return Result.error("success","使用了错误的餐厅ID或密码");
+        return Result.error("error","使用了错误的餐厅ID或密码");
     }
 
 
