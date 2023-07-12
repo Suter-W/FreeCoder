@@ -31,7 +31,7 @@ public class CustomerController {
         try {
             return Result.success(customerService.getCustomerInfo(id));
         } catch (Exception e) {
-            return Result.failure(ResultStatus.BAD_REQUEST, "登录失败");
+            return Result.failure(ResultStatus.BAD_REQUEST, "查询失败");
         }
     }
 

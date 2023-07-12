@@ -1,6 +1,5 @@
 package com.freecoder.wx.model;
 
-import com.freecoder.web.model.Restaurant;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,8 +11,8 @@ import lombok.*;
 
 @Data
 @Entity
-@NoArgsConstructor(force = true)
 @AllArgsConstructor
+@NoArgsConstructor
 @RequiredArgsConstructor
 public class Employee {
     /**
@@ -37,6 +36,7 @@ public class Employee {
 
     private String avatarUrl;
 
+    @Column(unique = true)
     private String phoneNum;
 
     private EmployeeType type;
@@ -44,17 +44,6 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "rest_id")
     private Restaurant restaurant;
-}
-
-enum EmployeeType {
-    COOK("cook"),
-    WAITER("waiter");
-
-    private String jobType;
-
-    EmployeeType(String jobType){
-        this.jobType = jobType;
-    }
 }
 
 
