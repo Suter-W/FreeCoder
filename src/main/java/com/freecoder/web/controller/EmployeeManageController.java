@@ -1,6 +1,6 @@
 package com.freecoder.web.controller;
 
-import com.freecoder.response.Result;
+import com.freecoder.response.MyResult;
 import com.freecoder.web.service.EmployeeManageService;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,21 +24,21 @@ public class EmployeeManageController {
 
 
     @PostMapping("/wxapp/addEmploy")
-    public Result addEmploy(){
+    public MyResult addEmploy(){
         employeeManageService.addEmploy();
-        return Result.success("success","员工申请");
+        return MyResult.success("success","员工申请");
     }
 
     @GetMapping("/web/getEmployInfo")
-    public Result getEmployInfo(){
+    public MyResult getEmployInfo(){
         List<String> EmployInfoList = employeeManageService.getEmployInfo();
-        return Result.success(EmployInfoList);
+        return com.freecoder.response.MyResult.success(EmployInfoList);
     }
 
     @PostMapping("")
-    public Result refineEmployInfo(){
+    public MyResult refineEmployInfo(){
         employeeManageService.refineEmployInfo();
-        return Result.success("success","确认员工身份");
+        return com.freecoder.response.MyResult.success("success","确认员工身份");
     }
 
 }

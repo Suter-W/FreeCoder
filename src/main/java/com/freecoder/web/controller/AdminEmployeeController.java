@@ -1,7 +1,7 @@
 package com.freecoder.web.controller;
 
 
-import com.freecoder.response.Result;
+import com.freecoder.response.MyResult;
 import com.freecoder.web.model.Employee;
 import com.freecoder.web.service.AdminEmployeeService;
 import jakarta.annotation.security.PermitAll;
@@ -20,22 +20,22 @@ public class AdminEmployeeController {
 
 
     @GetMapping("/getEmployeeList")
-    public Result getEmployeeList(@RequestParam String restID){
+    public MyResult getEmployeeList(@RequestParam String restID){
         List<Employee> empList = adminEmployeeService.getEmployeeList(restID);
-        return Result.success(empList);
+        return MyResult.success(empList);
     }
 
     @GetMapping("/addEmployee")
-    public Result addEmployee(@RequestParam String restID,
+    public MyResult addEmployee(@RequestParam String restID,
                               @RequestParam String phone_num,
                               @RequestParam String type){
         adminEmployeeService.addEmployee(restID,phone_num,type);
-        return Result.success();
+        return MyResult.success();
     }
 
     @DeleteMapping("/deleteEmployee")
-    public Result deleteEmployee(@RequestParam String phone_num){
+    public MyResult deleteEmployee(@RequestParam String phone_num){
         adminEmployeeService.deleteEmployee(phone_num);
-        return Result.success();
+        return MyResult.success();
     }
 }

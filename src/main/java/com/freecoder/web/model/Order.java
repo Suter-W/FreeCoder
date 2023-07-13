@@ -14,10 +14,12 @@ public class Order {
     private String restID;
     private Integer tableID;
     private String costumerID;
-    private LocalDateTime orderTime;
+//    private LocalDateTime orderTime;
+    private String orderTime;
     private Integer orderUse;
     private double orderPrice;
-    private boolean isVIP;
+    private Integer isVIP;
     private Integer orderStatus;
     private String orderRemark;
+
 }

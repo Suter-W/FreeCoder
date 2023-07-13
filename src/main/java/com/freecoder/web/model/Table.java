@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Table {
+    private Integer tableID;
     private String restID;
     private String tableName;
     private Integer tableLimit;
     private Integer tableUse;
     private String tableType;
     private String tableStatus;
-    private Integer tableID;
 }

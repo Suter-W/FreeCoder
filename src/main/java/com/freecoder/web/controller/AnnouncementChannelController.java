@@ -1,6 +1,6 @@
 package com.freecoder.web.controller;
 
-import com.freecoder.response.Result;
+import com.freecoder.response.MyResult;
 import io.goeasy.GoEasy;
 import io.goeasy.publish.GoEasyError;
 import io.goeasy.publish.PublishListener;
@@ -27,7 +27,7 @@ public class AnnouncementChannelController {
     private final Queue<DeferredResult<String>> connections = new ConcurrentLinkedQueue<>();
 
     @GetMapping("/getPolling")
-    public Result getPolling(@RequestParam String polling){
+    public MyResult getPolling(@RequestParam String polling){
         GoEasy goEasy = new GoEasy("https://rest-hz.goeasy.io","BC-a0191921df274d3f826449fca32b26e9");
         goEasy.publish("my_channel", polling, new PublishListener() {
             @Override
@@ -40,7 +40,7 @@ public class AnnouncementChannelController {
                 System.out.println("Failed to Publish message, error:" + error.getCode() + " , " + error.getContent());
             }
         });
-        return Result.success("success","连接成功");
+        return com.freecoder.response.MyResult.success("success","连接成功");
     }
 
     @GetMapping("/long-polling")

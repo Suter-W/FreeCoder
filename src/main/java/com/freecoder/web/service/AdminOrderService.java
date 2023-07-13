@@ -4,7 +4,9 @@ import com.freecoder.web.model.Order;
 import com.freecoder.web.model.OrderItem;
 import com.freecoder.web.model.Table;
 
+import java.lang.invoke.CallSite;
 import java.util.List;
+import java.util.Map;
 
 public interface AdminOrderService {
     List<Table> tableList(String restID);
@@ -23,9 +25,15 @@ public interface AdminOrderService {
 
     Integer getTableID(String restID,String tableName,String tableType);
 
-    Integer getOrderingID(Integer orderID);
+    Integer getOrderingID(Integer tableID);
 
-    void orderSettle(Integer orderID);
+    boolean orderSettle(Integer orderID);
 
-    void tableSettle(Integer tableID);
+    boolean tableSettle(Integer tableID);
+
+    boolean addOrderInfo(Order order);
+
+    Integer getNewOrderID(String restID);
+
+    boolean addNewOrderItem(List<Map<String, Object>> items, String restID,Integer orderID);
 }

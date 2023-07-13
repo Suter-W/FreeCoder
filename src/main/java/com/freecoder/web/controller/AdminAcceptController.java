@@ -1,9 +1,9 @@
 package com.freecoder.web.controller;
 
 
+import com.freecoder.response.MyResult;
 import com.freecoder.web.model.Order;
 import com.freecoder.web.model.OrderItem;
-import com.freecoder.response.Result;
 import com.freecoder.web.service.AdminAcceptService;
 import jakarta.annotation.security.PermitAll;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class AdminAcceptController {
      * @Param [java.lang.String, java.lang.String, java.lang.String]
      * @return java.lang.Integer
      **/
-    public Integer gettableID(String restID,String tableName,String tableType){
+    public Integer getTableID(String restID,String tableName,String tableType){
         Integer tableID = adminAcceptService.getTableID(restID,tableName,tableType);
         return (tableID);
     }
@@ -47,55 +47,55 @@ public class AdminAcceptController {
     /**
      * 获取某餐厅全部未处理订单信息
      * @param restID 餐厅编号
-     * @return Result
+     * @return MyResult
      */
     @GetMapping("/getPendingList")
-    public Result getPendingList(@RequestParam String restID){
+    public MyResult getPendingList(@RequestParam String restID){
         List<Order> pendingOrderList = adminAcceptService.getPendingList(restID);
-        return Result.success(pendingOrderList);
+        return com.freecoder.response.MyResult.success(pendingOrderList);
     }
 
     /**
      * 查看某个未接单订单时获取该订单信息
      * @param orderID 订单编号
-     * @return Result
+     * @return MyResult
      */
     @GetMapping("/getPendingOrder")
-    public Result getPendingOrder(@RequestParam Integer orderID){
+    public MyResult getPendingOrder(@RequestParam Integer orderID){
         Order pendingOrder = adminAcceptService.getPendingOrder(orderID);
-        return Result.success(pendingOrder);
+        return com.freecoder.response.MyResult.success(pendingOrder);
     }
 
     /**
      * 查看某个未接单订单时获取该订单的所有订单项
      * @param orderID 订单编号
-     * @return Result
+     * @return MyResult
      */
     @GetMapping("/getPendingItem")
-    public Result getPendingItem(@RequestParam Integer orderID){
+    public MyResult getPendingItem(@RequestParam Integer orderID){
         List<OrderItem> itemList = adminAcceptService.getPendingItem(orderID);
-        return Result.success(itemList);
+        return com.freecoder.response.MyResult.success(itemList);
     }
 
     /**
      * 管理员接单
      * @param orderID 订单编号
-     * @return Result
+     * @return MyResult
      */
     @GetMapping("/acceptOrder")
-    public Result acceptOrder(@RequestParam Integer orderID){
+    public MyResult acceptOrder(@RequestParam Integer orderID){
         adminAcceptService.acceptOrder(orderID);
-        return Result.success("success");
+        return com.freecoder.response.MyResult.success("success");
     }
 
     /**
      * 接单后将桌置为占用
      * @param orderID 订单编号
-     * @return Result
+     * @return MyResult
      */
     @GetMapping("/setTableStatus")
-    public Result setTableStatus(@RequestParam Integer orderID){
+    public MyResult setTableStatus(@RequestParam Integer orderID){
         adminAcceptService.setTableStatus(orderID);
-        return Result.success("success","操作成功");
+        return MyResult.success("success","操作成功");
     }
 }

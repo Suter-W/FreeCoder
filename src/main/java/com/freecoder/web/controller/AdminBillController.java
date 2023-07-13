@@ -1,6 +1,6 @@
 package com.freecoder.web.controller;
 
-import com.freecoder.response.Result;
+import com.freecoder.response.MyResult;
 import com.freecoder.web.service.AdminBillService;
 import com.freecoder.web.model.Order;
 import com.freecoder.web.model.OrderItem;
@@ -34,12 +34,12 @@ public class AdminBillController {
      * @param restID  餐厅号
      * @Date 9:11 2023/7/7
      *
-     * @return com.freecoder.response.Result
+     * @return com.freecoder.response.MyResult
      **/
     @GetMapping("/getHistoricalOrders")
-    public Result getHistoricalOrders(@RequestParam String restID){
+    public MyResult getHistoricalOrders(@RequestParam String restID){
         List<Order> orderList = adminBillService.getHistoricalOrders(restID);
-        return Result.success(orderList);
+        return MyResult.success(orderList);
     }
 
     /**
@@ -48,12 +48,12 @@ public class AdminBillController {
      * @param orderID  订单号
      * @Date 9:35 2023/7/7
      *
-     * @return com.freecoder.response.Result
+     * @return com.freecoder.response.MyResult
      **/
     @GetMapping("/getHistoricalOrderDetails")
-    public Result getHistoricalOrderDetails(@RequestParam String restID,@RequestParam Integer orderID){
+    public MyResult getHistoricalOrderDetails(@RequestParam String restID, @RequestParam Integer orderID){
         List<OrderItem> orderItemList = adminBillService.getHistoricalOrderDetails(restID,orderID);
-        return Result.success(orderItemList);
+        return MyResult.success(orderItemList);
     }
 
     /**
@@ -65,21 +65,21 @@ public class AdminBillController {
      * @Date 9:35 2023/7/8
      */
     @GetMapping("/getHistoricalBill")
-    public Result getHistoricalBill(@RequestParam(defaultValue = "1")Integer page,
-                                    @RequestParam String restID,
-                                    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDate begin,
-                                    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDate end) {
+    public MyResult getHistoricalBill(@RequestParam(defaultValue = "1")Integer page,
+                                      @RequestParam String restID,
+                                      @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDate begin,
+                                      @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDate end) {
         PageBean pageBean = adminBillService.getHistoricalBill(page,restID, begin, end);
-        return Result.success(pageBean);
+        return com.freecoder.response.MyResult.success(pageBean);
     }
     @GetMapping("/getOrderInfoByid")
-    public Result getOrderInfoByid(@RequestParam Integer orderID){
+    public MyResult getOrderInfoByid(@RequestParam Integer orderID){
         Order order = adminBillService.getOrderInfoByid(orderID);
-        return Result.success(order);
+        return com.freecoder.response.MyResult.success(order);
     }
     @GetMapping("/getOrderItemByid")
-    public Result getOrderItemByid(@RequestParam Integer orderID){
+    public MyResult getOrderItemByid(@RequestParam Integer orderID){
         List<OrderItem> itemList = adminBillService.getOrderItemByid(orderID);
-        return Result.success(itemList);
+        return MyResult.success(itemList);
     }
 }

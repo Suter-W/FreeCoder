@@ -162,4 +162,9 @@ public class AdminDishCategoryControllerTest {
         List<Integer> IDPresentList = Arrays.asList(5, 3, 8, 9, 1, 2, 6, 7, 4);
         assertTrue(adminDishCategoryService.sortDishCategory("0000001",IDPresentList));
     }
+
+    @Test
+    void searchDishByid() throws Exception{
+        assertNotNull(adminDishCategoryService.searchDishByid(1));
+    }
 }

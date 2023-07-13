@@ -134,4 +134,5 @@ class AdminAcceptControllerTest {
     void acceptOrder() throws Exception {
         assertTrue(adminAcceptService.acceptOrder(1));
     }
+
 }

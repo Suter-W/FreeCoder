@@ -9,8 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -244,5 +244,20 @@ class AdminOrderControllerTest {
     @Test
     void getOrderItem() throws Exception {
         assertNotNull(adminOrderService.getOrderItem(1));
+    }
+
+    @Test
+    void getOrderingID() throws Exception{
+        assertNotNull(adminOrderService.getOrderingID(13));
+    }
+
+    @Test
+    void orderSettle() throws Exception{
+        assertTrue(adminOrderService.orderSettle(1));
+    }
+
+    @Test
+    void tableSettle() throws Exception{
+        assertTrue(adminOrderService.tableSettle(1));
     }
 }
