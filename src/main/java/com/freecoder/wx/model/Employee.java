@@ -44,6 +44,16 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "rest_id")
     private Restaurant restaurant;
+
+    public Employee(@NonNull String openId, String sessionKey, String nickName, String avatarUrl, String phoneNum, EmployeeType type, Restaurant restaurant) {
+        this.openId = openId;
+        this.sessionKey = sessionKey;
+        this.nickName = nickName;
+        this.avatarUrl = avatarUrl;
+        this.phoneNum = phoneNum;
+        this.type = type;
+        this.restaurant = restaurant;
+    }
 }
 
 

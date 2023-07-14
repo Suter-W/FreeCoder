@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public interface EmployeeJpaRepository extends JpaRepository<Employee, Long> {
+    Employee findByOpenId(String openId);
+    boolean existsByOpenId(String openId);
     @Transactional
     @Modifying
     @Query("update Employee e set e.type = ?1, e.restaurant = ?2 where e.id = ?3")

@@ -92,7 +92,7 @@ public class EmployeeController {
             Result<Employee> result = Result.success(employee);
             return ResponseEntity.ok(result);
         } catch (Exception e) {
-            Result<Void> result = Result.failure(ResultStatus.FORBIDDEN, "更新失败");
+            Result<Void> result = Result.failure(ResultStatus.FORBIDDEN, "请求id不匹配，更新失败");
             return ResponseEntity.badRequest().body(result);
         }
     }

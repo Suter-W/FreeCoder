@@ -35,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer updateCustomerNameAndAvatar(String nickName, String avatarUrl, Long id) throws ResultException {
-        if(jpaRepository.updateNickNameAndAvatarUrlById(nickName, avatarUrl, id)!=id){
+        if(jpaRepository.updateNickNameAndAvatarUrlById(nickName, avatarUrl, id)==0){
             throw new ResultException("更新失败",ResultStatus.BAD_REQUEST);
         }
         Customer customer = getCustomerInfo(id);

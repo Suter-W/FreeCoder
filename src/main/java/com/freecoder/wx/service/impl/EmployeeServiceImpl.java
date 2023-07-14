@@ -52,7 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee updateByEmployee(String nickName, String avatarUrl, String phoneNum, Long id) throws ResultException {
-        if(jpaRepository.updateNickNameAndAvatarUrlAndPhoneNumById(nickName, avatarUrl, phoneNum, id)!=id){
+        if(jpaRepository.updateNickNameAndAvatarUrlAndPhoneNumById(nickName, avatarUrl, phoneNum, id)==0){
             throw new ResultException("更新失败", ResultStatus.BAD_REQUEST);
         }
         Employee employee = getEmployeeInfo(id);
